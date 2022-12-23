@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 12</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="Game.js" type="module"></script>
+</head>
+
+<body>
+    <div data-container class="container">
+        <section class="info">
+            <p data-lives class="info-text">Lives: 3</p>
+            <p data-name class="info-name"></p>
+            <p data-score class="info-text">Score: 0</p>
+        </section>
+        <div data-modal class="modal">
+            <label for="name">Wprowadź swój nick</label>
+            <input data-nickname type="text" id="name">
+            <button data-start>Rozpocznij grę!</button>
+        </div>
+        <div data-high-score class="highscore hide">
+            <div data-scores class="scores">
+            </div>
+            <button data-restart>Zrestartuj grę</button>
+        </div>
+    </div>
+</body>
+
+</html>

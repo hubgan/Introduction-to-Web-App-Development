@@ -1,0 +1,146 @@
+:root {
+    --primary-blue: #49a6e9;
+}
+
+*, *::after, *::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 10px;
+}
+
+picture, img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+button, input {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+    width: 40%;
+    background-color: #f0f4f7;
+    overflow: hidden;
+    min-width: 36rem;
+}
+
+.slider {
+    position: relative;
+    padding: 0.8rem 0;
+}
+
+.slides {
+    display: flex;
+    transform: translateX(-100%);
+}
+
+.slide {
+    padding: 0 6rem;
+    max-width: 100%;
+    flex-shrink: 0;
+}
+
+h2 {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+}
+
+h2 span {
+    color: var(--primary-blue);
+}
+
+.slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.profile-image {
+    border-radius: 50%;
+    overflow: hidden;
+    border: 0.3rem solid #fff;
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 0px 8px 0px rgba(66, 68, 90, 1);
+    box-shadow: 0px 0px 8px 0px rgba(66, 68, 90, 1);
+}
+
+p {
+    font-size: 1.3rem;
+    color: #666;
+}
+
+.name {
+    color: var(--primary-blue);
+}
+
+.description {
+    margin: 2rem 0;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.quote-image {
+    transform: rotate(180deg);
+    cursor: pointer;
+}
+
+.left-arrow,
+.right-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0.8rem 0.4rem;
+    background-color: #5f7e9b;
+    z-index: 5;
+    border-radius: 0.4rem;
+}
+
+.left-arrow {
+    left: 8%;
+}
+
+.right-arrow {
+    right: 8%;
+}
+
+.arrow {
+  border: solid #fff;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 0.3rem;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  margin-right: 0.4rem;
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  margin-left: 0.4rem;
+}

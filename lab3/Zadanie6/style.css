@@ -1,0 +1,118 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 10px;
+}
+
+button, input {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: none;
+}
+
+body {
+    background-color: #f9f9f9;
+    width: 100%;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
+main, form {
+    margin: 0 auto;
+    width: 60%;
+    min-width: 50rem;
+    padding-top: 4rem;
+}
+
+.phone-position {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.phone-position, form {
+    margin-top: 2rem;
+    background-color: #fff;
+    -webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+    box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+    padding: 3rem;
+    border-radius: 0.6rem;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+p {
+    font-size: 1.5rem;
+}
+
+.bold {
+    font-size: 1.7rem;
+    font-weight: bold;
+}
+
+.remove {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #007f00;
+    padding: 1.5rem;
+    border-radius: 0.6rem;
+}
+
+.remove:hover {
+    background-color: #004c00;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex-grow: 2;
+}
+
+label span {
+    text-transform: uppercase;
+    font-size: 1.3rem;
+}
+
+input {
+    border: 0.2rem solid #aaa;
+    padding: 1.3rem;
+    font-size: 1.3rem;
+}
+
+input:focus {
+    border-color: #777;
+}
+
+form button {
+    flex-grow: 1;
+    align-self: flex-end;
+    padding: 1.5rem 3.4rem;
+    border-radius: 0.6rem;
+    background-color: #007f00;
+    color: #fff;
+    font-size: 1.3rem;
+}
+
+form button:hover {
+    background-color: #004c00;
+}

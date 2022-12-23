@@ -1,0 +1,154 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.material-symbols-outlined {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.1rem solid black;
+    border-left: none;
+    padding-right: 1rem;
+    cursor: pointer;
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
+}
+
+html {
+    font-size: 10px;
+}
+
+p {
+    font-size: 1.2rem;
+}
+
+button, input {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+main {
+    width: 20%;
+    min-width: 25rem;
+    margin-top: 20rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+}
+
+label {
+    font-size: 1.4rem;
+}
+
+.input-container {
+    display: flex;
+}
+
+input {
+    border: 0.1rem solid black;
+    font-size: 1.2rem;
+    border-right: none;
+    padding: 1rem;
+    flex-grow: 1;
+}
+
+input:focus {
+    border-color: #afded1;
+}
+
+input:focus + .material-symbols-outlined {
+    border-color: #afded1;
+}
+
+.error {
+    display: none;
+    font-size: 1.5rem;
+    color: #ed4337;
+}
+
+.title {
+    font-size: 1.5rem;
+}
+
+.requirement {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.circle {
+    position: relative;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+}
+
+.circle.wrong {
+    background-color: #ccc;
+}
+
+.circle.wrong::after,
+.circle.wrong::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;   
+    width: 0.2rem;
+    height: 1rem;
+    background-color: #fff;
+}
+
+.circle.wrong::after {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.circle.wrong::before {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.circle.good {
+    background-color: #afded1;
+}
+
+.circle.good::after,
+.circle.good::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 0.2rem;
+    background-color: #fff;
+}
+
+.circle.good::after {
+    left: 55%;  
+    transform: translate(-50%, -50%) rotate(30deg); 
+    height: 1rem;
+}
+
+.circle.good::before {
+    left: 30%;  
+    transform: translate(-50%, -50%) rotate(-30deg); 
+    height: 0.55rem;
+}

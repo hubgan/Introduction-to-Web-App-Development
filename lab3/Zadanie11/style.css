@@ -1,0 +1,87 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #666;
+}
+
+p {
+    font-size: 1.4rem;
+    text-align: center;
+    padding: 1em 1.2em;
+    border: 0.1em solid black;
+    cursor: pointer;
+}
+
+input {
+    width: 50%;
+    display: block;
+    margin: 1rem auto;
+    padding: 0.5em;
+    outline: none;
+    border: 0.2rem solid black;
+    text-align: center;
+}
+
+input:focus {
+    border: 0.2rem solid greenyellow;
+}
+
+button {
+    margin: 1rem 0;
+    padding: 1em 1.2em;
+    cursor: pointer;
+}
+
+.box, .region {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    
+}
+
+.box {
+    justify-content: space-evenly;
+}
+
+.region {
+    flex-direction: column;
+}
+
+ul {
+    list-style: none;
+    width: 100%;
+}
+
+ul > li {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+ul > li > p {
+    flex: 1;
+}
+
+.buttons-container {
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.hidden {
+    display: none;
+}
