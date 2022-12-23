@@ -21,6 +21,19 @@ input, select {
     border-radius: 0.3rem;
 }
 
+.country-input {
+    flex-grow: 2;
+}
+
+.price-input {
+    flex-grow: 4;
+}
+
+.date-input,
+.rating-input {
+    flex-grow: 1;
+}
+
 label {
     margin-right: 0.4rem;
 }

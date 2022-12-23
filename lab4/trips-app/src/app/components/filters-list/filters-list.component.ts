@@ -1,6 +1,8 @@
+import { Options } from '@angular-slider/ngx-slider';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Trip } from 'src/app/models/trip';
+import { MoneyTypeService } from 'src/app/services/money-type.service';
 import { TripsService } from 'src/app/services/trips.service';
 
 @Component({
@@ -12,10 +14,16 @@ export class FiltersListComponent implements OnInit {
   @Input() trips: Array<Trip>;
   @Output() filters: EventEmitter<Object> = new EventEmitter();
 
-  constructor(private tripsService: TripsService, private formBuilder: FormBuilder) { }
+  constructor(private tripsService: TripsService, private moneyTypeService: MoneyTypeService, private formBuilder: FormBuilder) { }
 
   minPrice = 0;
-  maxPrice = Infinity;
+  maxPrice = 0;
+  moneyType: string = 'PLN';
+
+  options: Options = {
+    floor: 0,
+    ceil: this.maxPrice
+  };
 
   form: FormGroup;
   dropdownData: Array<any> = [];
@@ -43,6 +51,12 @@ export class FiltersListComponent implements OnInit {
 
     this.tripsService.maxPrice.subscribe((value) => {
       this.maxPrice = value;
+      this.setNewCeil(this.maxPrice);
+    })
+
+    this.moneyTypeService.moneyType.subscribe((moneyType) => {
+      this.moneyType = moneyType;
+      this.setNewCeil(this.maxPrice);
     })
 
     this.form.valueChanges.subscribe(() => {
@@ -59,11 +73,16 @@ export class FiltersListComponent implements OnInit {
     this.dropdownData = dataArray;
   }
 
+  setNewCeil(newCeil: number) {
+    const newOptions: Options = Object.assign({}, this.options);
+    newOptions.ceil = this.moneyTypeService.getMoneyValue(newCeil);
+    this.options = newOptions;
+  }
+
   initForm() {
     this.form = this.formBuilder.group({
       country: [''],
-      minPrice: [0],
-      maxPrice: [Infinity],
+      price: [0, null],
       startDate: [null],
       endDate: [null],
       rating: [null]

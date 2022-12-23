@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Trip } from '../models/trip';
+import { MoneyTypeService } from '../services/money-type.service';
 import { TripsService } from '../services/trips.service';
 
 interface countries {
@@ -13,11 +14,10 @@ interface countries {
 })
 export class FilterPipe implements PipeTransform {
 
-  constructor(private tripsSerivce: TripsService) { }
+  constructor(private moneyTypeService: MoneyTypeService) { }
 
   transform(trips: Array<Trip>, filter: { [key: string]: any }): Array<Trip> {
     let list = trips;
-
 
     if (filter['country'] != null && filter['country'].length !== 0) {
       list = list.filter((trip) => {
@@ -39,12 +39,12 @@ export class FilterPipe implements PipeTransform {
       list = list.filter(trip => trip.rating <= filter['rating'])
     }
 
-    if (filter['minPrice'] != null) {
-      list = list.filter(trip => trip.unitPrice >= filter['minPrice']);
+    if (filter['price'] != null && filter['price'][0] != null) {
+      list = list.filter(trip => this.moneyTypeService.getMoneyValue(trip.unitPrice) >= filter['price'][0]);
     }
 
-    if (filter['maxPrice'] != null && filter['maxPrice'] !== 0) {
-      list = list.filter(trip => trip.unitPrice <= filter['maxPrice']);
+    if (filter['price'] != null && filter['price'][1] != null && filter['price'][1] !== 0) {
+      list = list.filter(trip => this.moneyTypeService.getMoneyValue(trip.unitPrice) <= filter['price'][1]);
     }
 
     let min = Infinity;

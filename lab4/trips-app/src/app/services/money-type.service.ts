@@ -20,4 +20,12 @@ export class MoneyTypeService {
   getMoneyType() {
     return this.money;
   }
+
+  getMoneyValue(value: number) {
+    switch (this.money) {
+      case '$': return parseFloat((value * 0.23).toFixed(2));
+      case '€': return parseFloat((value * 0.22).toFixed(2));
+      default: return value;
+    }
+  }
 }

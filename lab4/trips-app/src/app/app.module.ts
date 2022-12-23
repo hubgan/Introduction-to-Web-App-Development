@@ -18,6 +18,7 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { TransformMoneyPipe } from './pipes/transform-money.pipe';
 import { CartComponent } from './components/cart/cart.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 const routes: Routes = [
   { path: '', component: TripListComponent },
@@ -36,7 +37,7 @@ const routes: Routes = [
     StarComponent,
     FilterPipe,
     TransformMoneyPipe,
-    CartComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +45,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     NgMultiSelectDropDownModule,
+    NgxSliderModule,
     FormsModule,
     RouterModule.forRoot(routes)
   ],

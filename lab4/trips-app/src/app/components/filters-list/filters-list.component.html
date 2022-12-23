@@ -1,26 +1,21 @@
 <form [formGroup]="form" class="filters">
-  <ng-multiselect-dropdown formControlName="country" [placeholder]="'Lokalizacja wycieczki'" [settings]="settings"
-    [data]="dropdownData">
+  <ng-multiselect-dropdown class="country-input" formControlName="country" [placeholder]="'Lokalizacja wycieczki'"
+    [settings]="settings" [data]="dropdownData">
   </ng-multiselect-dropdown>
-  <label for="minPrice">
-    <span>Cena minimalna: </span>
-    <input formControlName="minPrice" class="price-filter" type="number" id="minPrice" step="1000" [min]="minPrice"
-      [max]="maxPrice">
+  <label class="price-input" for="price">
+    <span>Cena: </span>
+    <ngx-slider formControlName="price" [value]="minPrice | transformMoney: moneyType : false"
+      [highValue]="maxPrice | transformMoney: moneyType : false" [options]="options"></ngx-slider>
   </label>
-  <label for="maxPrice">
-    <span>Cena maksymalna: </span>
-    <input formControlName="maxPrice" class="price-filter" type="number" id="maxPrice" step="1000" [min]="minPrice"
-      [max]="maxPrice">
-  </label>
-  <label for="startDate">
+  <label class="date-input" for="startDate">
     <span>Początek wycieczki: </span>
     <input formControlName="startDate" type="date" id="startDate">
   </label>
-  <label for="endDate">
+  <label class="date-input" for="endDate">
     <span>Koniec wycieczki: </span>
     <input formControlName="endDate" type="date" id="endDate">
   </label>
-  <label for="rating">
+  <label class="rating-input" for="rating">
     <span>Ocena: </span>
     <select formControlName="rating" id="rating">
       <option value="">None</option>
