@@ -1,0 +1,54 @@
+nav {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    padding: 1rem 2rem;
+    background-color: #007bff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+}
+
+nav li.cart {
+    margin-left: 4rem;
+    margin-right: 2rem;
+}
+
+nav li:hover {
+    border-color: #ccc;
+    color: #ccc;
+}
+
+nav a {
+    padding: 0.8rem 1.5rem;
+    border: 0.1rem solid #fff;
+    border-radius: 0.4rem;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+nav a.navbar-brand {
+    font-size: 2.8rem;
+    border: none;
+}
+
+
+
+@media (max-width: 400px) {
+    nav a.navbar-brand {
+        font-size: 1.6rem;
+    }
+
+    nav a {
+        font-size: 1rem;
+    }
+}

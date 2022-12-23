@@ -1,0 +1,80 @@
+{
+  "trips": [
+    {
+      "id": 6,
+      "country": "Hawaje",
+      "name": "Wakacje na Hawajach",
+      "startDate": "December 20, 2022",
+      "endDate": "December 25, 2022",
+      "unitPrice": 6500,
+      "availablePlaces": 10,
+      "rating": 3,
+      "description": "Hawaje to bez wątpienia raj na ziemi. Cukierkowe plaże, rafy koralowe i majestatyczne wulkany górujące nad wyspami to recepta na idealne wczasy. Powietrze pachnie świeżością, włosy targa morska bryza, a na turystów czeka cała paleta przygód.",
+      "imageUrl": "https://images.unsplash.com/photo-1567920139184-150ff48189b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      "prices": {
+        "minPrice": 1000,
+        "maxPrice": 50000
+      }
+    },
+    {
+      "id": 323217,
+      "country": "Nowa",
+      "name": "Nowa",
+      "startDate": "2022-12-21",
+      "endDate": "2022-12-28",
+      "unitPrice": 50000,
+      "availablePlaces": 40,
+      "rating": 5,
+      "description": "abcasdsadfasfsdagdgaffafsdagasg",
+      "imageUrl": "https://images.unsplash.com/photo-1567920139184-150ff48189b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      "prices": {
+        "minPrice": 1000,
+        "maxPrice": 50000
+      }
+    },
+    {
+      "id": 4033699,
+      "country": "Egipt",
+      "name": "Test dat 2",
+      "startDate": "2022-12-22",
+      "endDate": "2022-12-15",
+      "unitPrice": 1000,
+      "availablePlaces": 5,
+      "rating": 5,
+      "description": "Abcdefgshfkdsfsdfgsdfsdfsdfdsfsd",
+      "imageUrl": "https://images.unsplash.com/photo-1567920139184-150ff48189b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+    },
+    {
+      "id": 7543864,
+      "country": "Czy nic sie nie popsulo",
+      "name": "aaaaaaaaaaaaaaa",
+      "startDate": "2023-01-02",
+      "endDate": "2023-01-05",
+      "unitPrice": 15000,
+      "availablePlaces": 100,
+      "rating": 4,
+      "description": "test test test test test test test test test",
+      "imageUrl": "https://images.unsplash.com/photo-1567920139184-150ff48189b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      "prices": {
+        "minPrice": 1000,
+        "maxPrice": 50000
+      }
+    },
+    {
+      "id": 8305686,
+      "country": "Abcdsae",
+      "name": "aaaaaaaaaaaaa",
+      "startDate": "2022-12-15",
+      "endDate": "2022-12-29",
+      "unitPrice": 10000,
+      "availablePlaces": 5,
+      "rating": 3,
+      "description": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "imageUrl": "https://images.unsplash.com/photo-1567920139184-150ff48189b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      "prices": {
+        "minPrice": 1000,
+        "maxPrice": 50000
+      }
+    }
+  ]
+}

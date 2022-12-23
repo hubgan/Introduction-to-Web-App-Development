@@ -1,0 +1,12 @@
+<div class="cart">
+  <div (click)="switchCartDetailsVisibility()" class="cart-image">
+    <img src="./../../../assets/cart.svg" alt="cart-icon" />
+    <div class="badge">{{cartItems.length}}</div>
+  </div>
+  <div *ngIf="showCartDetails" class="cart-details">
+    <ng-container *ngFor="let cartItem of cartItems">
+      <p>{{cartItem.name}}: {{cartItem.quantity}}</p>
+    </ng-container>
+    <p>Całkowita cena: {{totalPrice | transformMoney: moneyType}}</p>
+  </div>
+</div>

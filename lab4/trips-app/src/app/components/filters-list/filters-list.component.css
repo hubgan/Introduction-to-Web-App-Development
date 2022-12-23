@@ -1,0 +1,28 @@
+.filters {
+    margin-top: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+p, span, input {
+    font-size: 1.4rem;
+    color: #444
+}
+
+input, select {
+    padding: 0.5rem 1rem;
+    border: 0.1rem solid #888;
+    outline: none;
+    border-radius: 0.3rem;
+}
+
+label {
+    margin-right: 0.4rem;
+}
+
+.price-filter {
+    max-width: 8rem;   
+}

@@ -1,0 +1,13 @@
+<div class="subject-container">
+  <h1>Wybierz temat</h1>
+  <div class="cards-container">
+    <app-card (messageToShow)="setMessage($event)" [heading]="'The Basics'"
+      [info]="'Core Angular basics you have to know'">
+    </app-card>
+    <app-card (messageToShow)="setMessage($event)" [heading]="'Components'"
+      [info]="'Components are a core concept for building Angular UIs and apps'">
+    </app-card>
+    <app-card (messageToShow)="setMessage($event)" [heading]="'Events'" [info]="'Events are important in Angular'">
+    </app-card>
+  </div>
+</div>

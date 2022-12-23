@@ -1,0 +1,32 @@
+<div class="filters">
+  <input [(ngModel)]="fields.country" (ngModelChange)="updateFilters()" type="text" placeholder="Lokalizacja wycieczki">
+  <label for="minPrice">
+    <span>Cena minimalna: </span>
+    <input [(ngModel)]="fields.minPrice" (ngModelChange)="updateFilters()" class="price-filter" type="number"
+      id="minPrice" step="1000" [min]="minPrice" [max]="maxPrice">
+  </label>
+  <label for="maxPrice">
+    <span>Cena maksymalna: </span>
+    <input [(ngModel)]="fields.maxPrice" (ngModelChange)="updateFilters()" class="price-filter" type="number"
+      id="maxPrice" step="1000" [min]="minPrice" [max]="maxPrice">
+  </label>
+  <label for="startDate">
+    <span>Początek wycieczki: </span>
+    <input [(ngModel)]="fields.startDate" (ngModelChange)="updateFilters()" type="date" id="startDate">
+  </label>
+  <label for="endDate">
+    <span>Koniec wycieczki: </span>
+    <input [(ngModel)]="fields.endDate" (ngModelChange)="updateFilters()" type="date" id="endDate">
+  </label>
+  <label for="rating">
+    <span>Ocena: </span>
+    <select [(ngModel)]="fields.rating" (ngModelChange)="updateFilters()" id="rating">
+      <option value="">None</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+  </label>
+</div>

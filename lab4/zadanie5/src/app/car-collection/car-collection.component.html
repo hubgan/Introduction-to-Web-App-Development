@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="form">
+    <select [(ngModel)]="companyName" (ngModelChange)="onCompanyChange()">
+      <option value="" selected disabled>Company</option>
+      <ng-container>
+        <option [value]="company.key" *ngFor="let company of carsData | keyvalue">
+          {{company.key}}
+        </option>
+      </ng-container>
+    </select>
+    <ng-container *ngIf="showModels">
+      <select [(ngModel)]="modelName" (ngModelChange)="onModelChange()">
+        <option value="" selected disabled>Model</option>
+        <option [value]="model.key" *ngFor="let model of carsData[companyName] | keyvalue">
+          {{model.key}}
+        </option>
+      </select>
+    </ng-container>
+    <ng-container *ngIf="showColors">
+      <select [(ngModel)]="color" (ngModelChange)="onColorChange()">
+        <option value="" selected disabled>Color</option>
+        <option [value]="color.value" *ngFor="let color of carsData[companyName][modelName] | keyvalue">
+          {{color.value}}
+        </option>
+      </select>
+    </ng-container>
+  </div>
+  <p *ngIf="showResult">Wybrałeś: <span>{{companyName + " " + modelName + " " + color}}</span></p>
+</div>
