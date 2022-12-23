@@ -19,13 +19,14 @@ export class TripCardComponent implements OnInit {
 
   moneyType: string = 'PLN';
 
-  availablePlaces: number = 0;
+  reservationAmount: number = 0;
   currentClasses = {};
 
   constructor(private tripsService: TripsService, private moneyTypeService: MoneyTypeService, private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.availablePlaces = this.trip.availablePlaces;
+    this.reservationAmount = this.trip.availablePlaces;
+    this.setReservationAmount();
     this.setCurrentClasses();
 
     this.moneyTypeService.moneyType.subscribe((moneyType) => {
@@ -33,13 +34,25 @@ export class TripCardComponent implements OnInit {
     })
   }
 
+  setReservationAmount() {
+    const cartItems = this.cartService.getCartItems();
+    const cartIndex = cartItems.findIndex((item) => item.id === this.trip.id);
+
+    if (cartIndex !== -1) {
+      this.reservationAmount = this.trip.availablePlaces - cartItems[cartIndex].quantity;
+    }
+    else {
+      this.reservationAmount = this.trip.availablePlaces;
+    }
+  }
+
   removeReservation() {
-    this.availablePlaces += 1;
+    this.reservationAmount += 1;
 
     const tripInfo = {
       id: this.trip.id,
       name: this.trip.name,
-      quantity: this.trip.availablePlaces - this.availablePlaces,
+      quantity: this.trip.availablePlaces - this.reservationAmount,
       price: this.trip.unitPrice
     }
 
@@ -47,12 +60,12 @@ export class TripCardComponent implements OnInit {
   }
 
   addReservation() {
-    this.availablePlaces -= 1;
+    this.reservationAmount -= 1;
 
     const tripInfo = {
       id: this.trip.id,
       name: this.trip.name,
-      quantity: this.trip.availablePlaces - this.availablePlaces,
+      quantity: this.trip.availablePlaces - this.reservationAmount,
       price: this.trip.unitPrice
     }
 

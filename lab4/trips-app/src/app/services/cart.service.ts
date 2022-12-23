@@ -38,4 +38,8 @@ export class CartService {
 
     this.cartItemsSubject.next(this.cartItems);
   }
+
+  getCartItems() {
+    return this.cartItems;
+  }
 }

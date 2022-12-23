@@ -14,10 +14,10 @@
     <p class="info-description">{{trip.description}}</p>
   </div>
   <div class="card-reservation">
-    <button [ngStyle]="{'visibility': availablePlaces == trip.availablePlaces ? 'hidden' : 'visible'}"
+    <button [ngStyle]="{'visibility': reservationAmount == trip.availablePlaces ? 'hidden' : 'visible'}"
       (click)="removeReservation()" class="reservation-button">-</button>
-    <div class="reservation-number">{{availablePlaces}}</div>
-    <button [ngStyle]="{'visibility': availablePlaces == 0 ? 'hidden' : 'visible'}" (click)="addReservation()"
+    <div class="reservation-number">{{reservationAmount}}</div>
+    <button [ngStyle]="{'visibility': reservationAmount == 0 ? 'hidden' : 'visible'}" (click)="addReservation()"
       class="reservation-button">+</button>
   </div>
   <button (click)="delete()" class="delete-card">Remove Trip</button>
