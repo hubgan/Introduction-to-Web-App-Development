@@ -2,6 +2,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Trip } from '../models/trip';
 import { TripsService } from '../services/trips.service';
 
+interface countries {
+  item_id: number,
+  item_text: string,
+  group: string
+}
+
 @Pipe({
   name: 'filter'
 })
@@ -12,8 +18,13 @@ export class FilterPipe implements PipeTransform {
   transform(trips: Array<Trip>, filter: { [key: string]: any }): Array<Trip> {
     let list = trips;
 
-    if (filter['country'] != null) {
-      list = list.filter(trip => trip.country.toLowerCase().includes(filter['country'].toLowerCase()));
+
+    if (filter['country'] != null && filter['country'].length !== 0) {
+      list = list.filter((trip) => {
+        return filter['country'].some((element: countries) => {
+          return element.item_text == trip.country;
+        })
+      })
     }
 
     if (filter['startDate'] != null) {

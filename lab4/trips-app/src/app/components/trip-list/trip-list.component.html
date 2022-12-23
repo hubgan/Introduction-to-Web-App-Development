@@ -1,5 +1,5 @@
 <div class="flex-container">
-  <app-filters-list (filters)=" filtersChange($event)"></app-filters-list>
+  <app-filters-list [trips]="trips" (filters)="filtersChange($event)"></app-filters-list>
   <div class="money-select">
     <select (change)="updateMoneyType($event.target)" name="money" id="money">
       <option value="PLN">PLN</option>

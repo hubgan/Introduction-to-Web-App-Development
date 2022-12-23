@@ -17,6 +17,7 @@ import { StarComponent } from './components/star/star.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { TransformMoneyPipe } from './pipes/transform-money.pipe';
 import { CartComponent } from './components/cart/cart.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 const routes: Routes = [
   { path: '', component: TripListComponent },
@@ -35,13 +36,14 @@ const routes: Routes = [
     StarComponent,
     FilterPipe,
     TransformMoneyPipe,
-    CartComponent
+    CartComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgMultiSelectDropDownModule,
     FormsModule,
     RouterModule.forRoot(routes)
   ],

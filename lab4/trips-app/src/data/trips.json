@@ -75,6 +75,18 @@
         "minPrice": 1000,
         "maxPrice": 50000
       }
+    },
+    {
+      "id": 2139191,
+      "country": "testttt",
+      "name": "asdasddas",
+      "startDate": "2022-12-06",
+      "endDate": "2022-12-27",
+      "unitPrice": 10000,
+      "availablePlaces": 5,
+      "rating": 0,
+      "description": "sdasdasdasdasaaaaaaaaaaaaaaaaa",
+      "imageUrl": "https://images.unsplash.com/photo-1567920139184-150ff48189b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
     }
   ]
 }
