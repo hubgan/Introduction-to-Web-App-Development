@@ -6,11 +6,18 @@ import { Subject } from 'rxjs';
 })
 export class MoneyTypeService {
 
+  private money: string = 'PLN';
+
   public moneyType = new Subject<string>();
 
   constructor() { }
 
   setMoneyType(value: string) {
     this.moneyType.next(value);
+    this.money = value;
+  }
+
+  getMoneyType() {
+    return this.money;
   }
 }

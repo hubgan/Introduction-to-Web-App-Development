@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
+  isVisible: string = '';
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  toggleVisibility() {
+    if (this.isVisible === '') {
+      this.isVisible = 'visibile';
+    }
+    else {
+      this.isVisible = '';
+    }
+  }
 }

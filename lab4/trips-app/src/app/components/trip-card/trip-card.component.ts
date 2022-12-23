@@ -14,15 +14,15 @@ export class TripCardComponent implements OnInit {
 
   @Output() id = new EventEmitter<number>();
 
-  minPrice = 0
-  maxPrice = Infinity
+  minPrice = 0;
+  maxPrice = Infinity;
 
-  moneyType: string = 'PLN';
+  moneyType: string = this.moneyTypeService.getMoneyType();
 
   reservationAmount: number = 0;
   currentClasses = {};
 
-  constructor(private tripsService: TripsService, private moneyTypeService: MoneyTypeService, private cartService: CartService) { }
+  constructor(private moneyTypeService: MoneyTypeService, private cartService: CartService) { }
 
   ngOnInit(): void {
     this.reservationAmount = this.trip.availablePlaces;
