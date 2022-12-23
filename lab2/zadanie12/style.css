@@ -1,0 +1,343 @@
+:root {
+    --primary-blue: #1377d7;
+    --primary-red: #fc4646;
+    --primary-green: #28b765;
+    --primary-orange: #ff5522;
+    --primary-black: #444444;
+}
+
+*, *::after, *::before {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #aaa;
+    min-height: 100vh;
+}
+
+picture, img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+button, input {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+input {
+    display: none;
+}
+
+main {
+    --primary-color: #1377d7;
+    --filter-value: hue-rotate(0deg);
+    padding: 2rem 0;
+    margin: 0 auto;
+    max-width: 90%;
+}
+
+input[id=red]:checked ~ main {
+    --primary-color: #fc4646;
+    --filter-value: hue-rotate(120deg);
+}
+
+input[id=green]:checked ~ main {
+    --primary-color: #28b765;
+    --filter-value: hue-rotate(240deg);
+}
+
+input[id=orange]:checked ~ main {
+    --primary-color: #ff5522;
+    --filter-value: hue-rotate(145deg);
+}
+
+input[id=black]:checked ~ main {
+    --primary-color: #444444;
+    --filter-value: grayscale(1)
+}
+
+.left {
+    position: relative;
+    background-color: var(--primary-color);
+    height: 23rem;
+}
+
+.left h3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12rem;
+    color: rgba(255, 255, 255, 0.2);
+    font-weight: bolder;
+}
+
+.left .nike-picture {
+    position: absolute;
+    top: -0.5rem;
+    left: 1rem;
+}
+
+.left .bi-share {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 50%;
+}
+
+.left .bi-share .bi-share-fill {
+    color: var(--primary-color);
+}
+
+.left .boot-picture {
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 2.5rem;
+}
+
+.headings-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.headings-info h1 {
+    font-size: 2.4rem;
+}
+
+h2 {
+    font-size: 1.4rem;
+    color: #666;
+    text-transform: uppercase;
+}
+
+.headings-info button {
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 0.3em 1em;
+    border-radius: 0.4rem;
+}
+
+.headings h2 {
+    text-transform: none;
+    font-size: 1.4rem;
+    font-weight: normal;
+    color: #444;
+    padding-bottom: 1rem;
+}
+
+.heading {
+    margin-top: 1.5rem;
+}
+
+.product-info p {
+    font-size: 1.2rem;
+    line-height: 1.4;
+    padding-bottom: 1rem;
+}
+
+.colors-color {
+    display: flex;
+    gap: 1.5rem;
+    padding-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.colors-color div {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    -webkit-box-shadow: 0px 0px 3px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 0px 3px 0px rgba(66, 68, 90, 1);
+    box-shadow: 0px 0px 3px 0px rgba(66, 68, 90, 1);
+    cursor: pointer;
+}
+
+.size .buttons {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+.size .buttons label {
+    padding: 0.5em 1em;
+    font-size: 1.4rem;
+    background-color: #eee;
+    border-radius: 0.8rem;
+    cursor: pointer;
+}
+
+.price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+}
+
+.price button {
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    padding: 1em 1.5em;
+    background-color: var(--primary-color);
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+.price-info {
+    font-size: 2rem;
+    color: #111;
+}
+
+.price-info span {
+    font-size: 1.4rem;
+    vertical-align: 0.35rem;
+}
+
+.right div + div {
+    border-top: 0.2rem solid #eee;
+}
+
+input[id=blue]:checked ~ main .right .colors label[for=blue] div,
+input[id=red]:checked ~ main .right .colors label[for=red] div,
+input[id=green]:checked ~ main .right .colors label[for=green] div,
+input[id=orange]:checked ~ main .right .colors label[for=orange] div,
+input[id=black]:checked ~ main .right .colors label[for=black] div {
+    border: 0.4rem solid white;
+}
+
+.colors-color label {
+    color: #fff;
+}
+
+.color-blue {
+    background-color: var(--primary-blue);
+}
+
+.color-red {
+    background-color: var(--primary-red);
+}
+
+.color-green {
+    background-color: var(--primary-green);
+}
+
+.color-orange {
+    background-color: var(--primary-orange);
+}
+
+.color-black {
+    background-color: var(--primary-black);
+}
+
+input[id=blue]:checked ~ main .left .boot-picture,
+input[id=red]:checked ~ main .left .boot-picture,
+input[id=green]:checked ~ main .left .boot-picture,
+input[id=orange]:checked ~ main .left .boot-picture,
+input[id=black]:checked ~ main .left .boot-picture {
+    filter: var(--filter-value);
+}
+
+input[id=size-1]:checked ~ main .right .size .buttons label[for=size-1],
+input[id=size-2]:checked ~ main .right .size .buttons label[for=size-2],
+input[id=size-3]:checked ~ main .right .size .buttons label[for=size-3],
+input[id=size-4]:checked ~ main .right .size .buttons label[for=size-4],
+input[id=size-5]:checked ~ main .right .size .buttons label[for=size-5] {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+@media (min-width: 560px) {
+    main {
+        max-width: 60%;
+    }
+
+    .left {
+        height: 35vh;
+    }
+
+    .left .boot-picture {
+        top: 50%;
+        left: 45%;
+    }
+}
+
+@media (min-width: 800px) {
+    body {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    main {
+        display: grid;
+        max-width: 90%;
+        grid-template-columns: 0.55fr 0.45fr;
+    }
+
+    .left {
+        height: auto;
+    }
+
+    .right {
+        transform: scaleY(1.1);
+    }
+
+    .left .boot-picture {
+        top: 20%;
+        left: -20%;
+        transform: rotate(-20deg) scale(1.3);
+    }
+}
+
+@media (min-width: 960px) {
+    main {
+        max-width: 80%;
+    }
+}
+
+@media (min-width: 1040px) {
+    main {
+        max-width: 70%;
+    }
+}
+
+@media (min-width: 1230px) {
+    main {
+        max-width: 55%;
+    }
+}

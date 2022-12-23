@@ -1,0 +1,190 @@
+:root {
+    --perspective-value: 800px;
+}
+
+*, *::after, *::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 10px;
+}
+
+picture, img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #666;
+}
+
+button, input {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+main {
+    padding-top: 6rem;
+    margin: 0 auto;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8rem;
+    flex-wrap: wrap;
+}
+
+.card {
+    position: relative;
+    width: 32rem;
+    height: 52rem;
+}
+
+.image-container {
+    position: relative;
+    border-radius: 0.4rem 0.4rem 0 0;
+    overflow: hidden;
+}
+
+.image-container-orange {
+    background-color: #fda172;
+}
+
+.image-container-green {
+    background-color: #a8e4a0;
+}
+
+.image-container:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 0;
+    height: 0;
+    border-bottom: 40px solid white;
+    border-left: 320px solid transparent;
+}
+
+.image-text {
+    position: absolute;
+    padding: 1em;
+    z-index: 3;
+    right: 0.5rem;
+    color: #fff;
+    font-size: 1.6rem;
+}
+
+.image-container-orange .image-text {
+    background-color: rgba(253, 161, 114, 0.7);
+}
+
+.image-container-green .image-text {
+     background-color: rgba(168, 228, 160, 0.7);
+}
+
+.image-text-one {
+    bottom: 25%;
+}
+
+.image-text-two {
+    bottom: 10%;
+}
+
+img {
+    mix-blend-mode: luminosity;
+}
+
+ul {
+    background-color: #fff;
+    list-style: none;
+    padding: 2rem 5rem;
+    border-radius: 0 0 0.4rem 0.4rem;
+}
+
+li {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 1.4rem;
+    color: #999;
+}
+
+li + li {
+    border-top: 0.1rem solid #999;
+}
+
+.front, .back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    backface-visibility: hidden;
+    transition: 0.8s;
+}
+
+.front {
+    transform: perspective(var(--perspective-value)) rotateY(0deg);
+}
+
+.card:hover .front {
+    transform: perspective(var(--perspective-value)) rotateY(-180deg);
+}
+
+.back {
+    transform: perspective(var(--perspective-value)) rotateY(180deg);
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-orange {
+    background-color: #fda172;
+}
+
+.back-green {
+    background-color: #a8e4a0;
+}
+
+.card:hover .back {
+    transform: perspective(var(--perspective-value)) rotateY(0deg);
+}
+
+.back-text {
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    color: #eee;
+}
+
+.back-price {
+    font-size: 5rem;
+    font-weight: lighter;
+    color: #ddd;
+}
+
+.back-button {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    padding: 1em 2em;
+    border-radius: 2em;
+    background-color: #fff;
+    color: #666;
+    margin-top: 7rem;
+}
+
+.back-button:hover {
+    background-color: #bbb;
+}

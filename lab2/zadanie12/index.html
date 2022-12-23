@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 12</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <input id="blue" type="radio" name="color" checked>
+    <input id="red" type="radio" name="color">
+    <input id="green" type="radio" name="color">
+    <input id="orange" type="radio" name="color">
+    <input id="black" type="radio" name="color">
+    <input id="size-1" type="radio" name="size">
+    <input id="size-2" type="radio" name="size">
+    <input id="size-3" type="radio" name="size" checked>
+    <input id="size-4" type="radio" name="size">
+    <input id="size-5" type="radio" name="size">
+    <main>
+        <div class="left">
+            <h3>NIKE</h3>
+            <div class="bi-share">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-share-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z" />
+                </svg>
+            </div>
+            <picture class="nike-picture">
+                <img src="./images/nike-64.png" alt="nike-icon">
+            </picture>
+            <picture class="boot-picture">
+                <img src="./images/blue.png" alt="boot">
+            </picture>
+        </div>
+        <div class="right">
+            <div class="headings">
+                <div class="headings-info">
+                    <h1>Nike Zoom KD 12</h1>
+                    <button>NEW</button>
+                </div>
+                <h2>Men's Running Shoes</h2>
+            </div>
+            <div class="product-info">
+                <h2 class="heading">Product Info</h2>
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam earum repudiandae voluptate nesciunt
+                    aspernatur rem obcaecati saepe mollitia, velit sapiente.
+                </p>
+            </div>
+            <div class="colors">
+                <h2 class="heading">Color</h2>
+                <div class="colors-color">
+                    <label for="blue">
+                        <div class="color-blue"></div>
+                    </label>
+                    <label for="red">
+                        <div class="color-red"></div>
+                    </label>
+                    <label for="green">
+                        <div class="color-green"></div>
+                    </label>
+                    <label for="orange">
+                        <div class="color-orange"></div>
+                    </label>
+                    <label for="black">
+                        <div class="color-black"></div>
+                    </label>
+                </div>
+            </div>
+            <div class="size">
+                <h2 class="heading">Size</h2>
+                <div class="buttons">
+                    <label for="size-1">7</label>
+                    <label for="size-2">8</label>
+                    <label for="size-3">9</label>
+                    <label for="size-4">10</label>
+                    <label for="size-5">11</label>
+                </div>
+            </div>
+            <div class="price">
+                <button>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-cart" viewBox="0 0 16 16">
+                        <path
+                            d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                    </svg>
+                    <p>Add to cart</p>
+                </button>
+                <p class="price-info"><span>$</span>189.99</p>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

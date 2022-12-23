@@ -1,0 +1,316 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 10px;
+}
+
+picture, img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+button, input {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	outline: inherit;
+}
+
+body {
+    background-color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    display: grid;
+    grid-template-areas: 
+        "header header header header header"
+        "sidebar nav nav nav ads"
+        "sidebar main main main ads"
+        "footer footer footer footer footer";
+    width: 100%;
+}
+
+header {
+    grid-area: header;
+    padding: 1.5rem;
+    text-align: center;
+    background-color: aquamarine;
+}
+
+header h1 {
+    font-size: 3.6rem;
+
+}
+
+.sidebar {
+    padding: 3rem;
+    grid-area: sidebar;
+}
+
+.sidebar-container {
+    position: sticky;
+    top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.sidebar .avatar {
+    border-radius: 50%;
+}
+
+.sidebar p {
+    font-size: 1rem;
+    text-align: center;
+}
+
+.sidebar .socials {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1.5rem;
+}
+
+.sidebar .socials picture {
+    cursor: pointer;
+}
+
+nav {
+    grid-area: nav;
+    background-color: cadetblue;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+}
+
+nav ul li {
+    position: relative;
+    font-size: 1.8rem;
+    padding: 1.5em 2em;
+    color: #fff;
+    cursor: pointer;
+}
+
+nav ul li:hover {
+    color: #ddd;
+}
+
+.ads {
+    grid-area: ads;
+    padding: 4rem;
+    text-align: center;
+}
+
+main {
+    grid-area: main;
+    background-color: #aaa;
+    padding: 4rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+}
+
+.card {
+    max-width: 70%;
+    background-color: #ddd;
+    padding: 4rem;
+    transform: skew(-10deg);
+}
+
+.card img {
+    float: left;
+    border-radius: 50%;
+    padding: 1.5rem;
+    shape-outside: circle(50%);
+    transform: skew(10deg);
+}
+
+.card .text {
+    transform: skew(10deg);
+    max-width: 100ch;
+}
+
+.card h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+.card p {
+    font-size: 1.2rem;
+    line-height: 2;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-area: footer;
+    padding: 2rem;
+    background-color: skyblue;
+    color: #000;
+}
+
+.form-container {
+    width: 80%;
+    background-image: url(./images/islands.jpg);
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+}
+
+form {
+    width: 80%;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    height: 100%;
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+}
+
+form h2 {
+    font-size: 2.4rem;
+    text-transform: uppercase;
+    color: #54c77a;
+}
+
+form input[type=text] {
+    padding: 1.5rem;
+    width: 80%;
+    border: 0.1rem solid black;
+    background-color: #fff;
+    color: #666;
+}
+
+input[type=radio] {
+    display: none;
+}
+
+form label {
+    cursor: pointer;
+}
+
+.shape {
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    border: 0.2rem solid #54c77a;
+}
+
+input[id=size-1]:checked ~ label[for=size-1] .shape {
+    background-color: #54c77a;
+}
+
+input[id=size-2]:checked ~ label[for=size-2] .shape {
+    background-color: #54c77a;
+}
+
+.radios {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+form label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+form button {
+    align-self: flex-start;
+    font-size: 1.4rem;
+    color: #fff;
+    text-transform: uppercase;
+    background-color: #54c77a;
+    padding: 0.5em 2em;
+    border-radius: 2em;
+}
+
+@media (max-width: 1100px) {
+    .container {
+        grid-template-areas: 
+            "header header header header header"
+            "nav nav nav nav nav"
+            "sidebar main main main main"    
+            "ads footer footer footer footer"
+        ;
+    }
+
+    .card {
+        max-width: 80%;
+    }
+
+    .card h2 {
+        font-size: 1.4rem;
+    }
+
+    .card p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 720px) {
+    .container {
+        grid-template-areas: 
+            "header"
+            "nav"
+            "main"
+            "sidebar"
+            "ads"
+            "footer"
+        ;
+    }
+
+    nav ul li {
+        padding: 1em 0.5em;
+    }
+
+    main {
+        padding: 4rem 2rem;
+    }
+
+    .card {
+        max-width: 85%;
+        padding: 2rem;
+    }
+
+    .card .image-container {
+        max-width: 50%;
+        min-width: 25%;;
+    }
+
+    .ads {
+        border-top: 0.1rem solid #000;
+    }
+
+    .form-container {
+        width: 95%;
+    }
+
+    form {
+        width: 100%;
+        clip-path: none;
+    }
+
+    form .radios {
+        flex-direction: column;
+        align-self: flex-start;
+    }
+}

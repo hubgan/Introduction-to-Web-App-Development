@@ -1,0 +1,138 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    background-color: #aaa;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 0;
+    font-family: "Open Sans", sans-serif;
+}
+
+picture, img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+button, input[type="submit"], input[type="reset"] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.social-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+p {
+    font-size: 1.2rem;
+}
+
+h2, h3 {
+    font-weight: 500;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.6rem;
+    color: #e46e64;
+    margin-top: 1rem;
+}
+
+main {
+    display: grid;
+    gap: 2rem;
+    width: 85%;
+}
+
+.card {
+    border-radius: 0.8rem;
+    box-shadow: 0.5rem 0.5rem 1rem 0.5rem rgba(50, 50, 50, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.card__content {
+    padding: 2rem;
+    background-color: white;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card__content .description {
+    padding: 2.5rem 0;
+    line-height: 1.5;
+    border-bottom: 0.2rem solid gray;
+    flex: 1;
+    margin-bottom: 2rem;
+}
+
+.line {
+    width: 100%;
+    height: 0.1rem;
+    background-color: gray;
+    margin-bottom: 1.5rem;
+}
+
+.card__content .box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.box button {
+    background-color: #e46e64;
+    color: white;
+    padding: 1em;
+    font-size: 1.2rem;
+}
+
+.box .socials .social {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+@media screen and (min-width: 480px) {
+    main {
+        width: 95%;
+        justify-content: center;
+        grid-template-columns: repeat(auto-fill, 440px);
+    }
+
+    .card {
+        max-width: 440px;
+    }
+}
+
+@media screen and (min-width: 680px) {
+    main {
+        grid-template-columns: repeat(auto-fill, 640px);
+    }
+
+    .card {
+        max-width: 640px;
+    }
+}
