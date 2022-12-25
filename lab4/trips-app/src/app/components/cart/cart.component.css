@@ -27,10 +27,10 @@ img {
 
 .cart-details {
     position: absolute;
-    left: -40%;
+    left: -70%;
     transform: translateX(-50%);
     background-color: #007bff;
-    width: 15rem;
+    width: 18rem;
     padding: 1rem;
     color: #fff;
     font-size: 1.2rem;
@@ -39,4 +39,15 @@ img {
 
 .cart-details p {
     padding-top: 1rem;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.2rem;
+}
+
+.line {
+    border-top: 0.1rem solid #0027aa;
 }

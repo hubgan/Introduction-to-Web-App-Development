@@ -13,13 +13,17 @@
     </div>
     <p class="info-description">{{trip.description}}</p>
   </div>
-  <p *ngIf="reservationAmount <= 3" class="low-amount">Pozostały {{reservationAmount}} wycieczki</p>
+  <p *ngIf="trip.availablePlaces - reservationAmount <= 5 && trip.availablePlaces - reservationAmount > 0"
+    class="low-amount">Pozostało
+    {{trip.availablePlaces - reservationAmount}} wycieczek
+  </p>
+  <p *ngIf="trip.availablePlaces - reservationAmount == 0" class="low-amount">Brak Miejsc!</p>
   <div class="card-reservation">
-    <button [ngStyle]="{'visibility': reservationAmount == trip.availablePlaces ? 'hidden' : 'visible'}"
-      (click)="removeReservation()" class="reservation-button">-</button>
+    <button [ngStyle]="{'visibility': reservationAmount == 0 ? 'hidden' : 'visible'}" (click)="removeReservation()"
+      class="reservation-button">-</button>
     <div class="reservation-number">{{reservationAmount}}</div>
-    <button [ngStyle]="{'visibility': reservationAmount == 0 ? 'hidden' : 'visible'}" (click)="addReservation()"
-      class="reservation-button">+</button>
+    <button [ngStyle]="{'visibility': reservationAmount == trip.availablePlaces ? 'hidden' : 'visible'}"
+      (click)="addReservation()" class="reservation-button">+</button>
   </div>
   <button (click)="delete()" class="delete-card">Remove Trip</button>
 </div>

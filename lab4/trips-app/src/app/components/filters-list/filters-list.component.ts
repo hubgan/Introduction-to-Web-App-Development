@@ -67,6 +67,7 @@ export class FiltersListComponent implements OnInit {
   ngOnChanges() {
     const dataArray: Array<any> = [];
     this.trips.forEach((trip) => {
+      if (dataArray.some((data) => data.item_text === trip.country)) return;
       dataArray.push({ item_id: trip.id, item_text: trip.country, group: 'G' })
     })
 

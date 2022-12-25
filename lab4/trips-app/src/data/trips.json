@@ -1,22 +1,6 @@
 {
   "trips": [
     {
-      "id": 7859506,
-      "country": "Egipt",
-      "name": "Wakacje w Albatros Oasis Port Ghalib",
-      "startDate": "2022-12-07",
-      "endDate": "2022-12-15",
-      "unitPrice": 2485,
-      "availablePlaces": 15,
-      "rating": 4,
-      "description": "Pickalbatros Oasis Port Ghalib należy do znanej, lubianej i prestiżowej sieci Pickalbatros, gwarantującej moc wrażeń i dobre wspomnienia po powrocie z wypoczynku. Obiekt ma bogatą ofertę rozrywkową, mnóstwo udogodnień dla najmłodszych gości i ich rodziców i jest świetnym wyborem na swoje pierwsze i/lub kolejne wakacje w Afryce.",
-      "imageUrl": "https://pixabay.com/get/gfa80e6821f38a034631f03501a5d1d42d217bf41d1b41e9a5302ce81860b8a22d3fa62ad0319c86f54754d6de1c82024df838bd0c4c60355b4fc5329da8eed3b5b182bb136989d91554059c196bf4783_640.jpg",
-      "prices": {
-        "minPrice": 2485,
-        "maxPrice": 2485
-      }
-    },
-    {
       "id": 5854599,
       "country": "Hiszpania",
       "name": "Wakacje na Majorce",
@@ -30,6 +14,150 @@
       "prices": {
         "minPrice": 2485,
         "maxPrice": 4819
+      }
+    },
+    {
+      "id": 4962696,
+      "country": "Holandia",
+      "name": "Amsterdam - Cudowna Lekkość Bytu",
+      "startDate": "2022-12-19",
+      "endDate": "2022-12-22",
+      "unitPrice": 2491,
+      "availablePlaces": 10,
+      "rating": 3,
+      "description": "Niezapomniana przygoda w Holandii",
+      "imageUrl": "https://pixabay.com/get/gec014fe16d93daa14ab22ca7fd6c5e027010539b72b26ecb586319c1529e997be5d7e99f0882f982e58b8ef8aa86972588a35bab255ca507dcb505f3f3ee661d374a2c0348249270637e4a2fbc19e5a6_640.jpg",
+      "prices": {
+        "minPrice": 2491,
+        "maxPrice": 4819
+      }
+    },
+    {
+      "id": 1662902,
+      "country": "Czechy",
+      "name": "Moja Praga",
+      "startDate": "2022-12-29",
+      "endDate": "2023-01-30",
+      "unitPrice": 1258,
+      "availablePlaces": 20,
+      "rating": 3,
+      "description": "Idealna propozycja dla osób chodzących własnymi drogami i ceniących profesjonalną organizację podróży",
+      "imageUrl": "https://pixabay.com/get/g7e31fa9514eae7aa6aa051374d2c4755012e4bd73b0003de2353a39cb6453bae91835e9f1306fd6743845937a998446228f82f1993431fdc6ceee2a99d26c28f3881a1a3d39f5be9b8a87e71ba74a2be_640.jpg",
+      "prices": {
+        "minPrice": 1258,
+        "maxPrice": 4819
+      }
+    },
+    {
+      "id": 1697250,
+      "country": "Niemcy",
+      "name": "Piękno Berlina",
+      "startDate": "2022-12-07",
+      "endDate": "2022-12-11",
+      "unitPrice": 1861,
+      "availablePlaces": 10,
+      "rating": 4,
+      "description": "Wycieczka po pięknym mieście Berlin",
+      "imageUrl": "https://pixabay.com/get/g973251aa5b897cdb22b34604001b5f623841b462b78e61ad29733c734fb8a3de1e3922f551abcfdbaf3495e38cc48d4b50f9f3bca5f1952dcd9a5f9bb2cb4540894d915b3cf1df03d1ad979d387c27f0_640.jpg",
+      "prices": {
+        "minPrice": 1258,
+        "maxPrice": 4819
+      }
+    },
+    {
+      "id": 993255,
+      "country": "Hiszpania",
+      "name": "Catalonia Gran Via ( ex Gaudi)",
+      "startDate": "2022-12-05",
+      "endDate": "2022-12-11",
+      "unitPrice": 5125,
+      "availablePlaces": 50,
+      "rating": 5,
+      "description": "Tętniące życiem serce Madrytu, najważniejsze zabytki, niezwykła atmosfera i klimat stolicy Hiszpanii – to wszystko na wyciągnięcie ręki!",
+      "imageUrl": "https://pixabay.com/get/g25b6d80a89b924d282aeff9e100faf502538c46ee048bde3342f91ea55e9caf74e6bb741a8f30d16db80d4f73db11da2f3eaa71af2e0e7127def337a9dac94ab46f17a26ad99791757d53d02abdc31c3_640.jpg",
+      "prices": {
+        "minPrice": 1258,
+        "maxPrice": 5125
+      }
+    },
+    {
+      "id": 6319073,
+      "country": "Francja",
+      "name": "Sylwester w Paryżu",
+      "startDate": "2022-12-29",
+      "endDate": "2023-01-03",
+      "unitPrice": 2798,
+      "availablePlaces": 10,
+      "rating": 4,
+      "description": "Sylwester w Paryżu to niezapomniane dni pełne wrażeń! Wspólne odkrywanie najpiękniejszych miejsc i podróż śladami wybitnych osobistości i artystów w odświętnej atmosferze powitania Nowego Roku.",
+      "imageUrl": "https://pixabay.com/get/g5c41c46384b4a3e737300971bb1049595914ef2f055ec457d08df20a79922343e5fde5d6c8ed0e99559ccc24058bf79f66f23e25bed1bacaedabf42630676b4e869f10a4c7fc95ad952c85be39e9f8ab_640.jpg",
+      "prices": {
+        "minPrice": 1258,
+        "maxPrice": 5125
+      }
+    },
+    {
+      "id": 8101846,
+      "country": "Francja",
+      "name": "Moja Nicea",
+      "startDate": "2022-12-21",
+      "endDate": "2022-12-24",
+      "unitPrice": 4698,
+      "availablePlaces": 20,
+      "rating": 3,
+      "description": "Zapraszamy na wycieczkę Moja Nicea – adresowaną wszystkim, którzy lubią chodzić własnymi ścieżkami.",
+      "imageUrl": "https://pixabay.com/get/g2bb67450663b47b45db229c5bea9888c4601eb8202d1f5e9a50890914c11e86d1a92bbe57e309944260a289e26acb3bec3c331424f6c7d2857406f88fa718dd3c9ff29316fb9135898c2fe0d45d570a0_640.jpg",
+      "prices": {
+        "minPrice": 1258,
+        "maxPrice": 5125
+      }
+    },
+    {
+      "id": 2524536,
+      "country": "Portugalia",
+      "name": "Algarve",
+      "startDate": "2022-12-20",
+      "endDate": "2022-12-24",
+      "unitPrice": 3158,
+      "availablePlaces": 30,
+      "rating": 4,
+      "description": "Ziemia Słońca – Algarve i malownicze wybrzeże Oceanu Atlantyckiego to dwa oblicza Portugalii.",
+      "imageUrl": "https://pixabay.com/get/g51cef206eec107199cf274d3b27624e0fd6ccd46140b6b5e7d907b26b4447749811f20d43e91d78f4c3ea5608d5ec17c708695ea30f66701e52191cbc536b29bdc183437049d440c9fb73bdff66a7ba7_640.jpg",
+      "prices": {
+        "minPrice": 1258,
+        "maxPrice": 5125
+      }
+    },
+    {
+      "id": 6376611,
+      "country": "Hiszpania",
+      "name": "Cała ona, Barcelona!",
+      "startDate": "2022-12-21",
+      "endDate": "2022-12-24",
+      "unitPrice": 3729,
+      "availablePlaces": 15,
+      "rating": 5,
+      "description": "Tętniąca życiem, zbudowana z rozmachem Barcelona, stolica Katalonii, może konkurować z najwspanialszymi metropoliami świata. Miasto Gaudíego, Miró, Picassa, gdzie tańczące fontanny i wiecznie otwarte kluby i bary tworzą niepowtarzalną atmosferę, to idealny pomysł na pełen temperamentu hiszpański tydzień.",
+      "imageUrl": "https://pixabay.com/get/g181d67d0dff1dcb58bbcfb10dc077e373255b9fa32bfd7a74ccf23d764852839884886478baa1f3534d5757a5d829bfa476508eb811121811f40470c07d42d2fec04ae9c7a625d4c28bfd42a5a36a66c_640.jpg",
+      "prices": {
+        "minPrice": 1258,
+        "maxPrice": 5125
+      }
+    },
+    {
+      "id": 613412,
+      "country": "Egipt",
+      "name": "Wakacje w Albatros Oasis Port Ghalib",
+      "startDate": "2022-12-07",
+      "endDate": "2022-12-14",
+      "unitPrice": 2880,
+      "availablePlaces": 15,
+      "rating": 4,
+      "description": "Pickalbatros Oasis Port Ghalib należy do znanej, lubianej i prestiżowej sieci Pickalbatros, gwarantującej moc wrażeń i dobre wspomnienia po powrocie z wypoczynku. Obiekt ma bogatą ofertę rozrywkową, mnóstwo udogodnień dla najmłodszych gości i ich rodziców i jest świetnym wyborem na swoje pierwsze i/lub kolejne wakacje w Afryce.",
+      "imageUrl": "https://pixabay.com/get/g91a36165697910225ecfbf419597eb31a19000706add854d959b61d9f1e214c66208217932dae7e083f7f8335e264f4b7e8eb9d5e7e34e4e966f5074ccdfd290bcb5668841148456ec7966ef7d3d30e3_640.jpg",
+      "prices": {
+        "minPrice": 1258,
+        "maxPrice": 5125
       }
     }
   ]

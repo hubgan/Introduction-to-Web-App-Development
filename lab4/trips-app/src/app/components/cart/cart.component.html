@@ -4,9 +4,23 @@
     <div class="badge">{{cartItems.length}}</div>
   </div>
   <div *ngIf="showCartDetails" class="cart-details">
+    <div class="item">
+      <p>Nazwa</p>
+      <p>Ilość</p>
+    </div>
     <ng-container *ngFor="let cartItem of cartItems">
-      <p>{{cartItem.name}}: {{cartItem.quantity}}</p>
+      <div class="item">
+        <p>{{cartItem.name}}</p>
+        <p>{{cartItem.quantity}}</p>
+      </div>
     </ng-container>
-    <p>Całkowita cena: {{totalPrice | transformMoney: moneyType}}</p>
+    <div class="item line" [ngStyle]="{'color': totalQuantity < 10 ? 'red' : 'green'}">
+      <p>Łączna ilość</p>
+      <p>{{totalQuantity}}</p>
+    </div>
+    <div class="item">
+      <p>Całkowita cena</p>
+      <p>{{totalPrice | transformMoney: moneyType}}</p>
+    </div>
   </div>
 </div>

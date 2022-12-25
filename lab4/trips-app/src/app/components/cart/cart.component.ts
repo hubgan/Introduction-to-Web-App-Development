@@ -13,6 +13,7 @@ export class CartComponent implements OnInit {
   showCartDetails: boolean = false;
   cartItems: Array<CartItem> = [];
   totalPrice: number = 0;
+  totalQuantity: number = 0;
 
   moneyType: string = 'PLN';
 
@@ -22,9 +23,9 @@ export class CartComponent implements OnInit {
     this.cartService.cartItemsSubject.subscribe((cartItems) => {
       this.cartItems = cartItems;
 
-      this.totalPrice = this.cartItems.reduce((sum, item) => {
-        return item.price * item.quantity + sum;
-      }, 0);
+      [this.totalPrice, this.totalQuantity] = this.cartItems.reduce((acc, item) => {
+        return [item.price * item.quantity + acc[0], acc[1] + item.quantity];
+      }, [0, 0]);
     })
 
     this.moneyTypeService.moneyType.subscribe((moneyType) => {
