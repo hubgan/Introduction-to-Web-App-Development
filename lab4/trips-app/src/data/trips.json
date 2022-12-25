@@ -1,116 +1,36 @@
 {
   "trips": [
     {
-      "id": 6,
-      "country": "Hawaje",
-      "name": "Wakacje na Hawajach",
-      "startDate": "December 20, 2022",
-      "endDate": "December 25, 2022",
-      "unitPrice": 6500,
-      "availablePlaces": 10,
-      "rating": 3,
-      "description": "Hawaje to bez wątpienia raj na ziemi. Cukierkowe plaże, rafy koralowe i majestatyczne wulkany górujące nad wyspami to recepta na idealne wczasy. Powietrze pachnie świeżością, włosy targa morska bryza, a na turystów czeka cała paleta przygód.",
-      "imageUrl": "https://images.unsplash.com/photo-1567920139184-150ff48189b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      "prices": {
-        "minPrice": 1000,
-        "maxPrice": 50000
-      }
-    },
-    {
-      "id": 323217,
-      "country": "Nowa",
-      "name": "Nowa",
-      "startDate": "2022-12-21",
-      "endDate": "2022-12-28",
-      "unitPrice": 50000,
-      "availablePlaces": 40,
-      "rating": 5,
-      "description": "abcasdsadfasfsdagdgaffafsdagasg",
-      "imageUrl": "https://images.unsplash.com/photo-1567920139184-150ff48189b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      "prices": {
-        "minPrice": 1000,
-        "maxPrice": 50000
-      }
-    },
-    {
-      "id": 4033699,
+      "id": 7859506,
       "country": "Egipt",
-      "name": "Test dat 2",
-      "startDate": "2022-12-22",
+      "name": "Wakacje w Albatros Oasis Port Ghalib",
+      "startDate": "2022-12-07",
       "endDate": "2022-12-15",
-      "unitPrice": 1000,
-      "availablePlaces": 5,
-      "rating": 5,
-      "description": "Abcdefgshfkdsfsdfgsdfsdfsdfdsfsd",
-      "imageUrl": "https://images.unsplash.com/photo-1567920139184-150ff48189b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-    },
-    {
-      "id": 7543864,
-      "country": "Czy nic sie nie popsulo",
-      "name": "aaaaaaaaaaaaaaa",
-      "startDate": "2023-01-02",
-      "endDate": "2023-01-05",
-      "unitPrice": 15000,
-      "availablePlaces": 100,
+      "unitPrice": 2485,
+      "availablePlaces": 15,
       "rating": 4,
-      "description": "test test test test test test test test test",
-      "imageUrl": "https://images.unsplash.com/photo-1567920139184-150ff48189b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      "description": "Pickalbatros Oasis Port Ghalib należy do znanej, lubianej i prestiżowej sieci Pickalbatros, gwarantującej moc wrażeń i dobre wspomnienia po powrocie z wypoczynku. Obiekt ma bogatą ofertę rozrywkową, mnóstwo udogodnień dla najmłodszych gości i ich rodziców i jest świetnym wyborem na swoje pierwsze i/lub kolejne wakacje w Afryce.",
+      "imageUrl": "https://pixabay.com/get/gfa80e6821f38a034631f03501a5d1d42d217bf41d1b41e9a5302ce81860b8a22d3fa62ad0319c86f54754d6de1c82024df838bd0c4c60355b4fc5329da8eed3b5b182bb136989d91554059c196bf4783_640.jpg",
       "prices": {
-        "minPrice": 1000,
-        "maxPrice": 50000
+        "minPrice": 2485,
+        "maxPrice": 2485
       }
     },
     {
-      "id": 8305686,
-      "country": "Abcdsae",
-      "name": "aaaaaaaaaaaaa",
-      "startDate": "2022-12-15",
-      "endDate": "2022-12-29",
-      "unitPrice": 10000,
-      "availablePlaces": 5,
-      "rating": 3,
-      "description": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "imageUrl": "https://images.unsplash.com/photo-1567920139184-150ff48189b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      "prices": {
-        "minPrice": 1000,
-        "maxPrice": 50000
-      }
-    },
-    {
-      "id": 2139191,
-      "country": "testttt",
-      "name": "asdasddas",
-      "startDate": "2022-12-06",
-      "endDate": "2022-12-27",
-      "unitPrice": 10000,
-      "availablePlaces": 5,
-      "rating": 0,
-      "description": "sdasdasdasdasaaaaaaaaaaaaaaaaa",
-      "imageUrl": "https://images.unsplash.com/photo-1567920139184-150ff48189b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-    },
-    {
-      "id": 8967048,
-      "country": "aaaaaaaaasadsadsadsada",
-      "name": "asdasdsadasd",
-      "startDate": "2022-12-05",
-      "endDate": "2022-12-30",
-      "unitPrice": 100000,
+      "id": 5854599,
+      "country": "Hiszpania",
+      "name": "Wakacje na Majorce",
+      "startDate": "2022-12-16",
+      "endDate": "2022-12-19",
+      "unitPrice": 4819,
       "availablePlaces": 30,
-      "rating": 0,
-      "description": "3131313asdasadsadasdasdasaaaaaa",
-      "imageUrl": "https://images.unsplash.com/photo-1567920139184-150ff48189b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-    },
-    {
-      "id": 8627441,
-      "country": "sadsadsadsadasdas",
-      "name": "asdsadsadsadasd",
-      "startDate": "2022-12-14",
-      "endDate": "2022-12-29",
-      "unitPrice": 30000000,
-      "availablePlaces": 5,
-      "rating": 0,
-      "description": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "imageUrl": "https://images.unsplash.com/photo-1567920139184-150ff48189b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+      "rating": 4,
+      "description": "Cudowne miejsce do wypoczęcia ",
+      "imageUrl": "https://pixabay.com/get/g60324c05a4bd3fc5cf550bf98dbceaadd0b2ac9ab00408d8c1c07f03d69791f6879760c19f39cab4b82a3522841c1ac064e7aa568415ed66ab603c3ceea81cb666fb53ec63e252dfad47f288eb0658b9_640.jpg",
+      "prices": {
+        "minPrice": 2485,
+        "maxPrice": 4819
+      }
     }
   ]
 }

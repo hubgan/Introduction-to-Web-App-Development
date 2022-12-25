@@ -2,12 +2,12 @@ nav {
     position: sticky;
     top: 0;
     width: 100%;
-    padding: 1rem 2rem;
     background-color: #007bff;
     display: flex;
     align-items: center;
     padding: 2rem;
     gap: 1rem;
+    z-index: 1;
 }
 
 nav ul {
@@ -45,6 +45,7 @@ nav a {
 nav a.navbar-brand {
     font-size: 2.8rem;
     border: none;
+    color: #fff;
 }
 
 .cart {

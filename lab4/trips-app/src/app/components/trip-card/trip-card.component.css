@@ -12,16 +12,16 @@
     overflow: hidden;
 }
 
-.card.min {
-    -webkit-box-shadow: 0px 0px 24px 0px rgba(55, 190, 42, 1);
-    -moz-box-shadow: 0px 0px 24px 0px rgba(55, 190, 42, 1);
-    box-shadow: 0px 0px 24px 0px rgba(55, 190, 42, 1);
-}
-
 .card.max {
     -webkit-box-shadow: 0px 0px 24px 0px rgba(202, 46, 46, 1);
     -moz-box-shadow: 0px 0px 24px 0px rgba(202, 46, 46, 1);
     box-shadow: 0px 0px 24px 0px rgba(202, 46, 46, 1);
+}
+
+.card.min {
+    -webkit-box-shadow: 0px 0px 24px 0px rgba(55, 190, 42, 1);
+    -moz-box-shadow: 0px 0px 24px 0px rgba(55, 190, 42, 1);
+    box-shadow: 0px 0px 24px 0px rgba(55, 190, 42, 1);
 }
 
 picture, img {
@@ -91,6 +91,13 @@ p {
 
 .reservation-button, .reservation-number {
     font-size: 2rem;
+}
+
+.low-amount {
+    color: red;
+    font-size: 1.6rem;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 .delete-card {

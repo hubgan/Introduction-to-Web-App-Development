@@ -13,6 +13,7 @@
     </div>
     <p class="info-description">{{trip.description}}</p>
   </div>
+  <p *ngIf="reservationAmount <= 3" class="low-amount">Pozostały {{reservationAmount}} wycieczki</p>
   <div class="card-reservation">
     <button [ngStyle]="{'visibility': reservationAmount == trip.availablePlaces ? 'hidden' : 'visible'}"
       (click)="removeReservation()" class="reservation-button">-</button>

@@ -9,6 +9,18 @@
     flex-wrap: wrap;
 }
 
+::ng-deep .multiselect-dropdown .dropdown-btn {
+    padding: 1.5rem 4rem !important;
+}
+
+::ng-deep .multiselect-dropdown .dropdown-list ul li {
+    padding: 1.5rem !important;
+}
+
+::ng-deep .multiselect-dropdown .dropdown-btn > span > span {
+    top: 10% !important;
+}
+
 p, span, input {
     font-size: 1.4rem;
     color: #444
@@ -40,4 +52,17 @@ label {
 
 .price-filter {
     max-width: 8rem;   
+}
+
+@media (max-width: 880px) {
+    .filters {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    label {
+        width: 50%;
+        text-align: center;
+    }
 }

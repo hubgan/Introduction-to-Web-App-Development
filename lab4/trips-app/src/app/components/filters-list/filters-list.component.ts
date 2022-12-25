@@ -21,7 +21,7 @@ export class FiltersListComponent implements OnInit {
   moneyType: string = 'PLN';
 
   options: Options = {
-    floor: 0,
+    floor: this.minPrice,
     ceil: this.maxPrice
   };
 
@@ -51,12 +51,12 @@ export class FiltersListComponent implements OnInit {
 
     this.tripsService.maxPrice.subscribe((value) => {
       this.maxPrice = value;
-      this.setNewCeil(this.maxPrice);
+      this.setNewCeil(this.maxPrice, this.minPrice);
     })
 
     this.moneyTypeService.moneyType.subscribe((moneyType) => {
       this.moneyType = moneyType;
-      this.setNewCeil(this.maxPrice);
+      this.setNewCeil(this.maxPrice, this.minPrice);
     })
 
     this.form.valueChanges.subscribe(() => {
@@ -73,8 +73,9 @@ export class FiltersListComponent implements OnInit {
     this.dropdownData = dataArray;
   }
 
-  setNewCeil(newCeil: number) {
+  setNewCeil(newCeil: number, newFloor: number) {
     const newOptions: Options = Object.assign({}, this.options);
+    newOptions.floor = this.moneyTypeService.getMoneyValue(newFloor);
     newOptions.ceil = this.moneyTypeService.getMoneyValue(newCeil);
     this.options = newOptions;
   }
