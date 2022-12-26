@@ -7,6 +7,7 @@
       <option value="€">€</option>
     </select>
   </div>
+  <p *ngIf="error" class="error">Nie udało się pobrać elementów z pliku trips.json</p>
   <div class="trips-container">
     <ng-container *ngFor="let trip of trips | filter: filters; let i = index;">
       <app-trip-card (id)="removeTrip($event)" [trip]="trip">

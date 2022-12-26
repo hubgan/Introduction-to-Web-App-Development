@@ -24,3 +24,11 @@
     padding: 0.5rem 1rem;
     margin-right: 2rem;
 }
+
+.error {
+    text-align: center;
+    padding: 4rem;
+    font-size: 2rem;
+    text-transform: uppercase;
+    color: red;
+}

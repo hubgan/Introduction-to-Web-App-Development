@@ -11,6 +11,7 @@ import { TripsService } from 'src/app/services/trips.service';
 export class TripListComponent implements OnInit {
 
   trips: Array<Trip> = [];
+  error: boolean = false;
 
   filters: any = {
     country: null,
@@ -28,11 +29,12 @@ export class TripListComponent implements OnInit {
   }
 
   getTrips() {
+    this.error = false;
     this.tripsService.getAllTrips().subscribe(data => {
       this.trips = data;
       this.setMinMaxForFilters();
     }, error => {
-      console.log(error);
+      this.error = true;
     });
   }
 
