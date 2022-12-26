@@ -2,9 +2,9 @@
     "cars": {
         "Fiat":
         {
-            "126p":["Czerwony", "Zielony"],
             "500":["Czerwony", "Zielony"],
-            "Ducato":["Czerwony", "Zielony"],
+            "500L":["Czerwony", "Zielony"],
+            "500X":["Czerwony", "Zielony"],
             "Panda":["Czerwony", "Zielony", "Niebieski"]
         },
         "Audi":
@@ -24,11 +24,11 @@
             "i8":["Srebrny"],
             "Z1":["Srebrny"]
         },
-        "Mercedes-Benz":
+        "Porsche":
         {
-            "AMG GT":["Czarny", "Srebrny"],
-            "CLA":["Czerwony"],
-            "CLS":["Czarny"]
+            "Taycan":["Czarny", "Srebrny"],
+            "Mancan":["Czerwony"],
+            "Spyder":["Czarny"]
         }
     }
 }
