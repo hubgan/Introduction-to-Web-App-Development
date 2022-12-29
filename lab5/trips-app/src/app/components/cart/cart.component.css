@@ -1,0 +1,53 @@
+img {
+    display: block;
+}
+
+.cart {
+    position: relative;
+}
+
+.cart-image {
+    cursor: pointer;
+}
+
+.badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -0.3rem;
+    right: -0.3rem;
+    width: 1.9rem;
+    height: 1.9rem;
+    background-color: red;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    color: #fff;
+}
+
+.cart-details {
+    position: absolute;
+    left: -70%;
+    transform: translateX(-50%);
+    background-color: #007bff;
+    width: 18rem;
+    padding: 1rem;
+    color: #fff;
+    font-size: 1.2rem;
+    border-radius: 0 0 1rem 1rem;
+}
+
+.cart-details p {
+    padding-top: 1rem;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.2rem;
+}
+
+.line {
+    border-top: 0.1rem solid #0027aa;
+}

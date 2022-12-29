@@ -1,0 +1,29 @@
+<div class="posts">
+  <form [formGroup]="form" (submit)="onSubmit()" class="form">
+    <label for="userId">
+      <span>userId: </span>
+      <input formControlName="userId" id="userId" type="number" required>
+    </label>
+    <label for="id">
+      <span>id: </span>
+      <input formControlName="id" id="id" type="number" required>
+    </label>
+    <label for="title">
+      <span>title: </span>
+      <input formControlName="title" id="title" type="text" required>
+    </label>
+    <label for="body">
+      <span>body: </span>
+      <input formControlName="body" id="body" type="text" required>
+    </label>
+    <button [disabled]="!form.valid" class="submit">Dodaj nowy post</button>
+  </form>
+  <ng-container *ngFor="let post of posts">
+    <div class="post">
+      <p>userId: {{post.userId}}</p>
+      <p>id: {{post.id}}</p>
+      <p>title: {{post.title}}</p>
+      <p>body: {{post.body}}</p>
+    </div>
+  </ng-container>
+</div>

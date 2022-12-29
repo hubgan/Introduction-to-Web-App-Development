@@ -1,0 +1,96 @@
+import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs/operators';
+import { Trip } from 'src/app/models/trip';
+import { MoneyTypeService } from 'src/app/services/money-type.service';
+import { TripsService } from 'src/app/services/trips.service';
+
+@Component({
+  selector: 'app-trip-list',
+  templateUrl: './trip-list.component.html',
+  styleUrls: ['./trip-list.component.css']
+})
+export class TripListComponent implements OnInit {
+
+  trips: Array<Trip> = [];
+
+  error: boolean = false;
+  isLoading: boolean = false;
+  errorMessage: string = "";
+
+  filters: any = {
+    country: null,
+    minPrice: 0,
+    maxPrice: null,
+    startDate: null,
+    endDate: null,
+    rating: null
+  }
+
+  constructor(private tripsService: TripsService, private moneyTypeService: MoneyTypeService) { }
+
+  ngOnInit(): void {
+    this.getTrips();
+  }
+
+  getTrips() {
+    this.error = false;
+    this.isLoading = true;
+
+    this.tripsService.getAllTrips().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ ...c.payload.doc.data(), id: c.payload.doc.id })
+        )
+      )
+    ).subscribe(data => {
+      this.trips = data;
+      this.setMinMaxForFilters();
+      this.isLoading = false;
+      this.error = false;
+    }, (error) => {
+      this.error = true;
+      this.errorMessage = error.message;
+      this.isLoading = true;
+    });
+  }
+
+  removeTrip(id: string) {
+    this.error = false;
+
+    this.tripsService.removeTrip(id)
+      .then(() => {
+        this.error = false;
+        console.log('Trip delete successfully!');
+      })
+      .catch((error) => {
+        this.error = true;
+        this.errorMessage = error.message;
+      });
+  }
+
+  filtersChange(filters: Object) {
+    this.filters = filters;
+  }
+
+  setMinMaxForFilters() {
+    let min = Infinity;
+    let max = -Infinity;
+
+    this.trips.forEach((trip) => {
+      min = Math.min(min, trip.unitPrice);
+      max = Math.max(max, trip.unitPrice);
+    })
+
+    const prices = {
+      minPrice: min,
+      maxPrice: max
+    }
+
+    this.tripsService.editMinMaxPrice(prices);
+  }
+
+  updateMoneyType(target: any) {
+    this.moneyTypeService.setMoneyType(target.value);
+    this.getTrips();
+  }
+}

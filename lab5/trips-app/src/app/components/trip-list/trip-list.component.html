@@ -1,0 +1,22 @@
+<div class="flex-container">
+  <app-filters-list [trips]="trips" (filters)="filtersChange($event)"></app-filters-list>
+  <div class="money-select">
+    <select (change)="updateMoneyType($event.target)" name="money" id="money">
+      <option value="PLN">PLN</option>
+      <option value="$">$</option>
+      <option value="€">€</option>
+    </select>
+  </div>
+  <div *ngIf="!isLoading && !error" class="trips-container">
+    <ng-container *ngFor="let trip of trips | filter: filters; let i = index;">
+      <app-trip-card (id)="removeTrip($event)" [trip]="trip">
+      </app-trip-card>
+    </ng-container>
+  </div>
+  <div *ngIf="isLoading && !error" class="loading">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+  <div *ngIf="error">
+    <p class="error">{{errorMessage}}</p>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="photo">
+  <div class="photo-info">
+    <p>albumId: {{photo.albumId}}</p>
+    <p>id: {{photo.id}}</p>
+    <p>title: {{photo.title}}</p>
+  </div>
+  <div routerLink="/photo-details/{{photo.id}}" class="photo-gallery">
+    <img [src]="photo.url" alt="url">
+    <img [src]="photo.thumbnailUrl" alt="thumbnail">
+  </div>
+</div>

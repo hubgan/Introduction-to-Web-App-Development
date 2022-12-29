@@ -1,0 +1,29 @@
+<form [formGroup]="form" class="filters">
+  <ng-multiselect-dropdown class="country-input" formControlName="country" [placeholder]="'Lokalizacja wycieczki'"
+    [settings]="settings" [data]="dropdownData">
+  </ng-multiselect-dropdown>
+  <label class="price-input" for="price">
+    <span>Cena: </span>
+    <ngx-slider formControlName="price" [value]="minPrice | transformMoney: moneyType : false"
+      [highValue]="maxPrice | transformMoney: moneyType : false" [options]="options"></ngx-slider>
+  </label>
+  <label class="date-input" for="startDate">
+    <span>Początek wycieczki: </span>
+    <input formControlName="startDate" type="date" id="startDate">
+  </label>
+  <label class="date-input" for="endDate">
+    <span>Koniec wycieczki: </span>
+    <input formControlName="endDate" type="date" id="endDate">
+  </label>
+  <label class="rating-input" for="rating">
+    <span>Ocena: </span>
+    <select formControlName="rating" id="rating">
+      <option value="">None</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+  </label>
+</form>
