@@ -46,3 +46,10 @@ button:disabled {
     text-transform: uppercase;
     color: #da1414;
 }
+
+.spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}

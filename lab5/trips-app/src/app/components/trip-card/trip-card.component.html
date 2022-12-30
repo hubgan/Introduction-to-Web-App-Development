@@ -1,8 +1,8 @@
-<div [ngClass]="currentClasses" class="card">
+<div [ngClass]="currentClasses" class="trip">
   <picture>
-    <img [src]="trip.imageUrl" alt="country-image">
+    <img [src]="trip.images[0]" alt="country-image">
   </picture>
-  <div class="card-info">
+  <div class="trip-info">
     <h2 class="info-name">{{trip.name | uppercase}}</h2>
     <p class="info-country">{{trip.country | uppercase}}</p>
     <p class="info-date"><span>{{trip.startDate | date}}</span> - <span>{{trip.endDate | date}}</span></p>
@@ -18,12 +18,13 @@
     {{trip.availablePlaces - reservationAmount}} wycieczek
   </p>
   <p *ngIf="trip.availablePlaces - reservationAmount == 0" class="low-amount">Brak Miejsc!</p>
-  <div class="card-reservation">
+  <div class="trip-reservation">
     <button [ngStyle]="{'visibility': reservationAmount == 0 ? 'hidden' : 'visible'}" (click)="removeReservation()"
       class="reservation-button">-</button>
     <div class="reservation-number">{{reservationAmount}}</div>
     <button [ngStyle]="{'visibility': reservationAmount == trip.availablePlaces ? 'hidden' : 'visible'}"
       (click)="addReservation()" class="reservation-button">+</button>
   </div>
-  <button (click)="delete()" class="delete-card">Remove Trip</button>
+  <button routerLink="/trip/{{trip.id}}" class="trip-details">See details</button>
+  <button (click)="delete()" class="delete-trip">Remove Trip</button>
 </div>

@@ -2,6 +2,9 @@
   <div (click)="toggleVisibility()" class="triangle"></div>
   <a routerLink="/" class="navbar-brand">TripApp</a>
   <ul [ngClass]="isVisible">
+    <li routerLink="/trips">
+      <a>Trips</a>
+    </li>
     <li routerLink="/create">
       <a>Add Trip</a>
     </li>

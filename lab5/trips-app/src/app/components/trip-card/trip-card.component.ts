@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Trip } from 'src/app/models/trip';
 import { CartService } from 'src/app/services/cart.service';
 import { MoneyTypeService } from 'src/app/services/money-type.service';
-import { TripsService } from 'src/app/services/trips.service';
 
 @Component({
   selector: 'app-trip-card',

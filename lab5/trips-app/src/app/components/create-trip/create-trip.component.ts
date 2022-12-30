@@ -1,8 +1,10 @@
 import { group } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormGroup, FormControl, Validators, ValidatorFn, ValidationErrors, AbstractControl } from '@angular/forms'
 import { Router } from '@angular/router';
 import { Trip } from 'src/app/models/trip';
+import { FileUploadService } from 'src/app/services/file-upload.service';
 import { TripsService } from 'src/app/services/trips.service';
 
 @Component({
@@ -16,6 +18,7 @@ export class CreateTripComponent implements OnInit {
   isLoading: boolean = false;
   errorMessage: string = "";
 
+  files: Array<File>;
   tripForm = new FormGroup({
     country: new FormControl('', Validators.required),
     name: new FormControl('', Validators.required),
@@ -24,12 +27,12 @@ export class CreateTripComponent implements OnInit {
     unitPrice: new FormControl(0, [Validators.required, Validators.min(0)]),
     availablePlaces: new FormControl(0, [Validators.required, Validators.min(0)]),
     description: new FormControl('', [Validators.required, Validators.minLength(30)]),
-    imageUrl: new FormControl('', Validators.required)
+    images: new FormControl('', Validators.required)
   }, {
     validators: this.isDateCorrect()
   })
 
-  constructor(private tripsService: TripsService, private router: Router) { }
+  constructor(private tripsService: TripsService, private router: Router, private storage: AngularFireStorage, private storageService: FileUploadService) { }
 
   ngOnInit(): void {
   }
@@ -56,7 +59,28 @@ export class CreateTripComponent implements OnInit {
     trip.rating = 0;
     trip.availablePlaces = this.tripForm.value.availablePlaces || 0;
     trip.description = this.tripForm.value.description || "";
-    trip.imageUrl = this.tripForm.value.imageUrl || "";
+  }
+
+  selectFile(event: any) {
+    this.error = false;
+    this.errorMessage = '';
+    const files: Array<File> = [...event.target.files];
+
+    files.forEach((file) => {
+      if (!file.type.includes('image')) {
+        this.error = true;
+        this.errorMessage = 'Musisz wybrać zdjęcia';
+        return;
+      }
+
+      if (file.size > 200000) {
+        this.error = true;
+        this.errorMessage = 'Każdy z obrazów musi mieć mniej niż 200kb'
+        return;
+      }
+    });
+
+    this.files = files;
   }
 
   onSubmit() {
@@ -66,11 +90,23 @@ export class CreateTripComponent implements OnInit {
     const trip = new Trip();
     this.createTrip(trip);
 
-    this.tripsService.addTrip(trip).then(() => {
-      console.log('Created new student succesfully!');
-      this.error = false;
-      this.isLoading = false;
-      this.router.navigate(['/']);
+    this.tripsService.addTrip(trip).then((respond) => {
+      const id = respond.id;
+
+      Promise.all(this.files.map(file => this.storageService.uploadFileToStorage(id, file)))
+        .then((imgs) => {
+          Promise.all(imgs.map(img => img.ref.getDownloadURL()))
+            .then((images) => {
+              const updatedTrip = { ...trip, images };
+
+              this.tripsService.updateTrip(id, updatedTrip).then(() => {
+                console.log("Updated succesfully");
+                this.error = false;
+                this.isLoading = false;
+                this.router.navigate(['/']);
+              })
+            });
+        });
     }, (error) => {
       this.error = true;
       this.errorMessage = error.message;

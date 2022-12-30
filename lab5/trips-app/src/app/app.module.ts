@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +23,9 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { environment } from 'src/environments/environment';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { HomeComponent } from './components/home/home.component';
+import { TripDetailsComponent } from './components/trip-details/trip-details.component';
+import { MapComponent } from './components/map/map.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,10 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
     FilterPipe,
     TransformMoneyPipe,
     CartComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    HomeComponent,
+    TripDetailsComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +54,8 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
     NgxSliderModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireStorageModule
   ],
   providers: [
     TripsService

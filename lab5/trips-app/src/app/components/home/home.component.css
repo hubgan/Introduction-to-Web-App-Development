@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
+
+.home {
+    position: relative;
+    height: calc(100vh - 6rem);
+    background-image: url('../../../assets/home.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.home-card {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #007bff;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 3.5rem 2rem;
+    max-width: 40rem;
+    min-width: 36rem;
+    text-align: center;
+    color: #fff;
+}
+
+.home-continue {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+button {
+    padding: 2rem 4rem;
+    cursor: pointer;
+    border: none;
+    background-color: #fff;
+    color: #fff;
+    color: black;
+    text-transform: uppercase;
+}
+
+button:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+h2 {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h1 {
+    margin-top: 3rem;
+    font-family: 'Caveat', cursive;
+    color: gold;
+}
+
+h1, h2 {
+    text-transform: uppercase;
+    font-size: 4rem;
+}
+
+h3 {
+    color: #fff;
+    font-size: 2.4rem;
+}
+
+h4 {
+    color: #0037bb;
+    font-size: 1.8rem;
+}
+
+p {
+    color: #fff;
+    font-size: 1.3rem;
+}
+
+.contact {
+    background-color: #ff8400;
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 10rem;
+}
+
+.contact-description {
+    grid-column: span 2;
+    text-align: center;
+    font-size: 2.6rem;
+    padding-bottom: 3rem;
+}
+
+.contact-info, .contact-map {
+    grid-column: span 1;
+}
+
+.contact-info div + div {
+    margin-top: 1rem;
+}
+
+.contact p {
+    margin-top: 0.3rem;
+}

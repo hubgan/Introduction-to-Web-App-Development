@@ -35,14 +35,17 @@
     <textarea id="description" formControlName="description"></textarea>
   </label>
 
-  <label for="imageUrl">
-    <span>Image Url:</span>
-    <input id="imageUrl" type="text" formControlName="imageUrl">
+  <label for="files">
+    <span>Images:</span>
+    <input id="files" type="file" formControlName="images" multiple (change)="selectFile($event)">
   </label>
 
-  <button type="submit" [disabled]="!tripForm.valid">Dodaj nową wycieczkę</button>
+  <button type="submit" [disabled]="!tripForm.valid || error">Dodaj nową wycieczkę</button>
 
-  <app-loading-spinner *ngIf="isLoading && !error"></app-loading-spinner>
+  <div class="spinner" *ngIf="isLoading && !error">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+
   <p *ngIf="error" class="error">{{errorMessage}}</p>
 
 </form>

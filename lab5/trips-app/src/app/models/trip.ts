@@ -8,9 +8,9 @@ export class Trip {
     availablePlaces: number;
     rating: number;
     description: string;
-    imageUrl: string;
     prices?: {
         minPrice: number,
         maxPrice: number
-    }
+    };
+    images: Array<string>;
 }
