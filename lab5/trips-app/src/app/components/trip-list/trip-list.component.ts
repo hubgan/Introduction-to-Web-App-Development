@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Trip } from 'src/app/models/trip';
 import { MoneyTypeService } from 'src/app/services/money-type.service';
@@ -9,7 +10,7 @@ import { TripsService } from 'src/app/services/trips.service';
   templateUrl: './trip-list.component.html',
   styleUrls: ['./trip-list.component.css']
 })
-export class TripListComponent implements OnInit {
+export class TripListComponent implements OnInit, OnDestroy {
 
   trips: Array<Trip> = [];
 
@@ -26,17 +27,23 @@ export class TripListComponent implements OnInit {
     rating: null
   }
 
+  tripsSubsribe: Subscription;
+
   constructor(private tripsService: TripsService, private moneyTypeService: MoneyTypeService) { }
 
   ngOnInit(): void {
     this.getTrips();
   }
 
+  ngOnDestroy(): void {
+    this.tripsSubsribe.unsubscribe();
+  }
+
   getTrips() {
     this.error = false;
     this.isLoading = true;
 
-    this.tripsService.getAllTrips().snapshotChanges().pipe(
+    this.tripsSubsribe = this.tripsService.getAllTrips().snapshotChanges().pipe(
       map(changes =>
         changes.map(c =>
           ({ ...c.payload.doc.data(), id: c.payload.doc.id })

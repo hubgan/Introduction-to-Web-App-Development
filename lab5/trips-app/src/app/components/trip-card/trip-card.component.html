@@ -13,7 +13,7 @@
     </div>
     <p class="info-description">{{trip.description}}</p>
   </div>
-  <p *ngIf="trip.availablePlaces - reservationAmount <= 5 && trip.availablePlaces - reservationAmount > 0"
+  <p *ngIf="trip.availablePlaces - reservationAmount <= 5 && trip.availablePlaces - reservationAmount >= 0"
     class="low-amount">Pozostało
     {{trip.availablePlaces - reservationAmount}} wycieczek
   </p>

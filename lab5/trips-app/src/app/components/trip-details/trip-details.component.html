@@ -1,1 +1,85 @@
-<p>trip-details works!</p>
+<div *ngIf="!error && !isLoadingTrip && !isLoadingComments" class="wrapper">
+  <div class="container">
+    <div class="trip-info">
+      <h2>{{trip.name}}</h2>
+      <p class="trip-location">{{trip.country}}</p>
+      <div class="trip-rating">
+        <p>Ratings {{trip.rating / trip.numberOfRatings || 0}} ({{trip.numberOfRatings}})</p>
+        <app-rating class="rating-stars" [trip]="trip"></app-rating>
+      </div>
+      <div class="trip-description">
+        <h3>About</h3>
+        <p>{{trip.description}}</p>
+      </div>
+      <div class="trip-cost">
+        <h3>Total Cost</h3>
+        <p>{{trip.unitPrice | transformMoney: moneyType}}</p>
+      </div>
+      <div class="trip-reservation">
+        <h3>Book now!</h3>
+        <p *ngIf="trip.availablePlaces - reservationAmount <= 5 && trip.availablePlaces - reservationAmount >= 0"
+          class="low-amount">Pozostało
+          {{trip.availablePlaces - reservationAmount}} wycieczek
+        </p>
+        <div class="reservation-info">
+          <button class="reservation-button" (click)="removeReservation()"
+            [ngStyle]="{'visibility': reservationAmount == 0 ? 'hidden' : 'visible'}"><span>-</span></button>
+          <span class="reservation-amount">{{reservationAmount}}</span>
+          <button class="reservation-button" (click)="addReservation()" [ngStyle]=" {'visibility': reservationAmount==trip.availablePlaces ? 'hidden' : 'visible'
+            }"><span>+</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="image-slider">
+      <ng-image-slider [images]="imageObjects" [infinite]="true" [slideImage]="1" [animationSpeed]="1"
+        [lazyLoading]="true" [imageSize]="{width: '100%', height: '400px'}"></ng-image-slider>
+    </div>
+  </div>
+  <form [formGroup]="form" (submit)="onSubmit()" class="form">
+    <p>Write your comment</p>
+    <label for="nickname">Nick</label>
+    <input formControlName="nickname" id="nickname" type="text" required>
+    <div class="danger" *ngIf="form.get('nickname')?.hasError('required')">
+      <p>This field is required</p>
+    </div>
+
+    <label for="tripname">Trip name</label>
+    <input formControlName="tripname" id="tripname" type="text" required>
+    <div class="danger" *ngIf="form.get('tripname')?.hasError('required')">
+      <p>This field is required</p>
+    </div>
+
+    <textarea formControlName="comment" name="comment" class="comment" id="comment"
+      placeholder="Write your opinion here..." required></textarea>
+    <div class="danger" *ngIf="form.get('comment')?.hasError('required') || form.get('comment')?.hasError('minlength') ||
+      form.get('comment')?.hasError('maxlength')">
+      <p *ngIf="form.get('comment')?.hasError('required')">This field is required</p>
+      <p *ngIf="form.get('comment')?.hasError('minlength')">The minimum length for this field is 50 characters.</p>
+      <p *ngIf="form.get('comment')?.hasError('maxlength')">The maximum length for this field is 500 characters.</p>
+    </div>
+
+    <label for="date">Date</label>
+    <input formControlName="date" id="date" type="date">
+    <div class="submit">
+      <button [disabled]="!form.valid">Add comment</button>
+    </div>
+  </form>
+  <section class="comment-section">
+    <ng-container *ngFor="let comment of comments">
+      <div class="comment">
+        <h2>{{comment.nickname}}</h2>
+        <div class="comment-info">
+          <h3>{{comment.tripname}}</h3>
+          <p>{{comment.date || ''}}</p>
+        </div>
+        <p>{{comment.comment}}</p>
+      </div>
+    </ng-container>
+  </section>
+</div>
+<div *ngIf="isLoadingTrip && isLoadingComments && !error" class="spinner">
+  <app-loading-spinner></app-loading-spinner>
+</div>
+<div *ngIf="!isLoadingTrip && !isLoadingComments && error" class="error">
+  <p>{{errorMessage}}</p>
+</div>

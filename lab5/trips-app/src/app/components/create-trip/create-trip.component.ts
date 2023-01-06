@@ -57,6 +57,7 @@ export class CreateTripComponent implements OnInit {
     trip.endDate = this.tripForm.value.endDate || "";
     trip.unitPrice = this.tripForm.value.unitPrice || 0;
     trip.rating = 0;
+    trip.numberOfRatings = 0;
     trip.availablePlaces = this.tripForm.value.availablePlaces || 0;
     trip.description = this.tripForm.value.description || "";
   }

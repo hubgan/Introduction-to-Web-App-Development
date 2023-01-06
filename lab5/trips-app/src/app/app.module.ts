@@ -26,6 +26,7 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
 import { HomeComponent } from './components/home/home.component';
 import { TripDetailsComponent } from './components/trip-details/trip-details.component';
 import { MapComponent } from './components/map/map.component';
+import { NgImageSliderModule } from 'ng-image-slider';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { MapComponent } from './components/map/map.component';
     HttpClientModule,
     NgMultiSelectDropDownModule,
     NgxSliderModule,
+    NgImageSliderModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,

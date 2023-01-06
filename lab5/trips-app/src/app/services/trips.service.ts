@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Subject } from 'rxjs';
@@ -21,6 +20,10 @@ export class TripsService {
 
   getAllTrips() {
     return this.tripsRef;
+  }
+
+  getTrip(id: string) {
+    return this.tripsRef.doc(id).get();
   }
 
   removeTrip(id: string) {

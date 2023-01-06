@@ -7,6 +7,7 @@ export class Trip {
     unitPrice: number;
     availablePlaces: number;
     rating: number;
+    numberOfRatings: number;
     description: string;
     prices?: {
         minPrice: number,
