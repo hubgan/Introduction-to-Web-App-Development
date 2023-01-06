@@ -27,6 +27,7 @@ import { HomeComponent } from './components/home/home.component';
 import { TripDetailsComponent } from './components/trip-details/trip-details.component';
 import { MapComponent } from './components/map/map.component';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { NgImageSliderModule } from 'ng-image-slider';
     LoadingSpinnerComponent,
     HomeComponent,
     TripDetailsComponent,
-    MapComponent
+    MapComponent,
+    CartDetailsComponent
   ],
   imports: [
     BrowserModule,
