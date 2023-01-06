@@ -32,7 +32,7 @@ export class CreateTripComponent implements OnInit {
     validators: this.isDateCorrect()
   })
 
-  constructor(private tripsService: TripsService, private router: Router, private storage: AngularFireStorage, private storageService: FileUploadService) { }
+  constructor(private tripsService: TripsService, private router: Router, private storageService: FileUploadService) { }
 
   ngOnInit(): void {
   }

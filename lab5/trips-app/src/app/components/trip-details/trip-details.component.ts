@@ -176,7 +176,8 @@ export class TripDetailsComponent implements OnInit {
       id: this.trip.id,
       name: this.trip.name,
       quantity: this.reservationAmount,
-      price: this.trip.unitPrice
+      price: this.trip.unitPrice,
+      totalPlaces: this.trip.availablePlaces
     }
 
     this.cartService.cartRemoveReservation(tripInfo);
@@ -189,7 +190,8 @@ export class TripDetailsComponent implements OnInit {
       id: this.trip.id,
       name: this.trip.name,
       quantity: this.reservationAmount,
-      price: this.trip.unitPrice
+      price: this.trip.unitPrice,
+      totalPlaces: this.trip.availablePlaces
     }
 
     this.cartService.cartAddReservation(tripInfo);

@@ -7,10 +7,6 @@
     <p class="info-country">{{trip.country | uppercase}}</p>
     <p class="info-date"><span>{{trip.startDate | date}}</span> - <span>{{trip.endDate | date}}</span></p>
     <p class="info-price">Cena: {{trip.unitPrice | transformMoney: moneyType}}</p>
-    <div class="trip-rating">
-      <span>Ocena wycieczki: </span>
-      <app-rating [trip]="trip"></app-rating>
-    </div>
     <p class="info-description">{{trip.description}}</p>
   </div>
   <p *ngIf="trip.availablePlaces - reservationAmount <= 5 && trip.availablePlaces - reservationAmount > 0"

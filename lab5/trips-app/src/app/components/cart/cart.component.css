@@ -51,3 +51,18 @@ img {
 .line {
     border-top: 0.1rem solid #0027aa;
 }
+
+button {
+    display: block;
+    margin: 1rem auto 0 auto;
+    border: none;
+    outline: none;
+    padding: 1rem 2rem;
+    background-color: #00b300;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #00ff00;
+}

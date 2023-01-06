@@ -36,4 +36,8 @@ export class CartComponent implements OnInit {
   switchCartDetailsVisibility() {
     this.showCartDetails = !this.showCartDetails;
   }
+
+  onClick() {
+    this.switchCartDetailsVisibility();
+  }
 }
