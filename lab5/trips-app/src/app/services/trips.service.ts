@@ -23,7 +23,7 @@ export class TripsService {
   }
 
   getTrip(id: string) {
-    return this.tripsRef.doc(id).get();
+    return this.tripsRef.doc(id);
   }
 
   removeTrip(id: string) {

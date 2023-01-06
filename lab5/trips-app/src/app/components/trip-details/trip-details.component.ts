@@ -59,7 +59,6 @@ export class TripDetailsComponent implements OnInit {
 
   setReservationAmount() {
     const cartItems = this.cartService.getCartItems();
-    console.log(cartItems, this.tripId);
     const cartIndex = cartItems.findIndex((item) => item.id === this.tripId);
 
     if (cartIndex !== -1) {
@@ -109,8 +108,8 @@ export class TripDetailsComponent implements OnInit {
   }
 
   getTrip() {
-    this.tripsService.getTrip(this.tripId).subscribe((data) => {
-      const trip = { ...data.data(), id: this.tripId };
+    this.tripsService.getTrip(this.tripId).valueChanges().subscribe((data) => {
+      const trip = { ...data, id: this.tripId };
       this.initTrip(trip);
       this.error = false;
       this.isLoadingTrip = false;
@@ -133,20 +132,26 @@ export class TripDetailsComponent implements OnInit {
     this.trip.numberOfRatings = trip.numberOfRatings;
     this.trip.description = trip.description;
     this.trip.images = trip.images;
-    this.initSlider(trip);
+
+    if (this.imageObjects.length === 0) {
+      this.initSlider(trip);
+    }
   }
 
   initSlider(trip: any) {
+    const imageObjects: Array<Object> = [];
     const images = trip.images;
 
     images.forEach((image: string) => {
-      this.imageObjects.push({
+      imageObjects.push({
         image: image,
         thumbImage: image,
         alt: `${trip.country}, ${trip.name} image`,
         title: `${trip.name}`
       });
     })
+
+    this.imageObjects = imageObjects;
   }
 
   getComments() {

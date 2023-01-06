@@ -29,9 +29,12 @@ export class TripListComponent implements OnInit, OnDestroy {
 
   tripsSubsribe: Subscription;
 
+  ngSelect: string;
+
   constructor(private tripsService: TripsService, private moneyTypeService: MoneyTypeService) { }
 
   ngOnInit(): void {
+    this.ngSelect = this.moneyTypeService.getMoneyType();
     this.getTrips();
   }
 
@@ -96,8 +99,8 @@ export class TripListComponent implements OnInit, OnDestroy {
     this.tripsService.editMinMaxPrice(prices);
   }
 
-  updateMoneyType(target: any) {
-    this.moneyTypeService.setMoneyType(target.value);
+  updateMoneyType(target: string) {
+    this.moneyTypeService.setMoneyType(target);
     this.getTrips();
   }
 }

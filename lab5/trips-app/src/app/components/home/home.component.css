@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
 
+.container {
+    overflow: hidden;
+}
+
 .home {
     position: relative;
     height: calc(100vh - 6rem);
@@ -81,7 +85,7 @@ p {
 
 .contact-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 0.2fr 0.8fr;
     padding: 10rem;
 }
 
@@ -102,4 +106,25 @@ p {
 
 .contact p {
     margin-top: 0.3rem;
+}
+
+.contact-map {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 500px) {
+    .contact-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contact-container {
+        padding: 0.5rem;
+    }
+
+    .contact-map {
+        margin-top: 2rem;
+    }
 }

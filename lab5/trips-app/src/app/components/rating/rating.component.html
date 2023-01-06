@@ -1,6 +1,10 @@
 <div class="flex-container">
   <ng-container *ngFor="let star of stars">
-    <app-star (starEnter)="onStarEnter($event)" (starLeave)="onStarLeave()" (starClicked)="onStarClicked($event)"
-      [starId]="star" [rating]="hoverState || rating"></app-star>
+    <app-star *ngIf="!isUserOpinion" (starEnter)="onStarEnter($event)" (starLeave)="onStarLeave()"
+      (starClicked)="onStarClicked($event)" [starId]="star" [rating]="trip.rating / trip.numberOfRatings || 0">
+    </app-star>
+    <app-star *ngIf="isUserOpinion" (starEnter)="onStarEnter($event)" (starLeave)="onStarLeave()"
+      (starClicked)="onStarClicked($event)" [starId]="star" [rating]="hoverState || rating">
+    </app-star>
   </ng-container>
 </div>
