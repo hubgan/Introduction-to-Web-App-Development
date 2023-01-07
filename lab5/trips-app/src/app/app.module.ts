@@ -30,6 +30,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 import { PurchaseHistoryComponent } from './components/purchase-history/purchase-history.component';
 import { PurchaseStatusFilterPipe } from './pipes/purchase-status-filter.pipe';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { PurchaseStatusFilterPipe } from './pipes/purchase-status-filter.pipe';
     MapComponent,
     CartDetailsComponent,
     PurchaseHistoryComponent,
-    PurchaseStatusFilterPipe
+    PurchaseStatusFilterPipe,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
