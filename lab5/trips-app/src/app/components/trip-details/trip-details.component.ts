@@ -172,13 +172,7 @@ export class TripDetailsComponent implements OnInit {
   removeReservation() {
     this.reservationAmount -= 1;
 
-    const tripInfo = {
-      id: this.trip.id,
-      name: this.trip.name,
-      quantity: this.reservationAmount,
-      price: this.trip.unitPrice,
-      totalPlaces: this.trip.availablePlaces
-    }
+    const tripInfo = this.createTripInfo();
 
     this.cartService.cartRemoveReservation(tripInfo);
   }
@@ -186,14 +180,21 @@ export class TripDetailsComponent implements OnInit {
   addReservation() {
     this.reservationAmount += 1;
 
-    const tripInfo = {
+    const tripInfo = this.createTripInfo();
+
+    this.cartService.cartAddReservation(tripInfo);
+  }
+
+  createTripInfo() {
+    return {
       id: this.trip.id,
+      country: this.trip.country,
       name: this.trip.name,
       quantity: this.reservationAmount,
       price: this.trip.unitPrice,
-      totalPlaces: this.trip.availablePlaces
+      totalPlaces: this.trip.availablePlaces,
+      startDate: this.trip.startDate,
+      endDate: this.trip.endDate
     }
-
-    this.cartService.cartAddReservation(tripInfo);
   }
 }

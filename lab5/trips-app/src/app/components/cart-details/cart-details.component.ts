@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CartItem } from 'src/app/models/cart-item';
 import { CartService } from 'src/app/services/cart.service';
 import { MoneyTypeService } from 'src/app/services/money-type.service';
+import { PurchaseHistoryService } from 'src/app/services/purchase-history.service';
 import { TripsService } from 'src/app/services/trips.service';
 
 @Component({
@@ -12,13 +13,13 @@ import { TripsService } from 'src/app/services/trips.service';
 })
 export class CartDetailsComponent implements OnInit {
 
-  constructor(private cartService: CartService, private moneyTypeService: MoneyTypeService, private tripsService: TripsService, private router: Router) { }
+  constructor(private cartService: CartService, private moneyTypeService: MoneyTypeService, private tripsService: TripsService, private router: Router, private purchaseHistoryService: PurchaseHistoryService) { }
 
   cartItems: Array<CartItem> = [];
   moneyType: string = this.moneyTypeService.getMoneyType();
   totalPrice: number;
   totalQuantity: number;
-  isLoading: boolean = true;
+  isLoading: boolean = false;
 
   ngOnInit(): void {
     this.cartItems = this.cartService.getCartItems();
@@ -46,13 +47,32 @@ export class CartDetailsComponent implements OnInit {
 
       Promise.all((valueToUpdate.map((value) => this.tripsService.updateTrip(value.id, { availablePlaces: value.availablePlaces }))))
         .then(() => {
-          this.cartService.clearCart();
-          this.isLoading = false;
-          this.router.navigate(['/trips']);
+          const purchasesToAdd = this.cartItems.map((item) => {
+            return {
+              country: item.country,
+              name: item.name,
+              quantity: item.quantity,
+              price: item.price,
+              totalPlaces: item.totalPlaces,
+              startDate: item.startDate,
+              endDate: item.endDate
+            }
+          })
+
+          Promise.all((purchasesToAdd.map((item) => this.purchaseHistoryService.addPurchase(item))))
+            .then(() => {
+              this.cartService.clearCart();
+              this.isLoading = false;
+              this.router.navigate(['/trips']);
+            })
+            .catch((error) => {
+              this.isLoading = false;
+              console.log(error);
+            })
         })
         .catch((error) => {
           this.isLoading = false;
-          throw error.message;
+          console.log(error)
         })
     }
   }

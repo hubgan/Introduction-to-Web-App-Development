@@ -21,7 +21,7 @@
   </label>
 
   <label for="unit-price">
-    <span>Unit price:</span>
+    <span>Unit price (PLN):</span>
     <input id="unit-price" type="number" formControlName="unitPrice">
   </label>
 
@@ -40,7 +40,7 @@
     <input id="files" type="file" formControlName="images" multiple (change)="selectFile($event)">
   </label>
 
-  <button type="submit" [disabled]="!tripForm.valid || error">Dodaj nową wycieczkę</button>
+  <button type="submit" [disabled]="!tripForm.valid || error">Add New Trip</button>
 
   <div class="spinner" *ngIf="isLoading && !error">
     <app-loading-spinner></app-loading-spinner>

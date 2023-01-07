@@ -5,8 +5,8 @@
   </div>
   <div *ngIf="showCartDetails" class="cart-details">
     <div class="item">
-      <p>Nazwa</p>
-      <p>Ilość</p>
+      <p>Name</p>
+      <p>Quantity</p>
     </div>
     <ng-container *ngFor="let cartItem of cartItems">
       <div class="item">
@@ -15,11 +15,11 @@
       </div>
     </ng-container>
     <div class="item line" [ngStyle]="{'color': totalQuantity < 10 ? 'red' : 'green'}">
-      <p>Łączna ilość</p>
+      <p>Total Quantity</p>
       <p>{{totalQuantity}}</p>
     </div>
     <div class="item">
-      <p>Całkowita cena</p>
+      <p>Total Price</p>
       <p>{{totalPrice | transformMoney: moneyType}}</p>
     </div>
     <button routerLink="/cart-details" (click)="onClick()">Go to cart details</button>

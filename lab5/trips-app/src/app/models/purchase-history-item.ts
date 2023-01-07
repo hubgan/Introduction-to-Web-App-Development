@@ -1,5 +1,4 @@
-export interface CartItem {
-    id: string,
+export interface PurchaseHistoryItem {
     country: string,
     name: string,
     quantity: number,
