@@ -14,6 +14,10 @@ export class PurchaseHistoryService {
     this.purchaseHistoryRef = db.collection(this.collection);
   }
 
+  getPurchases() {
+    return this.purchaseHistoryRef;
+  }
+
   addPurchase(purchase: PurchaseHistoryItem) {
     return this.purchaseHistoryRef.add({ ...purchase });
   }

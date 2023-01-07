@@ -29,6 +29,7 @@ import { MapComponent } from './components/map/map.component';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 import { PurchaseHistoryComponent } from './components/purchase-history/purchase-history.component';
+import { PurchaseStatusFilterPipe } from './pipes/purchase-status-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { PurchaseHistoryComponent } from './components/purchase-history/purchase
     TripDetailsComponent,
     MapComponent,
     CartDetailsComponent,
-    PurchaseHistoryComponent
+    PurchaseHistoryComponent,
+    PurchaseStatusFilterPipe
   ],
   imports: [
     BrowserModule,
