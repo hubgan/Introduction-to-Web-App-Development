@@ -31,6 +31,8 @@ import { CartDetailsComponent } from './components/cart-details/cart-details.com
 import { PurchaseHistoryComponent } from './components/purchase-history/purchase-history.component';
 import { PurchaseStatusFilterPipe } from './pipes/purchase-status-filter.pipe';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { EditComponent } from './components/edit/edit.component';
+import { FileDetailsComponent } from './components/file-details/file-details.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     CartDetailsComponent,
     PurchaseHistoryComponent,
     PurchaseStatusFilterPipe,
-    NotFoundComponent
+    NotFoundComponent,
+    EditComponent,
+    FileDetailsComponent
   ],
   imports: [
     BrowserModule,

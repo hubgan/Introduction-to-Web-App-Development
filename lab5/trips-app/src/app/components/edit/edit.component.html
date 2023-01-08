@@ -1,4 +1,4 @@
-<form [formGroup]="tripForm" (ngSubmit)="onSubmit()">
+<form *ngIf="!isLoading && !error" [formGroup]="tripForm" (ngSubmit)="onSubmit()">
   <label for="country">
     <span>Country:</span>
     <input id="country" type="text" formControlName="country">
@@ -39,18 +39,20 @@
     <span>Images:</span>
     <input id="files" type="file" formControlName="images" multiple (change)="selectFile($event)">
   </label>
-  <div class="files">
-    <ng-container *ngFor="let file of files">
-      <p>{{file.name}}</p>
-    </ng-container>
-  </div>
+  <ng-container *ngFor="let downloadURL of imagesDownloadURL">
+    <app-file-details (URL)="deleteFile($event)" [downloadURL]="downloadURL"></app-file-details>
+  </ng-container>
+  <p *ngIf="fileError" class="error">{{errorMessage}}</p>
 
-  <button type="submit" [disabled]="!tripForm.valid || error">Add New Trip</button>
+  <button type="submit" [disabled]="!tripForm.valid || error">Edit Trip</button>
 
-  <div class="spinner" *ngIf="isLoading && !error">
+  <div class="spinner" *ngIf="isUpdateLoading && !error">
     <app-loading-spinner></app-loading-spinner>
   </div>
 
   <p *ngIf="error" class="error">{{errorMessage}}</p>
 
 </form>
+<div class="spinner h-100" *ngIf="isLoading && !error">
+  <app-loading-spinner></app-loading-spinner>
+</div>

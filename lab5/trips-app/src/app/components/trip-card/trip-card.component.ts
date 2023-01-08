@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Trip } from 'src/app/models/trip';
 import { CartService } from 'src/app/services/cart.service';
+import { FileUploadService } from 'src/app/services/file-upload.service';
 import { MoneyTypeService } from 'src/app/services/money-type.service';
 
 @Component({
@@ -21,7 +22,7 @@ export class TripCardComponent implements OnInit {
   reservationAmount: number = 0;
   currentClasses = {};
 
-  constructor(private moneyTypeService: MoneyTypeService, private cartService: CartService) { }
+  constructor(private moneyTypeService: MoneyTypeService, private cartService: CartService, private storageService: FileUploadService) { }
 
   ngOnInit(): void {
     this.setReservationAmount();
@@ -81,6 +82,13 @@ export class TripCardComponent implements OnInit {
   }
 
   delete() {
-    this.id.emit(this.trip.id);
+    Promise.all(this.trip.images.map((img) => this.storageService.getStorage().refFromURL(img).delete()))
+      .then(() => {
+        console.log("Delete succesfully")
+        this.id.emit(this.trip.id);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      })
   }
 }

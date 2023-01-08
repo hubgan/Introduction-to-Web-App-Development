@@ -104,7 +104,7 @@ export class CreateTripComponent implements OnInit {
                 console.log("Updated succesfully");
                 this.error = false;
                 this.isLoading = false;
-                this.router.navigate(['/']);
+                this.router.navigate(['/trips']);
               })
             });
         });
