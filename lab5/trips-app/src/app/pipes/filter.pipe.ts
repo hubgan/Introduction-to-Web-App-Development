@@ -36,7 +36,7 @@ export class FilterPipe implements PipeTransform {
     }
 
     if (filter['rating'] != null) {
-      list = list.filter(trip => trip.rating <= filter['rating'])
+      list = list.filter(trip => trip.rating / trip.numberOfRatings <= filter['rating'])
     }
 
     if (filter['price'] != null && filter['price'][0] != null) {
