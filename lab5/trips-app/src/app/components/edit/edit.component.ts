@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FileUploadService } from 'src/app/services/file-upload.service';
+import { StorageService } from 'src/app/services/storage.service';
 import { TripsService } from 'src/app/services/trips.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { TripsService } from 'src/app/services/trips.service';
 export class EditComponent implements OnInit {
 
   constructor(private tripsService: TripsService, private route: ActivatedRoute, private formBuilder: FormBuilder,
-    private storageService: FileUploadService, private router: Router) { }
+    private storageService: StorageService, private router: Router) { }
 
   error: boolean = false;
   fileError: boolean = false;

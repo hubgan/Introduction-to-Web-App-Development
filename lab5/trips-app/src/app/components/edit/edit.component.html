@@ -39,6 +39,11 @@
     <span>Images:</span>
     <input id="files" type="file" formControlName="images" multiple (change)="selectFile($event)">
   </label>
+  <div class="files">
+    <ng-container *ngFor="let file of files">
+      <p>{{file.name}}</p>
+    </ng-container>
+  </div>
   <ng-container *ngFor="let downloadURL of imagesDownloadURL">
     <app-file-details (URL)="deleteFile($event)" [downloadURL]="downloadURL"></app-file-details>
   </ng-container>

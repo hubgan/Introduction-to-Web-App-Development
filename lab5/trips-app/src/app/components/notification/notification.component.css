@@ -2,11 +2,11 @@ img {
   display: block;
 }
 
-.cart {
+.notification {
   position: relative;
 }
 
-.cart-image {
+.notification-image {
   cursor: pointer;
 }
 
@@ -25,19 +25,19 @@ img {
   color: #fff;
 }
 
-.cart-details {
+.notification-details {
   position: absolute;
-  left: -70%;
+  left: -300%;
   transform: translateX(-50%);
   background-color: #007bff;
-  width: 18rem;
+  width: 28rem;
   padding: 1rem;
   color: #fff;
   font-size: 1.2rem;
   border-radius: 0 0 1rem 1rem;
 }
 
-.cart-details p {
+.notification-details p {
   padding-top: 1rem;
   font-size: 1.3rem;
 }
@@ -47,23 +47,4 @@ img {
   align-items: center;
   justify-content: space-between;
   padding: 0.2rem;
-}
-
-.line {
-  border-top: 0.1rem solid #0027aa;
-}
-
-button {
-  display: block;
-  margin: 1rem auto 0 auto;
-  border: none;
-  outline: none;
-  padding: 1rem 2rem;
-  background-color: #00b300;
-  color: #fff;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #00ff00;
 }

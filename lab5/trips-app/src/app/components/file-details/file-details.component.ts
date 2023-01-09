@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FileUploadService } from 'src/app/services/file-upload.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-file-details',
@@ -15,7 +15,7 @@ export class FileDetailsComponent implements OnInit {
   isLoading: boolean = false;
   errorMessage: string;
 
-  constructor(private storageService: FileUploadService) { }
+  constructor(private storageService: StorageService) { }
 
   ngOnInit(): void {
     this.error = false;

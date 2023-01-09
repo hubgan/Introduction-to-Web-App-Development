@@ -36,8 +36,9 @@
       </div>
     </div>
     <div class="image-slider">
-      <ng-image-slider [images]="imageObjects" [infinite]="true" [autoSlide]="true" [slideImage]="1"
-        [animationSpeed]="1" [lazyLoading]="true" [imageSize]="{width: '100%', height: '400px'}"></ng-image-slider>
+      <ng-image-slider [images]="imageObjects" [infinite]="true" [autoSlide]="imageObjects.length === 1 ?  false : true"
+        [slideImage]="1" [showArrow]="imageObjects.length === 1 ?  false : true" [animationSpeed]="1"
+        [lazyLoading]="true" [imageSize]="{width: '100%', height: '400px'}"></ng-image-slider>
     </div>
   </div>
   <form [formGroup]="form" (submit)="onSubmit()" class="form">

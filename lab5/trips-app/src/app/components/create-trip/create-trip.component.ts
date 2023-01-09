@@ -4,7 +4,7 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormGroup, FormControl, Validators, ValidatorFn, ValidationErrors, AbstractControl } from '@angular/forms'
 import { Router } from '@angular/router';
 import { Trip } from 'src/app/models/trip';
-import { FileUploadService } from 'src/app/services/file-upload.service';
+import { StorageService } from 'src/app/services/storage.service';
 import { TripsService } from 'src/app/services/trips.service';
 
 @Component({
@@ -32,7 +32,7 @@ export class CreateTripComponent implements OnInit {
     validators: this.isDateCorrect()
   })
 
-  constructor(private tripsService: TripsService, private router: Router, private storageService: FileUploadService) { }
+  constructor(private tripsService: TripsService, private router: Router, private storageService: StorageService) { }
 
   ngOnInit(): void {
   }

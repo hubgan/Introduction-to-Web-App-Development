@@ -11,7 +11,6 @@ import { AppComponent } from './app.component';
 import { TripCardComponent } from './components/trip-card/trip-card.component';
 import { TripListComponent } from './components/trip-list/trip-list.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { TripsService } from './services/trips.service';
 import { CreateTripComponent } from './components/create-trip/create-trip.component';
 import { FiltersListComponent } from './components/filters-list/filters-list.component';
 import { RatingComponent } from './components/rating/rating.component';
@@ -33,6 +32,7 @@ import { PurchaseStatusFilterPipe } from './pipes/purchase-status-filter.pipe';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { EditComponent } from './components/edit/edit.component';
 import { FileDetailsComponent } from './components/file-details/file-details.component';
+import { NotificationComponent } from './components/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +56,8 @@ import { FileDetailsComponent } from './components/file-details/file-details.com
     PurchaseStatusFilterPipe,
     NotFoundComponent,
     EditComponent,
-    FileDetailsComponent
+    FileDetailsComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +73,7 @@ import { FileDetailsComponent } from './components/file-details/file-details.com
     AngularFireStorageModule
   ],
   providers: [
-    TripsService
+
   ],
   bootstrap: [AppComponent]
 })

@@ -21,6 +21,11 @@ input {
   font-size: 1.4rem;
 }
 
+.files p {
+  padding: 0.5rem;
+  font-size: 1.4rem;
+}
+
 button {
   align-self: center;
   text-transform: uppercase;

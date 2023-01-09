@@ -4,7 +4,7 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 @Injectable({
   providedIn: 'root'
 })
-export class FileUploadService {
+export class StorageService {
 
   constructor(private storage: AngularFireStorage) { }
 

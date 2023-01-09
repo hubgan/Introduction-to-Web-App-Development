@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Trip } from 'src/app/models/trip';
 import { CartService } from 'src/app/services/cart.service';
-import { FileUploadService } from 'src/app/services/file-upload.service';
+import { StorageService } from 'src/app/services/storage.service';
 import { MoneyTypeService } from 'src/app/services/money-type.service';
 
 @Component({
@@ -22,7 +22,7 @@ export class TripCardComponent implements OnInit {
   reservationAmount: number = 0;
   currentClasses = {};
 
-  constructor(private moneyTypeService: MoneyTypeService, private cartService: CartService, private storageService: FileUploadService) { }
+  constructor(private moneyTypeService: MoneyTypeService, private cartService: CartService, private storageService: StorageService) { }
 
   ngOnInit(): void {
     this.setReservationAmount();
