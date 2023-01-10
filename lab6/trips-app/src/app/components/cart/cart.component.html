@@ -1,0 +1,27 @@
+<div class="cart">
+  <div (click)="switchCartDetailsVisibility()" class="cart-image">
+    <img src="./../../../assets/cart.svg" alt="cart-icon" />
+    <div class="badge">{{cartItems.length}}</div>
+  </div>
+  <div *ngIf="showCartDetails" class="cart-details">
+    <div class="item">
+      <p>Name</p>
+      <p>Quantity</p>
+    </div>
+    <ng-container *ngFor="let cartItem of cartItems">
+      <div class="item">
+        <p>{{cartItem.name}}</p>
+        <p>{{cartItem.quantity}}</p>
+      </div>
+    </ng-container>
+    <div class="item line" [ngStyle]="{'color': totalQuantity < 10 ? 'red' : 'green'}">
+      <p>Total Quantity</p>
+      <p>{{totalQuantity}}</p>
+    </div>
+    <div class="item">
+      <p>Total Price</p>
+      <p>{{totalPrice | transformMoney: moneyType}}</p>
+    </div>
+    <button routerLink="/cart-details" (click)="onClick()">Go to cart details</button>
+  </div>
+</div>

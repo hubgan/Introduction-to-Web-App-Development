@@ -1,0 +1,56 @@
+<form [formGroup]="tripForm" (ngSubmit)="onSubmit()">
+  <label for="country">
+    <span>Country:</span>
+    <input id="country" type="text" formControlName="country">
+  </label>
+
+  <label for="name">
+    <span>Name:</span>
+    <input id="name" type="text" formControlName="name">
+  </label>
+
+  <label for="start-date">
+    <span>Start date:</span>
+    <input id="start-date" type="date" formControlName="startDate">
+  </label>
+
+  <label for="end-date">
+    <span>End date:</span>
+    <input id="end-date" type="date" formControlName="endDate">
+    <p *ngIf="tripForm.errors?.['wrongDates']" class="error">Date zakończenia musi być późniejsza niż rozpoczęcia!</p>
+  </label>
+
+  <label for="unit-price">
+    <span>Unit price (PLN):</span>
+    <input id="unit-price" type="number" formControlName="unitPrice">
+  </label>
+
+  <label for="available-places">
+    <span>Available places:</span>
+    <input id="available-places" type="number" formControlName="availablePlaces">
+  </label>
+
+  <label for="description">
+    <span>Description</span>
+    <textarea id="description" formControlName="description"></textarea>
+  </label>
+
+  <label for="files">
+    <span>Images:</span>
+    <input id="files" type="file" formControlName="images" multiple (change)="selectFile($event)">
+  </label>
+  <div class="files">
+    <ng-container *ngFor="let file of files">
+      <p>{{file.name}}</p>
+    </ng-container>
+  </div>
+
+  <button type="submit" [disabled]="!tripForm.valid || error">Add New Trip</button>
+
+  <div class="spinner" *ngIf="isLoading && !error">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+
+  <p *ngIf="error" class="error">{{errorMessage}}</p>
+
+</form>

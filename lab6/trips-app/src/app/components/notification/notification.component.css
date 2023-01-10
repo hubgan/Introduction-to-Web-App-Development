@@ -1,0 +1,50 @@
+img {
+  display: block;
+}
+
+.notification {
+  position: relative;
+}
+
+.notification-image {
+  cursor: pointer;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -0.3rem;
+  right: -0.3rem;
+  width: 1.9rem;
+  height: 1.9rem;
+  background-color: red;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  color: #fff;
+}
+
+.notification-details {
+  position: absolute;
+  left: -300%;
+  transform: translateX(-50%);
+  background-color: #007bff;
+  width: 28rem;
+  padding: 1rem;
+  color: #fff;
+  font-size: 1.2rem;
+  border-radius: 0 0 1rem 1rem;
+}
+
+.notification-details p {
+  padding-top: 1rem;
+  font-size: 1.3rem;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.2rem;
+}

@@ -1,0 +1,42 @@
+<div *ngIf="!error && !isLoading" class="container">
+  <div class="filter">
+    <ng-multiselect-dropdown [(ngModel)]="statusFilters" class="dropdown" [placeholder]="'Trip Status'"
+      [settings]="settings" [data]="dropdownData">
+    </ng-multiselect-dropdown>
+  </div>
+  <div class="trips-container">
+    <ng-container *ngFor="let purchase of purchases | purchaseStatusFilter: statusFilters">
+      <div class="purchase-trip">
+        <h1>{{purchase.name}}</h1>
+        <h2>{{purchase.country}}</h2>
+        <div class="dates purchase-info">
+          <p>{{purchase.startDate}}</p>
+          <p>{{purchase.endDate}}</p>
+        </div>
+        <div class="price purchase-info">
+          <p>UnitPrice</p>
+          <p>{{purchase.price | transformMoney: moneyType}}</p>
+        </div>
+        <div class="quantity purchase-info">
+          <p>Number of bought tickets</p>
+          <p>{{purchase.quantity}}</p>
+        </div>
+        <div class="total-price purchase-info">
+          <p>Total price</p>
+          <p>{{purchase.quantity * purchase.price | transformMoney: moneyType}}</p>
+        </div>
+        <div class="purchase-date purchase-info">
+          <p>Date of purchase</p>
+          <p>{{purchase.purchaseDate}}</p>
+        </div>
+        <div class="status purchase-info">
+          <p>Trip status</p>
+          <p>{{purchase.status}}</p>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+<div *ngIf="isLoading" class="loading-spinner">
+  <app-loading-spinner></app-loading-spinner>
+</div>

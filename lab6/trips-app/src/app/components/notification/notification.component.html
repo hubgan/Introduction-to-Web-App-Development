@@ -1,0 +1,18 @@
+<div class="notification">
+  <div (click)="switchNotificationsVisibility()" class="notification-image">
+    <img src="./../../../assets/notification.png" alt="notification icon" />
+    <div class="badge">{{notifications.length}}</div>
+  </div>
+  <div *ngIf="showNotification" class="notification-details">
+    <div class="item">
+      <p>Name</p>
+      <p>Start date</p>
+    </div>
+    <ng-container *ngFor="let notification of notifications">
+      <div class="item">
+        <p>{{notification.name}}</p>
+        <p>{{notification.startDate}}</p>
+      </div>
+    </ng-container>
+  </div>
+</div>

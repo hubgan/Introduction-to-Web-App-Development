@@ -1,0 +1,27 @@
+<nav class="navbar">
+  <div (click)="toggleVisibility()" class="triangle"></div>
+  <a routerLink="/" class="navbar-brand">TripApp</a>
+  <ul [ngClass]="isVisible">
+    <li routerLink="/trips">
+      <a>Trips</a>
+    </li>
+    <li routerLink="/create">
+      <a>Add Trip</a>
+    </li>
+    <li routerLink="/purchase-history">
+      <a>Purchase History</a>
+    </li>
+    <li routerLink="/">
+      <a>Login</a>
+    </li>
+    <li routerLink="/">
+      <a>Signup</a>
+    </li>
+  </ul>
+  <div class="notification">
+    <app-notification></app-notification>
+  </div>
+  <div class="cart">
+    <app-cart></app-cart>
+  </div>
+</nav>

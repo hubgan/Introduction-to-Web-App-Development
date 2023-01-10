@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="cart-details">
+    <div class="cart-item">
+      <p>Name</p>
+      <p>Quantity</p>
+    </div>
+    <ng-container *ngFor="let item of cartItems">
+      <div class="cart-item">
+        <p>{{item.name}}</p>
+        <p>{{item.quantity}}</p>
+      </div>
+    </ng-container>
+    <div class="cart-item">
+      <p>Total price</p>
+      <p>{{totalPrice | transformMoney: moneyType}}</p>
+    </div>
+    <button (click)="onClick()" class="buy">Pay</button>
+    <div *ngIf="isLoading" class="loading-spinner">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+  </div>
+</div>

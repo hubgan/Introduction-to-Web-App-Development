@@ -1,0 +1,7 @@
+<div *ngIf="!error && !isLoading" class="container">
+  <p>{{metaData.name}}</p>
+  <button (click)="deleteFile()">Delete File</button>
+</div>
+<div *ngIf="isLoading" class="loading-spinner">
+  <app-loading-spinner></app-loading-spinner>
+</div>
