@@ -33,6 +33,9 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { EditComponent } from './components/edit/edit.component';
 import { FileDetailsComponent } from './components/file-details/file-details.component';
 import { NotificationComponent } from './components/notification/notification.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 @NgModule({
   declarations: [
@@ -57,7 +60,9 @@ import { NotificationComponent } from './components/notification/notification.co
     NotFoundComponent,
     EditComponent,
     FileDetailsComponent,
-    NotificationComponent
+    NotificationComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +75,8 @@ import { NotificationComponent } from './components/notification/notification.co
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    AngularFireAuthModule
   ],
   providers: [
 
