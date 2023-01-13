@@ -14,8 +14,9 @@ export class PurchaseHistoryService {
     this.purchaseHistoryRef = db.collection(this.collection);
   }
 
-  getPurchases() {
-    return this.purchaseHistoryRef;
+  getPurchases(userUID: string) {
+    const ref: AngularFirestoreCollection<PurchaseHistoryItem> = this.db.collection(this.collection, ref => ref.where('userUID', '==', userUID));
+    return ref;
   }
 
   addPurchase(purchase: PurchaseHistoryItem) {

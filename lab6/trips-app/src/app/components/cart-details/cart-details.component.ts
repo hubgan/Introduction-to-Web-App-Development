@@ -62,7 +62,8 @@ export class CartDetailsComponent implements OnInit {
               totalPlaces: item.totalPlaces,
               startDate: item.startDate,
               endDate: item.endDate,
-              purchaseDate: todaysDate
+              purchaseDate: todaysDate,
+              userUID: JSON.parse(localStorage.getItem('user')!).uid
             }
           })
 

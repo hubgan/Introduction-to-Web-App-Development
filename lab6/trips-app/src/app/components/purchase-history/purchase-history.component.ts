@@ -46,25 +46,21 @@ export class PurchaseHistoryComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.error = false;
     this.isLoading = true;
+    const userUID = JSON.parse(localStorage.getItem('user')!).uid;
 
-    this.subscription = this.purchaseHistoryService.getPurchases().snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c =>
-          ({ ...c.payload.doc.data(), id: c.payload.doc.id })
-        )
-      )
-    ).subscribe((data) => {
+    this.subscription = this.purchaseHistoryService.getPurchases(userUID).valueChanges().subscribe((data) => {
       this.purchases = data.map((purchase) => {
         let status = this.createPurchaseStatus(purchase.startDate, purchase.endDate);
 
         return { ...purchase, status: status };
-      })
+      });
+
       this.error = false;
       this.isLoading = false;
     }, (error) => {
       this.error = true;
-      this.isLoading = false;
       this.errorMessage = error.message;
+      this.isLoading = false;
     })
   }
 

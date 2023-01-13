@@ -18,13 +18,8 @@ export class NotificationComponent implements OnInit, OnDestroy {
   constructor(private purchaseHistoryService: PurchaseHistoryService) { }
 
   ngOnInit(): void {
-    this.subscription = this.purchaseHistoryService.getPurchases().snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c =>
-          ({ ...c.payload.doc.data(), id: c.payload.doc.id })
-        )
-      )
-    ).subscribe((data) => {
+    const userUID = JSON.parse(localStorage.getItem('user')!).uid;
+    this.subscription = this.purchaseHistoryService.getPurchases(userUID).valueChanges().subscribe((data) => {
       const purchases = data.map((purchase) => {
         let status = this.createPurchaseStatus(purchase.startDate, purchase.endDate);
 
@@ -32,10 +27,9 @@ export class NotificationComponent implements OnInit, OnDestroy {
       });
 
       this.notifications = purchases.filter((purchase) => purchase.status === 'Waiting to start');
-
       this.notifications.sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime());
     }, (error) => {
-      console.log(error)
+      console.log(error);
     })
   }
 

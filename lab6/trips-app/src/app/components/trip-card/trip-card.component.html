@@ -14,15 +14,20 @@
     {{trip.availablePlaces - reservationAmount}} wycieczek
   </p>
   <p *ngIf="trip.availablePlaces - reservationAmount == 0" class="low-amount">Brak Miejsc!</p>
-  <div class="trip-reservation">
+  <div *ngIf="authService.userData" class="trip-reservation">
     <button [ngStyle]="{'visibility': reservationAmount == 0 ? 'hidden' : 'visible'}" (click)="removeReservation()"
       class="reservation-button">-</button>
     <div class="reservation-number">{{reservationAmount}}</div>
     <button [ngStyle]="{'visibility': reservationAmount == trip.availablePlaces ? 'hidden' : 'visible'}"
       (click)="addReservation()" class="reservation-button">+</button>
   </div>
-  <button routerLink="/trip/{{trip.id}}" class="trip-details">See details</button>
-  <div class="edit-buttons">
+  <button *ngIf="authService.userData" routerLink="/trip/{{trip.id}}" class="trip-details">See details</button>
+  <div *ngIf="!authService.userData" class="login-to-see">
+    <p>Login if you want to see more</p>
+  </div>
+  <div
+    *ngIf="authService.userData && (authService.userData.role === 'manager' || authService.userData.role === 'admin')"
+    class="edit-buttons">
     <button (click)="delete()" class="delete-trip">Remove Trip</button>
     <button routerLink="/edit/{{trip.id}}" class="edit-trip">Edit Trip</button>
   </div>

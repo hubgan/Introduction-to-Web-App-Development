@@ -97,6 +97,13 @@ p {
   justify-content: space-between;
 }
 
+.login-to-see {
+  font-size: 1.4rem;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: auto;
+}
+
 .delete-trip,
 .edit-trip,
 .trip-details {

@@ -7,5 +7,6 @@ export interface PurchaseHistoryItem {
     startDate: string,
     endDate: string,
     purchaseDate: string,
-    status?: string
+    status?: string,
+    userUID: string
 }

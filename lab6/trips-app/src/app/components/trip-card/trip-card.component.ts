@@ -3,6 +3,7 @@ import { Trip } from 'src/app/models/trip';
 import { CartService } from 'src/app/services/cart.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { MoneyTypeService } from 'src/app/services/money-type.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-trip-card',
@@ -22,7 +23,7 @@ export class TripCardComponent implements OnInit {
   reservationAmount: number = 0;
   currentClasses = {};
 
-  constructor(private moneyTypeService: MoneyTypeService, private cartService: CartService, private storageService: StorageService) { }
+  constructor(private moneyTypeService: MoneyTypeService, private cartService: CartService, private storageService: StorageService, public authService: AuthService) { }
 
   ngOnInit(): void {
     this.setReservationAmount();
