@@ -36,6 +36,7 @@ import { NotificationComponent } from './components/notification/notification.co
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     AngularFireAuthModule
   ],
   providers: [
-
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

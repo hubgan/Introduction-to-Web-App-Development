@@ -72,6 +72,11 @@ button:hover {
   background-color: #bb2351;
 }
 
+button:disabled {
+  background-color: #666;
+  cursor: not-allowed;
+}
+
 .already-user {
   text-align: center;
   margin-top: 2rem;

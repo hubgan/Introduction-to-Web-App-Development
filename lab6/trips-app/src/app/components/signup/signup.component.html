@@ -1,18 +1,23 @@
 <div class="form-container">
   <h1>Sign up</h1>
 
-  <form class="signup-form">
+  <form (submit)="onSubmit()" [formGroup]="signupForm" class="signup-form">
     <div class="form-input">
       <label for="email">Email</label>
-      <input id="email" type="email">
+      <input id="email" type="email" formControlName="email">
+    </div>
+
+    <div class="form-input">
+      <label for="display-name">Display Name</label>
+      <input id="display-name" type="text" formControlName="displayName">
     </div>
 
     <div class="form-input">
       <label for="password">Password</label>
-      <input id="password" type="password">
+      <input id="password" type="password" formControlName="password">
     </div>
 
-    <button>Sign up</button>
+    <button [disabled]="!signupForm.valid">Sign up</button>
 
     <div class="already-user">
       <p>Already a user? <a routerLink="/login" class="login">Login</a></p>

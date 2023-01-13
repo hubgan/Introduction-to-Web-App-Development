@@ -10,17 +10,18 @@ import { PurchaseHistoryComponent } from './components/purchase-history/purchase
 import { SignupComponent } from './components/signup/signup.component';
 import { TripDetailsComponent } from './components/trip-details/trip-details.component';
 import { TripListComponent } from './components/trip-list/trip-list.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'trips', component: TripListComponent },
-  { path: 'trip/:id', component: TripDetailsComponent },
-  { path: 'create', component: CreateTripComponent },
-  { path: 'cart-details', component: CartDetailsComponent },
-  { path: 'purchase-history', component: PurchaseHistoryComponent },
-  { path: 'edit/:id', component: EditComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent },
+  { path: 'trip/:id', component: TripDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'trips', component: TripListComponent, canActivate: [AuthGuard] },
+  { path: 'create', component: CreateTripComponent, canActivate: [AuthGuard] },
+  { path: 'cart-details', component: CartDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'purchase-history', component: PurchaseHistoryComponent, canActivate: [AuthGuard] },
+  { path: 'edit/:id', component: EditComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
+  { path: 'signup', component: SignupComponent, canActivate: [AuthGuard] },
   { path: '**', pathMatch: 'full', component: NotFoundComponent }
 ];
 

@@ -1,15 +1,15 @@
 <div class="form-container">
   <h1>Login</h1>
 
-  <form class="login-form">
+  <form (submit)="onSubmit()" [formGroup]="loginForm" class="login-form">
     <div class="form-input">
       <label for="email">Email</label>
-      <input id="email" type="email">
+      <input id="email" type="email" formControlName="email">
     </div>
 
     <div class="form-input">
       <label for="password">Password</label>
-      <input id="password" type="password">
+      <input id="password" type="password" formControlName="password">
     </div>
 
     <button>Login</button>

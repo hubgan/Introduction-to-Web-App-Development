@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,7 +10,7 @@ export class NavBarComponent implements OnInit {
 
   isVisible: string = '';
 
-  constructor() { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
   }
@@ -21,5 +22,9 @@ export class NavBarComponent implements OnInit {
     else {
       this.isVisible = '';
     }
+  }
+
+  signOut() {
+    this.authService.signOut();
   }
 }

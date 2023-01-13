@@ -5,17 +5,20 @@
     <li routerLink="/trips">
       <a>Trips</a>
     </li>
-    <li routerLink="/create">
+    <li *ngIf="authService.userData" routerLink="/create">
       <a>Add Trip</a>
     </li>
-    <li routerLink="/purchase-history">
+    <li *ngIf="authService.userData" routerLink="/purchase-history">
       <a>Purchase History</a>
     </li>
-    <li routerLink="/login">
+    <li *ngIf="!authService.userData" routerLink="/login">
       <a>Login</a>
     </li>
-    <li routerLink="/signup">
+    <li *ngIf="!authService.userData" routerLink="/signup">
       <a>Signup</a>
+    </li>
+    <li *ngIf="authService.userData">
+      <p (click)="signOut()">Signout</p>
     </li>
   </ul>
   <div class="notification">
