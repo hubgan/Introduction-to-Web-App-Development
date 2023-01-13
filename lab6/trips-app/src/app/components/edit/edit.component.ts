@@ -55,7 +55,7 @@ export class EditComponent implements OnInit {
       unitPrice: [trip.unitPrice, [Validators.required, Validators.min(0)]],
       availablePlaces: [trip.availablePlaces, [Validators.required, Validators.min(0)]],
       description: [trip.description, [Validators.required, Validators.minLength(30)]],
-      images: ['']
+      images: [''],
     }, {
       validators: this.isDateCorrect()
     })
@@ -110,7 +110,8 @@ export class EditComponent implements OnInit {
       unitPrice: this.tripForm.value.unitPrice,
       availablePlaces: this.tripForm.value.availablePlaces,
       description: this.tripForm.value.description,
-      images: images
+      images: images,
+      ratingsUsersID: this.tripForm.value.ratingsUsersID
     }
   }
 

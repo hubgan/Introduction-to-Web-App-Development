@@ -14,4 +14,8 @@ export class Trip {
         maxPrice: number
     };
     images: Array<string>;
+    ratingsUsersID: Array<{
+        uid: string,
+        rating: number
+    }>;
 }

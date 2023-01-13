@@ -18,7 +18,15 @@ export class RatingComponent implements OnInit {
   constructor(private tripsService: TripsService) { }
 
   ngOnInit(): void {
-    this.rating = 0
+    if (!JSON.parse(localStorage.getItem('user')!)) {
+      this.rating = 0;
+    }
+    else {
+      const userData = JSON.parse(localStorage.getItem('user')!);
+      const userInfo = this.trip.ratingsUsersID.filter((rating) => rating.uid === userData.uid);
+
+      userInfo.length > 0 ? this.rating = userInfo[0].rating : this.rating = 0;
+    }
   }
 
   onStarEnter(starId: number) {
@@ -30,8 +38,21 @@ export class RatingComponent implements OnInit {
   }
 
   onStarClicked(starId: number) {
-    this.rating = starId;
-    const editedTrip = { ...this.trip, images: this.trip.images, rating: this.trip.rating + this.rating, numberOfRatings: this.trip.numberOfRatings + 1 };
+    const userUID = JSON.parse(localStorage.getItem('user')!).uid;
+    let editedTrip;
+
+    if (this.rating === 0) {
+      this.rating = starId;
+      editedTrip = {
+        ...this.trip, rating: this.trip.rating + this.rating, numberOfRatings: this.trip.numberOfRatings + 1,
+        ratingsUsersID: [...this.trip.ratingsUsersID, { uid: userUID, rating: this.rating }]
+      };
+    }
+    else {
+      const difference = starId - this.rating;
+      this.rating = starId;
+      editedTrip = { ...this.trip, rating: this.trip.rating + difference };
+    }
 
     this.tripsService.updateTrip(editedTrip.id, editedTrip)
       .then(() => {

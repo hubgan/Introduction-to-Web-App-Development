@@ -60,6 +60,7 @@ export class CreateTripComponent implements OnInit {
     trip.numberOfRatings = 0;
     trip.availablePlaces = this.tripForm.value.availablePlaces || 0;
     trip.description = this.tripForm.value.description || "";
+    trip.ratingsUsersID = [];
   }
 
   selectFile(event: any) {

@@ -21,10 +21,8 @@ export class AuthService {
 
     this.afAuth.authState.subscribe((user) => {
       if (user) {
-        console.log(user.uid)
         this.afs.doc(`users/${user.uid}`).get().subscribe((data) => {
           this.userData = data.data();
-          console.log(this.userData)
           localStorage.setItem('user', JSON.stringify(this.userData));
           JSON.parse(localStorage.getItem('user')!);
           this.isLoading = false;
@@ -33,6 +31,7 @@ export class AuthService {
         localStorage.setItem('user', 'null');
         JSON.parse(localStorage.getItem('user')!);
         this.isLoading = false;
+        this.userData = null;
       }
     });
   }
@@ -41,7 +40,6 @@ export class AuthService {
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
-        this.setUserData(result.user);
         this.afAuth.authState.subscribe((user) => {
           if (user) {
             this.router.navigate(['trips']);
@@ -52,7 +50,7 @@ export class AuthService {
         window.alert(error.message);
       });
   }
-  // Sign up with email/password
+
   signUp(email: string, password: string, displayName: string) {
     return this.afAuth
       .createUserWithEmailAndPassword(email, password)

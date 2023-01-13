@@ -132,6 +132,7 @@ export class TripDetailsComponent implements OnInit {
     this.trip.numberOfRatings = trip.numberOfRatings;
     this.trip.description = trip.description;
     this.trip.images = trip.images;
+    this.trip.ratingsUsersID = trip.ratingsUsersID;
 
     if (this.imageObjects.length === 0) {
       this.initSlider(trip);

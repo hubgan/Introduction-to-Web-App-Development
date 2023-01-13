@@ -5,7 +5,9 @@
     <li routerLink="/trips">
       <a>Trips</a>
     </li>
-    <li *ngIf="authService.userData" routerLink="/create">
+    <li
+      *ngIf="authService.userData && (authService.userData.role === 'admin' || authService.userData.role === 'manager')"
+      routerLink="/create">
       <a>Add Trip</a>
     </li>
     <li *ngIf="authService.userData" routerLink="/purchase-history">
@@ -17,8 +19,8 @@
     <li *ngIf="!authService.userData" routerLink="/signup">
       <a>Signup</a>
     </li>
-    <li *ngIf="authService.userData">
-      <p (click)="signOut()">Signout</p>
+    <li (click)="signOut()" *ngIf=" authService.userData">
+      <p>Signout</p>
     </li>
   </ul>
   <div class="notification">
