@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { TripComment } from 'src/app/models/trip-comment';
@@ -7,17 +7,20 @@ import { MoneyTypeService } from 'src/app/services/money-type.service';
 import { TripsService } from 'src/app/services/trips.service';
 import { CommentsService } from 'src/app/services/comments.service';
 import { CartService } from 'src/app/services/cart.service';
+import { PurchaseHistoryService } from 'src/app/services/purchase-history.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-trip-details',
   templateUrl: './trip-details.component.html',
   styleUrls: ['./trip-details.component.css']
 })
-export class TripDetailsComponent implements OnInit {
+export class TripDetailsComponent implements OnInit, OnDestroy {
 
   error: boolean = false;
   isLoadingTrip: boolean = false;
   isLoadingComments: boolean = false;
+  isLoadingPermissions: boolean = false;
   errorMessage: string;
 
   tripId: string;
@@ -28,15 +31,21 @@ export class TripDetailsComponent implements OnInit {
   form: FormGroup;
   comments: Array<TripComment> = [];
 
+  commentsPermission: boolean = false;
+  ratingPermission: boolean = false;
+
   moneyType: string = this.moneyTypeService.getMoneyType();
 
   reservationAmount: number;
+
+  subscriptions: Array<Subscription> = [];
 
   constructor(private route: ActivatedRoute,
     private tripsService: TripsService,
     private moneyTypeService: MoneyTypeService,
     private commentsService: CommentsService,
     private cartService: CartService,
+    private purchaseHistoryService: PurchaseHistoryService,
     private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -45,16 +54,46 @@ export class TripDetailsComponent implements OnInit {
     this.errorMessage = '';
     this.isLoadingTrip = true;
     this.isLoadingComments = true;
+    this.isLoadingPermissions = true;
 
     this.tripId = this.route.snapshot.params['id'];
     this.setReservationAmount();
 
     this.getTrip();
     this.getComments();
+    this.checkPermissionsForCommentsAndRating();
 
     this.moneyTypeService.moneyType.subscribe((moneyType) => {
       this.moneyType = moneyType;
     })
+  }
+
+  checkPermissionsForCommentsAndRating() {
+    const userUID = JSON.parse(localStorage.getItem('user')!).uid;
+    const userRole = JSON.parse(localStorage.getItem('user')!).role;
+
+    if (userRole === 'manager' || userRole === 'admin') {
+      this.ratingPermission = false;
+      this.commentsPermission = true;
+      this.isLoadingPermissions = false;
+      return;
+    }
+
+    const subscribe = this.purchaseHistoryService.getPurchases(userUID).valueChanges().subscribe((data) => {
+      if (data.some((purchase) => purchase.tripID === this.tripId)) {
+        this.ratingPermission = true;
+        this.commentsPermission = true;
+      }
+
+      this.isLoadingPermissions = false;
+      this.error = false;
+    }, (error) => {
+      this.error = true;
+      this.errorMessage = error.message;
+      this.isLoadingPermissions = false;
+    })
+
+    this.subscriptions.push(subscribe);
   }
 
   setReservationAmount() {
@@ -108,7 +147,7 @@ export class TripDetailsComponent implements OnInit {
   }
 
   getTrip() {
-    this.tripsService.getTrip(this.tripId).valueChanges().subscribe((data) => {
+    const subscribe = this.tripsService.getTrip(this.tripId).valueChanges().subscribe((data) => {
       const trip = { ...data, id: this.tripId };
       this.initTrip(trip);
       this.error = false;
@@ -118,6 +157,8 @@ export class TripDetailsComponent implements OnInit {
       this.isLoadingTrip = false;
       this.errorMessage = error.message;
     });
+
+    this.subscriptions.push(subscribe);
   }
 
   initTrip(trip: any) {
@@ -156,7 +197,7 @@ export class TripDetailsComponent implements OnInit {
   }
 
   getComments() {
-    this.commentsService.getComments(this.tripId).valueChanges().subscribe((data) => {
+    const subsribe = this.commentsService.getComments(this.tripId).valueChanges().subscribe((data) => {
       if (data) {
         this.comments = data.comments;
       }
@@ -168,6 +209,8 @@ export class TripDetailsComponent implements OnInit {
       this.errorMessage = error.message;
       this.isLoadingComments = false;
     })
+
+    this.subscriptions.push(subsribe);
   }
 
   removeReservation() {
@@ -197,5 +240,11 @@ export class TripDetailsComponent implements OnInit {
       startDate: this.trip.startDate,
       endDate: this.trip.endDate
     }
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach((sub) => {
+      sub.unsubscribe();
+    })
   }
 }

@@ -2,6 +2,7 @@ import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { User } from '../models/user';
 
 @Injectable({
@@ -10,6 +11,7 @@ import { User } from '../models/user';
 export class AuthService {
   userData: any;
   isLoading: boolean = false;
+  subscritpion: Subscription;
 
   constructor(
     public afs: AngularFirestore,
@@ -17,21 +19,20 @@ export class AuthService {
     public router: Router,
     public ngZone: NgZone
   ) {
-    this.isLoading = true;
-
     this.afAuth.authState.subscribe((user) => {
+      this.isLoading = true;
+
       if (user) {
-        this.afs.doc(`users/${user.uid}`).get().subscribe((data) => {
-          this.userData = data.data();
+        console.log(user.uid)
+        this.subscritpion = this.afs.doc(`users/${user.uid}`).valueChanges().subscribe((data) => {
+          this.userData = data;
           localStorage.setItem('user', JSON.stringify(this.userData));
-          JSON.parse(localStorage.getItem('user')!);
           this.isLoading = false;
         });
       } else {
-        localStorage.setItem('user', 'null');
-        JSON.parse(localStorage.getItem('user')!);
-        this.isLoading = false;
         this.userData = null;
+        localStorage.setItem('user', 'null');
+        this.isLoading = false;
       }
     });
   }
@@ -39,7 +40,7 @@ export class AuthService {
   signIn(email: string, password: string) {
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
-      .then((result) => {
+      .then(() => {
         this.afAuth.authState.subscribe((user) => {
           if (user) {
             this.router.navigate(['trips']);
@@ -56,7 +57,8 @@ export class AuthService {
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
         result.user?.updateProfile({ displayName: displayName }).then(() => {
-          this.setUserData(result.user)
+          this.setUserData(result.user);
+          this.router.navigate(['/']);
         });
       })
       .catch((error) => {
@@ -82,15 +84,21 @@ export class AuthService {
       isBanned: false
     };
 
+    localStorage.setItem('user', JSON.stringify(userData));
+
     return userRef.set(userData, {
       merge: true,
     });
   }
 
   signOut() {
+    this.subscritpion.unsubscribe();
+    this.isLoading = true;
+
     return this.afAuth.signOut().then(() => {
-      localStorage.removeItem('user');
+      localStorage.setItem('user', 'null');
       this.router.navigate(['signup']);
+      this.isLoading = false;
     });
   }
 

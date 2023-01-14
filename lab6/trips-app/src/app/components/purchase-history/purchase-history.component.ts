@@ -80,7 +80,7 @@ export class PurchaseHistoryComponent implements OnInit, OnDestroy {
       status = 'Finished';
     }
     else {
-      status = 'active';
+      status = 'Active';
     }
 
     return status;

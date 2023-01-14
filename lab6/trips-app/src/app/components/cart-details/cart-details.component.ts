@@ -55,6 +55,7 @@ export class CartDetailsComponent implements OnInit {
         .then(() => {
           const purchasesToAdd = this.cartItems.map((item) => {
             return {
+              tripID: item.id,
               country: item.country,
               name: item.name,
               quantity: item.quantity,

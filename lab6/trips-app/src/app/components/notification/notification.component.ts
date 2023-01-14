@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PurchaseHistoryService } from 'src/app/services/purchase-history.service';
 import { map, Subscription } from 'rxjs';
 import { PurchaseHistoryItem } from 'src/app/models/purchase-history-item';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-notification',
@@ -15,22 +16,27 @@ export class NotificationComponent implements OnInit, OnDestroy {
   notifications: Array<PurchaseHistoryItem> = [];
   showNotification: boolean = false;
 
-  constructor(private purchaseHistoryService: PurchaseHistoryService) { }
+  constructor(private purchaseHistoryService: PurchaseHistoryService, private authService: AuthService) { }
 
   ngOnInit(): void {
-    const userUID = JSON.parse(localStorage.getItem('user')!).uid;
-    this.subscription = this.purchaseHistoryService.getPurchases(userUID).valueChanges().subscribe((data) => {
-      const purchases = data.map((purchase) => {
-        let status = this.createPurchaseStatus(purchase.startDate, purchase.endDate);
+    if (this.authService.userData && JSON.parse(localStorage.getItem('user')!) != null) {
+      const userUID = JSON.parse(localStorage.getItem('user')!).uid;
+      this.subscription = this.purchaseHistoryService.getPurchases(userUID).valueChanges().subscribe((data) => {
+        const purchases = data.map((purchase) => {
+          let status = this.createPurchaseStatus(purchase.startDate, purchase.endDate);
 
-        return { ...purchase, status: status };
-      });
+          return { ...purchase, status: status };
+        });
 
-      this.notifications = purchases.filter((purchase) => purchase.status === 'Waiting to start');
-      this.notifications.sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime());
-    }, (error) => {
-      console.log(error);
-    })
+        this.notifications = purchases.filter((purchase) => purchase.status === 'Waiting to start');
+        this.notifications.sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime());
+      }, (error) => {
+        console.log(error);
+      })
+    }
+    else {
+      this.notifications = [];
+    }
   }
 
   createPurchaseStatus(startDate: string, endDate: string) {
@@ -60,6 +66,8 @@ export class NotificationComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }

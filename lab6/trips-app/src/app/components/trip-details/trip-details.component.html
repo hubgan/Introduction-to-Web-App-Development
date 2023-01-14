@@ -1,4 +1,4 @@
-<div *ngIf="!error && !isLoadingTrip && !isLoadingComments" class="wrapper">
+<div *ngIf="!error && !isLoadingTrip && !isLoadingComments && !isLoadingPermissions" class="wrapper">
   <div class="container">
     <div class="trip-info">
       <h2>{{trip.name}}</h2>
@@ -15,7 +15,7 @@
         <h3>Total Cost</h3>
         <p>{{trip.unitPrice | transformMoney: moneyType}}</p>
       </div>
-      <div class="trip-your-rating">
+      <div *ngIf="ratingPermission" class="trip-your-rating">
         <p>Leave your feedback</p>
         <app-rating [trip]="trip" [isUserOpinion]="true"></app-rating>
       </div>
@@ -41,7 +41,7 @@
         [lazyLoading]="true" [imageSize]="{width: '100%', height: '400px'}"></ng-image-slider>
     </div>
   </div>
-  <form [formGroup]="form" (submit)="onSubmit()" class="form">
+  <form *ngIf="commentsPermission" [formGroup]="form" (submit)="onSubmit()" class="form">
     <p>Write your comment</p>
     <label for="nickname">Nick</label>
     <input formControlName="nickname" id="nickname" type="text" required>

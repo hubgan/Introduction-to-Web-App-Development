@@ -8,5 +8,6 @@ export interface PurchaseHistoryItem {
     endDate: string,
     purchaseDate: string,
     status?: string,
-    userUID: string
+    userUID: string,
+    tripID: string
 }
