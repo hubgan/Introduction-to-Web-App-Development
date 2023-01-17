@@ -102,10 +102,10 @@ export class CreateTripComponent implements OnInit {
               const updatedTrip = { ...trip, images };
 
               this.tripsService.updateTrip(id, updatedTrip).then(() => {
-                console.log("Updated succesfully");
+                console.log("Added succesfully");
                 this.error = false;
                 this.isLoading = false;
-                this.router.navigate(['/trips']);
+                this.tripForm.reset();
               })
             });
         });

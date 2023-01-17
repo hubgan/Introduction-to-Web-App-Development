@@ -60,7 +60,7 @@ export class TripListComponent implements OnInit, OnDestroy {
     }, (error) => {
       this.error = true;
       this.errorMessage = error.message;
-      this.isLoading = true;
+      this.isLoading = false;
     });
   }
 

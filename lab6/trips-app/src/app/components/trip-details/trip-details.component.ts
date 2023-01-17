@@ -71,10 +71,19 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
   checkPermissionsForCommentsAndRating() {
     const userUID = JSON.parse(localStorage.getItem('user')!).uid;
     const userRole = JSON.parse(localStorage.getItem('user')!).role;
+    const isBanned = JSON.parse(localStorage.getItem('user')!).isBanned;
+    console.log(isBanned)
+
+    if (isBanned) {
+      this.ratingPermission = false;
+      this.commentsPermission = false;
+      this.isLoadingPermissions = false;
+      return;
+    }
 
     if (userRole === 'manager' || userRole === 'admin') {
       this.ratingPermission = false;
-      this.commentsPermission = true;
+      this.commentsPermission = userRole === 'manager' ? false : true;
       this.isLoadingPermissions = false;
       return;
     }

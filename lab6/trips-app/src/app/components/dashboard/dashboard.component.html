@@ -1,1 +1,66 @@
-<p>dashboard works!</p>
+<div class="container">
+  <nav>
+    <ul>
+      <li (click)="changeVisibility('trips')">Trips list</li>
+      <li *ngIf="authService.userData && authService.userData.role === 'admin'" (click)=" changeVisibility('users')">
+        Users
+        list</li>
+      <li (click)="changeVisibility('create')">Add New Trip</li>
+    </ul>
+  </nav>
+  <div *ngIf="displayScreen === 'trips'" class="trips-container">
+    <div class="trip-row">
+      <div class="id">ID</div>
+      <div class="name">Name</div>
+      <div class="delete-trip">Delete</div>
+      <div class="edit-trip">Edit</div>
+    </div>
+    <ng-container *ngFor="let trip of trips">
+      <div class="trip-row">
+        <div class="id">{{trip.id}}</div>
+        <div class="name">{{trip.name}}</div>
+        <div class="delete-trip">
+          <button (click)="deleteTrip(trip.id)">Delete</button>
+        </div>
+        <div class="edit-trip">
+          <button (click)="editTrip(trip.id)">Edit</button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div *ngIf="displayScreen === 'users' && authService.userData && authService.userData.role === 'admin'"
+    class="users-container">
+    <div class="user-row">
+      <div class="uid">UID</div>
+      <div class="display-name">Display name</div>
+      <div class="email">Email</div>
+      <div class="role">Role</div>
+      <div class="ban-status">Ban status</div>
+      <div class="ban-user">Ban user</div>
+      <div class="change-roles">Change user role</div>
+    </div>
+    <ng-container *ngFor="let user of users">
+      <div class="user-row">
+        <div class="uid">{{user.uid}}</div>
+        <div class="display-name">{{user.displayName}}</div>
+        <div class="email">{{user.email}}</div>
+        <div class="role">{{user.role}}</div>
+        <div class="ban-status">{{user.isBanned}}</div>
+        <div class="button-container ban-user">
+          <button (click)="banUser(user.uid, user.isBanned)">{{!user.isBanned ? 'Ban user' : 'Unban user'}}</button>
+        </div>
+        <div class="button-container change-roles">
+          <select (change)="changeUserRole(user.uid, $event.target)" name="roles">
+            <option disabled selected value="">None</option>
+            <option value="client">Client</option>
+            <option value="manager">Manager</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div *ngIf="displayScreen === 'create'" class="new-trip">
+    <app-create-trip></app-create-trip>
+  </div>
+</div>

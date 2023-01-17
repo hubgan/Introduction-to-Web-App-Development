@@ -7,8 +7,8 @@
     </li>
     <li
       *ngIf="authService.userData && (authService.userData.role === 'admin' || authService.userData.role === 'manager')"
-      routerLink="/create">
-      <a>Add Trip</a>
+      routerLink="/dashboard">
+      <a>Dashboard</a>
     </li>
     <li *ngIf="authService.userData" routerLink="/purchase-history">
       <a>Purchase History</a>

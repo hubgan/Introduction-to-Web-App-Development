@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { AuthService } from '../services/auth.service';
@@ -8,7 +8,7 @@ import { AuthService } from '../services/auth.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private authSerive: AuthService) { };
+  constructor(private authSerive: AuthService, private router: Router) { };
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -41,6 +41,8 @@ export class AuthGuard implements CanActivate {
       case 'signup':
       case 'create':
       case 'edit':
+      case 'dashboard':
+        this.router.navigate(['/trips']);
         return false;
       default:
         return true;
@@ -51,6 +53,7 @@ export class AuthGuard implements CanActivate {
     switch (routeUrl) {
       case 'login':
       case 'signup':
+        this.router.navigate(['dashboard']);
         return false;
       default:
         return true;
@@ -61,6 +64,7 @@ export class AuthGuard implements CanActivate {
     switch (routeUrl) {
       case 'login':
       case 'signup':
+        this.router.navigate(['dashboard']);
         return false;
       default:
         return true;
@@ -74,6 +78,7 @@ export class AuthGuard implements CanActivate {
       case 'signup':
         return true;
       default:
+        this.router.navigate(['login']);
         return false;
     }
   }

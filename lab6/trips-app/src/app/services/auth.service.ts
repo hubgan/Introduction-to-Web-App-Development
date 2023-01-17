@@ -1,6 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { User } from '../models/user';
@@ -12,6 +12,7 @@ export class AuthService {
   userData: any;
   isLoading: boolean = false;
   subscritpion: Subscription;
+  usersRef: AngularFirestoreCollection<User> = this.afs.collection('users');
 
   constructor(
     public afs: AngularFirestore,
@@ -23,7 +24,6 @@ export class AuthService {
       this.isLoading = true;
 
       if (user) {
-        console.log(user.uid)
         this.subscritpion = this.afs.doc(`users/${user.uid}`).valueChanges().subscribe((data) => {
           this.userData = data;
           localStorage.setItem('user', JSON.stringify(this.userData));
@@ -102,4 +102,11 @@ export class AuthService {
     });
   }
 
+  getUsers() {
+    return this.usersRef;
+  }
+
+  updateUser(uid: string, data: any) {
+    return this.usersRef.doc(uid).update(data);
+  }
 }

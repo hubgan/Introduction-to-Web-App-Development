@@ -1,0 +1,56 @@
+.container {
+  max-width: 90%;
+  margin: 0 auto;
+  margin-top: 3rem;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  list-style: none;
+}
+
+nav ul li {
+  padding: 1rem 2rem;
+  border: 0.1rem solid black;
+  cursor: pointer;
+}
+
+.users-container {
+  margin-top: 1rem;
+}
+
+.user-row,
+.trip-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.4rem;
+  margin-top: 1rem;
+}
+
+.user-row div,
+.trip-row div {
+  font-size: 1.2rem;
+}
+
+.trip-row div {
+  flex: 1;
+}
+
+.uid {
+  flex: 2;
+}
+
+.email {
+  flex: 2;
+}
+
+.display-name,
+.role,
+.ban-status,
+.ban-user,
+.change-roles {
+  flex: 1;
+}

@@ -110,8 +110,7 @@ export class EditComponent implements OnInit {
       unitPrice: this.tripForm.value.unitPrice,
       availablePlaces: this.tripForm.value.availablePlaces,
       description: this.tripForm.value.description,
-      images: images,
-      ratingsUsersID: this.tripForm.value.ratingsUsersID
+      images: images
     }
   }
 
@@ -159,7 +158,7 @@ export class EditComponent implements OnInit {
       console.log("Updated succesfully");
       this.error = false;
       this.isUpdateLoading = false;
-      this.router.navigate(['/trips']);
+      this.router.navigate(['/dashboard']);
     }).catch((error) => {
       this.error = true;
       this.isUpdateLoading = false;
