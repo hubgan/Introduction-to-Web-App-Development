@@ -12,10 +12,10 @@
       <input id="password" type="password" formControlName="password">
     </div>
 
-    <button>Login</button>
+    <button [disabled]="!loginForm.valid">Login</button>
 
     <div class="need-account">
-      <p>Need an account? <a routerLink="/login" class="login">Sign up</a></p>
+      <p>Need an account? <a routerLink="/signup">Sign up</a></p>
     </div>
   </form>
 </div>

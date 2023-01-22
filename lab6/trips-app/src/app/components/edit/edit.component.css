@@ -4,53 +4,24 @@ form {
   gap: 1.5rem;
   width: 40%;
   min-width: 34rem;
-  margin: 4rem auto 0 auto;
+  margin: 4rem auto;
 }
 
-label {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
+.form-container {
+  width: 400px;
+  margin: 0px auto;
 }
 
-input {
-  background-color: transparent;
-  outline: none;
-  border: 0.1rem solid black;
-  padding: 1rem 2rem;
-  font-size: 1.4rem;
-}
-
-.files p {
-  padding: 0.5rem;
-  font-size: 1.4rem;
-}
-
-button {
-  align-self: center;
-  text-transform: uppercase;
-  font-size: 1.6rem;
-  padding: 1rem 3rem;
-  background-color: transparent;
-  outline: none;
-  border: 0.1rem solid #5dbb63;
-  cursor: pointer;
-  margin-bottom: 2rem;
-}
-
-button:hover {
-  background-color: #5dbb63;
-}
-
-button:disabled {
-  background-color: #eee;
-  border-color: #eee;
+.form-field {
+  display: block;
+  margin-top: 1rem;
 }
 
 .error {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   text-transform: uppercase;
   color: #da1414;
+  text-align: center;
 }
 
 .spinner {
@@ -60,6 +31,11 @@ button:disabled {
   padding: 1rem;
 }
 
-.h-100 {
-  min-height: calc(100vh - 6rem);
+button {
+  display: block;
+  margin: 1rem auto;
+}
+
+.files p {
+  padding: 0.5rem;
 }

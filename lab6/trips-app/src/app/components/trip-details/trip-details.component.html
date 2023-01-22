@@ -19,7 +19,7 @@
         <p>Leave your feedback</p>
         <app-rating [trip]="trip" [isUserOpinion]="true"></app-rating>
       </div>
-      <div class="trip-reservation">
+      <div *ngIf="authService.userData.role === 'client'" class="trip-reservation">
         <h3>Book now!</h3>
         <p *ngIf="trip.availablePlaces - reservationAmount <= 5 && trip.availablePlaces - reservationAmount > 0"
           class="low-amount">Pozostało
@@ -42,44 +42,55 @@
     </div>
   </div>
   <form *ngIf="commentsPermission" [formGroup]="form" (submit)="onSubmit()" class="form">
-    <p>Write your comment</p>
-    <label for="nickname">Nick</label>
-    <input formControlName="nickname" id="nickname" type="text" required>
-    <div class="danger" *ngIf="form.get('nickname')?.hasError('required')">
-      <p>This field is required</p>
-    </div>
+    <h2>Write your comment</h2>
 
-    <label for="tripname">Trip name</label>
-    <input formControlName="tripname" id="tripname" type="text" required>
-    <div class="danger" *ngIf="form.get('tripname')?.hasError('required')">
-      <p>This field is required</p>
-    </div>
+    <mat-form-field appearance="outline">
+      <mat-label>Nick</mat-label>
+      <input matInput formControlName="nickname" id="nickname" type="text" required>
+      <mat-error *ngIf="form.controls['nickname'].touched && form.controls['nickname'].invalid">
+        <span *ngIf="form.controls['nickname'].errors?.['required']">This field is mandatory.</span>
+      </mat-error>
+    </mat-form-field>
 
-    <textarea formControlName="comment" name="comment" class="comment" id="comment"
-      placeholder="Write your opinion here..." required></textarea>
-    <div class="danger" *ngIf="form.get('comment')?.hasError('required') || form.get('comment')?.hasError('minlength') ||
-      form.get('comment')?.hasError('maxlength')">
-      <p *ngIf="form.get('comment')?.hasError('required')">This field is required</p>
-      <p *ngIf="form.get('comment')?.hasError('minlength')">The minimum length for this field is 50 characters.</p>
-      <p *ngIf="form.get('comment')?.hasError('maxlength')">The maximum length for this field is 500 characters.</p>
-    </div>
+    <mat-form-field appearance="outline">
+      <mat-label>Trip name</mat-label>
+      <input matInput formControlName="tripname" id="tripname" type="text" required>
+      <mat-error *ngIf="form.controls['tripname'].touched && form.controls['tripname'].invalid">
+        <span *ngIf="form.controls['tripname'].errors?.['required']">This field is mandatory.</span>
+      </mat-error>
+    </mat-form-field>
 
-    <label for="date">Date</label>
-    <input formControlName="date" id="date" type="date">
-    <div class="submit">
-      <button [disabled]="!form.valid">Add comment</button>
-    </div>
+    <mat-form-field appearance="outline">
+      <mat-label>Comment</mat-label>
+      <textarea matInput formControlName="comment" name="comment" class="comment" id="comment"
+        placeholder="Write your opinion here..." required></textarea>
+      <mat-error *ngIf="form.controls['comment'].touched && form.controls['comment'].invalid">
+        <span *ngIf="form.controls['comment'].errors?.['required']">This field is mandatory.</span>
+        <span *ngIf="form.controls['comment'].errors?.['minlength']">Minimum number of words is 50.</span>
+        <span *ngIf="form.controls['comment'].errors?.['maxlength']">Maximum number of words is 500.</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Date of completion</mat-label>
+      <input matInput formControlName="date" id="date" type="date">
+    </mat-form-field>
+
+    <button [disabled]="!form.valid || error" mat-raised-button color="primary" type="submit">Add New Comment</button>
   </form>
   <section class="comment-section">
     <ng-container *ngFor="let comment of comments">
-      <div class="comment">
-        <h2>{{comment.nickname}}</h2>
-        <div class="comment-info">
-          <h3>{{comment.tripname}}</h3>
-          <p>{{comment.date || ''}}</p>
-        </div>
-        <p>{{comment.comment}}</p>
-      </div>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{comment.nickname}}</mat-card-title>
+          <mat-card-subtitle>{{comment.tripname}}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <p>{{comment.date || '' | date}}</p>
+          <p>{{comment.comment}}</p>
+        </mat-card-content>
+      </mat-card>
     </ng-container>
   </section>
 </div>

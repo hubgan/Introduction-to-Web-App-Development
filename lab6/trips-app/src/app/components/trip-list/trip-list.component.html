@@ -1,12 +1,21 @@
-<div class="flex-container">
+<div (window:resize)="onResize($event)" class="flex-container">
   <app-filters-list [trips]="trips" (filters)="filtersChange($event)"></app-filters-list>
   <div class="money-select">
-    <select [(ngModel)]="ngSelect" (ngModelChange)="updateMoneyType($event)" name="money" id="money">
-      <option value="PLN">PLN</option>
-      <option value="$">$</option>
-      <option value="€">€</option>
-    </select>
+    <mat-form-field appearance="outline">
+      <mat-select [(ngModel)]="ngSelect" (ngModelChange)="updateMoneyType($event)" name="money" id="money">
+        <mat-option value="PLN">PLN</mat-option>
+        <mat-option value="$">$</mat-option>
+        <mat-option value="€">€</mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
+  <!-- <mat-grid-list *ngIf="!isLoading && !error" [cols]="breakpoint" rowHeight="1:1" gutterSize="15px">
+    <ng-container *ngFor="let trip of trips | filter: filters; let i = index;">
+      <mat-grid-tile>
+        <app-trip-card (id)="removeTrip($event)" [trip]="trip"></app-trip-card>
+      </mat-grid-tile>
+    </ng-container>
+  </mat-grid-list> -->
   <div *ngIf="!isLoading && !error" class="trips-container">
     <ng-container *ngFor="let trip of trips | filter: filters; let i = index;">
       <app-trip-card (id)="removeTrip($event)" [trip]="trip">

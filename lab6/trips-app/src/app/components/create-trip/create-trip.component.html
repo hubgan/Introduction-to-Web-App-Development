@@ -1,51 +1,82 @@
 <form [formGroup]="tripForm" (ngSubmit)="onSubmit()">
-  <label for="country">
-    <span>Country:</span>
-    <input id="country" type="text" formControlName="country">
-  </label>
+  <div class="form-container">
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label>Country</mat-label>
+      <input matInput id="country" type="text" formControlName="country">
+      <mat-error *ngIf="tripForm.controls['country'].touched && tripForm.controls['country'].invalid">
+        <span *ngIf="tripForm.controls['country'].errors?.['required']">This field is mandatory.</span>
+      </mat-error>
+    </mat-form-field>
 
-  <label for="name">
-    <span>Name:</span>
-    <input id="name" type="text" formControlName="name">
-  </label>
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput id="name" type="text" formControlName="name">
+      <mat-error *ngIf="tripForm.controls['name'].touched && tripForm.controls['name'].invalid">
+        <span *ngIf="tripForm.controls['name'].errors?.['required']">This field is mandatory.</span>
+      </mat-error>
+    </mat-form-field>
 
-  <label for="start-date">
-    <span>Start date:</span>
-    <input id="start-date" type="date" formControlName="startDate">
-  </label>
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label>Start Date</mat-label>
+      <input matInput id="start-date" type="date" formControlName="startDate">
+      <mat-error *ngIf="tripForm.controls['startDate'].touched && tripForm.controls['startDate'].invalid">
+        <span *ngIf="tripForm.controls['startDate'].errors?.['required']">This field is mandatory.</span>
+      </mat-error>
+    </mat-form-field>
 
-  <label for="end-date">
-    <span>End date:</span>
-    <input id="end-date" type="date" formControlName="endDate">
-    <p *ngIf="tripForm.errors?.['wrongDates']" class="error">Date zakończenia musi być późniejsza niż rozpoczęcia!</p>
-  </label>
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label>End date</mat-label>
+      <input matInput id="end-date" type="date" formControlName="endDate">
+      <mat-error *ngIf="tripForm.controls['endDate'].touched && tripForm.controls['endDate'].invalid ">
+        <span *ngIf="tripForm.controls['endDate'].errors?.['required']">This field is mandatory.</span>
+      </mat-error>
+    </mat-form-field>
 
-  <label for="unit-price">
-    <span>Unit price (PLN):</span>
-    <input id="unit-price" type="number" formControlName="unitPrice">
-  </label>
+    <p class="error" *ngIf="tripForm.errors?.['wrongDates']" class="error">Start date must be before end date.</p>
 
-  <label for="available-places">
-    <span>Available places:</span>
-    <input id="available-places" type="number" formControlName="availablePlaces">
-  </label>
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label>Unit price</mat-label>
+      <input matInput id="unit-price" type="number" formControlName="unitPrice">
+      <mat-error *ngIf="tripForm.controls['unitPrice'].touched && tripForm.controls['unitPrice'].invalid">
+        <span *ngIf="tripForm.controls['unitPrice'].errors?.['required']">This field is mandatory.</span>
+        <span *ngIf="tripForm.controls['unitPrice'].errors?.['min']">Min value for unit price is 0.</span>
+      </mat-error>
+    </mat-form-field>
 
-  <label for="description">
-    <span>Description</span>
-    <textarea id="description" formControlName="description"></textarea>
-  </label>
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label>Available places</mat-label>
+      <input matInput id="available-places" type="number" formControlName="availablePlaces">
+      <mat-error *ngIf=" tripForm.controls['availablePlaces'].touched && tripForm.controls['availablePlaces'].invalid">
+        <span *ngIf="tripForm.controls['availablePlaces'].errors?.['required']">This field is mandatory.</span>
+        <span *ngIf="tripForm.controls['availablePlaces'].errors?.['min']">Min value for available places is 0.</span>
+      </mat-error>
+    </mat-form-field>
 
-  <label for="files">
-    <span>Images:</span>
-    <input id="files" type="file" formControlName="images" multiple (change)="selectFile($event)">
-  </label>
-  <div class="files">
-    <ng-container *ngFor="let file of files">
-      <p>{{file.name}}</p>
-    </ng-container>
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea matInput id="description" formControlName="description"></textarea>
+      <mat-error *ngIf=" tripForm.controls['description'].touched && tripForm.controls['description'].invalid">
+        <span *ngIf="tripForm.controls['description'].errors?.['required']">This field is mandatory.</span>
+        <span *ngIf="tripForm.controls['description'].errors?.['minlength']">Minimum number of words is 30.</span>
+      </mat-error>
+    </mat-form-field>
+
+    <div class="file-input">
+      <input style="display: none" id="files" type="file" #hiddenFileInput formControlName="images" multiple
+        (change)="selectFile($event)">
+      <button type="button" mat-raised-button color="primary" (click)="hiddenFileInput.click()">
+        <mat-icon> attach_file</mat-icon>
+        <span>Add images</span>
+      </button>`
+      <div class="files">
+        <ng-container *ngFor="let file of files">
+          <p>{{file.name}}</p>
+        </ng-container>
+      </div>
+    </div>
+
+    <button [disabled]="!tripForm.valid || error" mat-raised-button color="primary" type="submit">Add New Trip</button>
   </div>
-
-  <button type="submit" [disabled]="!tripForm.valid || error">Add New Trip</button>
 
   <div class="spinner" *ngIf="isLoading && !error">
     <app-loading-spinner></app-loading-spinner>

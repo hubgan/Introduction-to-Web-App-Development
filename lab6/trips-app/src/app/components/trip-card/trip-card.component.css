@@ -1,27 +1,40 @@
-.trip {
-  display: flex;
-  flex-direction: column;
+mat-card {
   width: 34rem;
   height: 100%;
-  gap: 1rem;
   padding: 2rem;
-  border-radius: 0.3rem;
-  -webkit-box-shadow: 0px 0px 24px 0px rgba(66, 68, 90, 1);
-  -moz-box-shadow: 0px 0px 24px 0px rgba(66, 68, 90, 1);
-  box-shadow: 0px 0px 24px 0px rgba(66, 68, 90, 1);
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-.trip.max {
+.max {
   -webkit-box-shadow: 0px 0px 24px 0px rgba(202, 46, 46, 1);
   -moz-box-shadow: 0px 0px 24px 0px rgba(202, 46, 46, 1);
   box-shadow: 0px 0px 24px 0px rgba(202, 46, 46, 1);
 }
 
-.trip.min {
+.min {
   -webkit-box-shadow: 0px 0px 24px 0px rgba(55, 190, 42, 1);
   -moz-box-shadow: 0px 0px 24px 0px rgba(55, 190, 42, 1);
   box-shadow: 0px 0px 24px 0px rgba(55, 190, 42, 1);
+}
+
+span {
+  word-wrap: break-word;
+}
+
+mat-list-item {
+  height: auto !important;
+  min-height: 48px !important;
+}
+
+mat-card-content {
+  margin-bottom: 3rem !important;
+}
+
+mat-card-actions {
+  margin-top: auto !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 2rem !important;
 }
 
 picture,
@@ -30,58 +43,34 @@ img {
   max-width: 25rem;
   height: 25rem;
   display: block;
+  margin: 0 auto 2rem auto;
   border-radius: 50%;
 }
 
-h2 {
-  font-size: 1.8rem;
+.gray-color {
+  background-color: #dcdcdc;
 }
 
-p {
-  font-size: 1.4rem;
-}
-
-.info-country {
-  margin-top: 2rem;
-}
-
-.info-date {
-  margin-top: 0.5rem;
-}
-
-.info-price {
-  margin: 0.5rem 0;
-}
-
-.info-description {
-  margin-bottom: 0.5rem;
-}
-
-.trip-reservation {
-  margin-top: auto;
-  padding-top: 1.5rem;
+.reservations {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  border-top: 0.1rem solid #444;
 }
 
-.reservation-button {
+.reservations p {
+  font-size: 1.8rem;
+}
+
+.admin-buttons {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  background-color: transparent;
-  border: 0.2rem solid #444;
-  cursor: pointer;
+  justify-content: space-around;
 }
 
-.reservation-button,
-.reservation-number {
-  font-size: 2rem;
+.show-details-btn {
+  display: block;
+  margin: 2rem auto !important;
 }
 
 .low-amount {
@@ -91,12 +80,6 @@ p {
   text-transform: uppercase;
 }
 
-.edit-buttons {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 .login-to-see {
   font-size: 1.4rem;
   text-align: center;
@@ -104,21 +87,11 @@ p {
   margin-top: auto;
 }
 
-.delete-trip,
-.edit-trip,
-.trip-details {
-  align-self: center;
-  background-color: #d0312d;
-  margin-top: 0.5rem;
-  padding: 1rem 3rem;
-  border: none;
-  border-radius: 0.5rem;
-  color: #fff;
-  cursor: pointer;
+.item {
+  margin-left: 8px;
 }
 
-.delete-trip:hover,
-.edit-trip:hover,
-.trip-details:hover {
-  background-color: #a0000a;
+.stars {
+  pointer-events: none;
+  margin-top: 5px;
 }

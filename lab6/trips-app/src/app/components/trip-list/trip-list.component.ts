@@ -31,11 +31,22 @@ export class TripListComponent implements OnInit, OnDestroy {
 
   ngSelect: string;
 
+  breakpoint: number;
+
   constructor(private tripsService: TripsService, private moneyTypeService: MoneyTypeService) { }
 
   ngOnInit(): void {
+    this.setBreakPoint(window.innerWidth);
     this.ngSelect = this.moneyTypeService.getMoneyType();
     this.getTrips();
+  }
+
+  setBreakPoint(width: number) {
+    this.breakpoint = Math.floor(width / 460);
+  }
+
+  onResize(event: any) {
+    this.setBreakPoint(event.target.innerWidth);
   }
 
   ngOnDestroy(): void {
@@ -101,6 +112,6 @@ export class TripListComponent implements OnInit, OnDestroy {
 
   updateMoneyType(target: string) {
     this.moneyTypeService.setMoneyType(target);
-    this.getTrips();
+    this.setMinMaxForFilters();
   }
 }

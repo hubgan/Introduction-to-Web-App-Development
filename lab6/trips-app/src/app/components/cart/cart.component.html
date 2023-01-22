@@ -1,9 +1,41 @@
 <div class="cart">
-  <div (click)="switchCartDetailsVisibility()" class="cart-image">
-    <img src="./../../../assets/cart.svg" alt="cart-icon" />
-    <div class="badge">{{cartItems.length}}</div>
+  <div (click)="switchCartDetailsVisibility()" class="cart-icon">
+    <mat-icon matBadgeColor="warn" matBadgeSize="small" matBadge="{{cartItems.length}}" class="icon">shopping_cart
+    </mat-icon>
   </div>
-  <div *ngIf="showCartDetails" class="cart-details">
+
+  <mat-card *ngIf="showCartDetails">
+    <mat-card-content>
+      <div class="item">
+        <p>Name</p>
+        <p>Quantity</p>
+      </div>
+
+      <div class="line"></div>
+
+      <ng-container *ngFor="let cartItem of cartItems">
+        <div class="item">
+          <p>{{cartItem.name}}</p>
+          <p>{{cartItem.quantity}}</p>
+        </div>
+      </ng-container>
+
+      <div class="line"></div>
+
+      <div class="item">
+        <p>Total Quantity</p>
+        <p>{{totalQuantity}}</p>
+      </div>
+      <div class="item">
+        <p>Total Price</p>
+        <p>{{totalPrice | transformMoney: moneyType}}</p>
+      </div>
+    </mat-card-content>
+    <mat-card-actions *ngIf="cartItems.length > 0">
+      <button class="green-color" mat-button routerLink="/cart-details" (click)="onClick()">Go to cart details</button>
+    </mat-card-actions>
+  </mat-card>
+  <!-- <div *ngIf="showCartDetails" class="cart-details">
     <div class="item">
       <p>Name</p>
       <p>Quantity</p>
@@ -23,5 +55,5 @@
       <p>{{totalPrice | transformMoney: moneyType}}</p>
     </div>
     <button routerLink="/cart-details" (click)="onClick()">Go to cart details</button>
-  </div>
+  </div> -->
 </div>

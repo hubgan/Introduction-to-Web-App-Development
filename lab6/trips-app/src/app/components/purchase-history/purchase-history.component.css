@@ -1,65 +1,53 @@
 .trips-container {
-    min-width: 36rem;
-    padding: 1rem;
-    max-width: 90%;
-    margin: 8rem auto;
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 34rem);
-    grid-template-rows: auto;
-    justify-content: center;
-    gap: 10rem;
+  min-width: 36rem;
+  padding: 1rem;
+  max-width: 90%;
+  margin: 8rem auto;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 34rem);
+  grid-template-rows: auto;
+  justify-content: center;
+  gap: 10rem;
 }
 
 h1 {
-    font-size: 1.8rem;
+  font-size: 1.8rem;
 }
 
 h2 {
-    font-size: 1.6rem;
+  font-size: 1.6rem;
 }
 
 p {
-    font-size: 1.4rem;
+  font-size: 1.4rem;
+}
+
+span {
+  margin-left: 0.6rem;
 }
 
 .filter {
-    width: 40%;
-    margin-left: 6%;
-    margin-top: 4rem;
+  width: 40%;
+  margin-left: 6%;
+  margin-top: 4rem;
 }
 
 ::ng-deep .multiselect-dropdown .dropdown-btn {
-    padding: 1.5rem 4rem !important;
+  padding: 1.5rem 4rem !important;
 }
 
 ::ng-deep .multiselect-dropdown .dropdown-list ul li {
-    padding: 1.5rem !important;
+  padding: 1.5rem !important;
 }
 
-::ng-deep .multiselect-dropdown .dropdown-btn > span > span {
-    top: 10% !important;
-}
-
-.purchase-trip {
-    overflow: hidden;
-    padding: 2rem;
-    border-radius: 0.6rem;
-    -webkit-box-shadow: 0px 0px 9px 0px rgba(66, 68, 90, 1);
-    -moz-box-shadow: 0px 0px 9px 0px rgba(66, 68, 90, 1);
-    box-shadow: 0px 0px 9px 0px rgba(66, 68, 90, 1);
-}
-
-.purchase-info {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    margin-top: 1rem;
+::ng-deep .multiselect-dropdown .dropdown-btn>span>span {
+  top: 10% !important;
 }
 
 .loading-spinner {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

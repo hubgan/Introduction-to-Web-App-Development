@@ -1,106 +1,104 @@
-nav {
-  position: sticky;
+mat-toolbar {
+  position: fixed;
   top: 0;
+  z-index: 2;
+}
+
+.nav-space {
   width: 100%;
-  height: 6rem;
-  background-color: #007bff;
-  display: flex;
-  align-items: center;
-  padding: 2rem;
-  gap: 1rem;
-  z-index: 1;
+  height: 64px;
 }
 
-nav ul {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  list-style: none;
-}
-
-nav li {
-  padding: 0.8rem 1.5rem;
-  font-size: 1.2rem;
-  border: 0.1rem solid #fff;
-  border-radius: 0.4rem;
-  cursor: pointer;
-  color: #fff;
-}
-
-nav li.cart {
-  margin-left: 4rem;
-  margin-right: 2rem;
-}
-
-nav li:hover {
-  border-color: #ccc;
-  color: #ccc;
-}
-
-nav a {
-  color: inherit;
+a,
+p {
   text-decoration: none;
-  font-size: 1.2rem;
-}
-
-nav a.navbar-brand {
-  font-size: 2.8rem;
-  border: none;
-  color: #fff;
-}
-
-.notification {
-  position: absolute;
-  top: 50%;
-  right: 10rem;
-  transform: translateY(-45%);
-}
-
-.cart {
-  position: absolute;
-  top: 50%;
-  right: 4rem;
-  transform: translateY(-50%);
-}
-
-.triangle {
-  display: none;
-  width: 0;
-  height: 0;
-  border-left: 1rem solid transparent;
-  border-right: 1rem solid transparent;
-  border-top: 1rem solid #000;
-  margin-right: 1rem;
+  color: white;
+  margin: 0;
   cursor: pointer;
 }
 
-@media (max-width: 500px) {
-  nav a.navbar-brand {
-    font-size: 1.6rem;
-  }
+a:hover,
+p:hover,
+a:active,
+p:active {
+  color: lightgray;
+}
 
-  nav a {
-    font-size: 1rem;
-  }
+.navigation-items,
+.functional-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
 
-  nav ul {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 10000;
-    width: 100%;
-    padding: 1rem;
-    flex-direction: column;
-    align-items: flex-start;
-    background-color: #007bff;
-  }
+.navigation-items {
+  margin-left: 2rem;
+  gap: 2rem;
+}
 
-  nav ul.visibile {
-    display: flex;
-  }
+.functional-items {
+  gap: 2.5rem;
+  margin-right: 3rem;
+}
 
-  .triangle {
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-nav-list {
+  position: fixed;
+  top: 64px;
+  left: -30rem;
+  height: calc(100vh - 64px);
+  width: 30rem;
+  z-index: 1;
+  background-color: #3f51b5;
+  transition: left 0.4s;
+}
+
+.nav-caption {
+  display: inline-block;
+  padding-left: 6px;
+}
+
+.visible {
+  left: 0;
+}
+
+.burger {
+  display: none;
+}
+
+.user-name {
+  cursor: default;
+}
+
+.user-name:hover {
+  color: white;
+}
+
+@media (max-width: 720px) {
+  .burger {
     display: block;
+  }
+
+  .navigation-items {
+    display: none;
+  }
+}
+
+@media (max-width: 599px) {
+  .nav-space {
+    height: 56px;
+  }
+
+  mat-nav-list {
+    top: 56px;
+  }
+
+  .user-name {
+    display: none;
   }
 }

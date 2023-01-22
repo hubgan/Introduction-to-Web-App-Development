@@ -3,16 +3,23 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { User } from '../models/user';
+
+interface persistance {
+  persistance: string
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   userData: any;
-  isLoading: boolean = false;
+  isLoading: boolean = true;
   subscritpion: Subscription;
   usersRef: AngularFirestoreCollection<User> = this.afs.collection('users');
+  persistanceRef: AngularFirestoreCollection<persistance> = this.afs.collection('persistance');
+  persistanceID: string;
 
   constructor(
     public afs: AngularFirestore,
@@ -22,6 +29,17 @@ export class AuthService {
   ) {
     this.afAuth.authState.subscribe((user) => {
       this.isLoading = true;
+
+      this.persistanceRef.snapshotChanges().pipe(
+        map(changes =>
+          changes.map(c =>
+            ({ ...c.payload.doc.data(), id: c.payload.doc.id })
+          )
+        )
+      ).subscribe((data) => {
+        this.persistanceID = data[0].id;
+        this.setPersistance(data[0].persistance);
+      })
 
       if (user) {
         this.subscritpion = this.afs.doc(`users/${user.uid}`).valueChanges().subscribe((data) => {
@@ -104,6 +122,17 @@ export class AuthService {
 
   getUsers() {
     return this.usersRef;
+  }
+
+  changePersistance(persistance: string) {
+    this.persistanceRef.doc(this.persistanceID).update({ persistance: persistance }).then(() => {
+      console.log(`Persistance is now set to ${persistance}`);
+    })
+  }
+
+  setPersistance(persistance: string) {
+    console.log('setting')
+    return this.afAuth.setPersistence(persistance);
   }
 
   updateUser(uid: string, data: any) {

@@ -1,7 +1,7 @@
 import { group } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { FormGroup, FormControl, Validators, ValidatorFn, ValidationErrors, AbstractControl } from '@angular/forms'
+import { FormGroup, FormControl, Validators, ValidatorFn, ValidationErrors, AbstractControl, FormBuilder } from '@angular/forms'
 import { Router } from '@angular/router';
 import { Trip } from 'src/app/models/trip';
 import { StorageService } from 'src/app/services/storage.service';
@@ -19,22 +19,27 @@ export class CreateTripComponent implements OnInit {
   errorMessage: string = "";
 
   files: Array<File>;
-  tripForm = new FormGroup({
-    country: new FormControl('', Validators.required),
-    name: new FormControl('', Validators.required),
-    startDate: new FormControl('', Validators.required),
-    endDate: new FormControl('', Validators.required),
-    unitPrice: new FormControl(0, [Validators.required, Validators.min(0)]),
-    availablePlaces: new FormControl(0, [Validators.required, Validators.min(0)]),
-    description: new FormControl('', [Validators.required, Validators.minLength(30)]),
-    images: new FormControl('', Validators.required)
-  }, {
-    validators: this.isDateCorrect()
-  })
+  tripForm: FormGroup;
 
-  constructor(private tripsService: TripsService, private router: Router, private storageService: StorageService) { }
+  constructor(private tripsService: TripsService, private router: Router, private storageService: StorageService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.initForm();
+  }
+
+  initForm() {
+    this.tripForm = this.formBuilder.group({
+      country: [null, [Validators.required]],
+      name: [null, [Validators.required]],
+      startDate: [null, [Validators.required]],
+      endDate: [null, [Validators.required]],
+      unitPrice: [0, [Validators.required, Validators.min(0)]],
+      availablePlaces: [0, [Validators.required, Validators.min(0)]],
+      description: [null, [Validators.required, Validators.minLength(30)]],
+      images: [null, [Validators.required]]
+    }, {
+      validators: this.isDateCorrect()
+    })
   }
 
   isDateCorrect(): ValidatorFn {

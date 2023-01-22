@@ -6,34 +6,20 @@
   </div>
   <div class="trips-container">
     <ng-container *ngFor="let purchase of purchases | purchaseStatusFilter: statusFilters">
-      <div class="purchase-trip">
-        <h1>{{purchase.name}}</h1>
-        <h2>{{purchase.country}}</h2>
-        <div class="dates purchase-info">
-          <p>{{purchase.startDate}}</p>
-          <p>{{purchase.endDate}}</p>
-        </div>
-        <div class="price purchase-info">
-          <p>UnitPrice</p>
-          <p>{{purchase.price | transformMoney: moneyType}}</p>
-        </div>
-        <div class="quantity purchase-info">
-          <p>Number of bought tickets</p>
-          <p>{{purchase.quantity}}</p>
-        </div>
-        <div class="total-price purchase-info">
-          <p>Total price</p>
-          <p>{{purchase.quantity * purchase.price | transformMoney: moneyType}}</p>
-        </div>
-        <div class="purchase-date purchase-info">
-          <p>Date of purchase</p>
-          <p>{{purchase.purchaseDate}}</p>
-        </div>
-        <div class="status purchase-info">
-          <p>Trip status</p>
-          <p>{{purchase.status}}</p>
-        </div>
-      </div>
+      <mat-card>
+        <mat-list>
+          <mat-list-item role="listitem">{{purchase.name}}</mat-list-item>
+          <mat-list-item role="listitem">{{purchase.country}}</mat-list-item>
+          <mat-list-item role="listitem">{{purchase.startDate | date}} - {{purchase.endDate | date}}</mat-list-item>
+          <mat-list-item role="listitem">Unit price <span>{{purchase.price | transformMoney: moneyType}}</span>
+          </mat-list-item>
+          <mat-list-item role="listitem">Number of bought tickets <span>{{purchase.quantity}}</span></mat-list-item>
+          <mat-list-item role="listitem">Total price {{purchase.price * purchase.quantity | transformMoney: moneyType}}
+          </mat-list-item>
+          <mat-list-item role="listitem">Date of purchase {{purchase.purchaseDate | date}}</mat-list-item>
+          <mat-list-item role="listitem">Status {{purchase.status}}</mat-list-item>
+        </mat-list>
+      </mat-card>
     </ng-container>
   </div>
 </div>

@@ -17,7 +17,7 @@ export class NavBarComponent implements OnInit {
 
   toggleVisibility() {
     if (this.isVisible === '') {
-      this.isVisible = 'visibile';
+      this.isVisible = 'visible';
     }
     else {
       this.isVisible = '';

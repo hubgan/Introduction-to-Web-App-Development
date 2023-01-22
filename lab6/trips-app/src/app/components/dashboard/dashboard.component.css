@@ -17,40 +17,15 @@ nav ul li {
   cursor: pointer;
 }
 
-.users-container {
-  margin-top: 1rem;
+table {
+  width: 100%;
+  margin: 2rem 0;
 }
 
-.user-row,
-.trip-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 1.4rem;
-  margin-top: 1rem;
+.spacer {
+  flex: 1 1 auto;
 }
 
-.user-row div,
-.trip-row div {
-  font-size: 1.2rem;
-}
-
-.trip-row div {
-  flex: 1;
-}
-
-.uid {
-  flex: 2;
-}
-
-.email {
-  flex: 2;
-}
-
-.display-name,
-.role,
-.ban-status,
-.ban-user,
-.change-roles {
-  flex: 1;
+.mat-select {
+  width: 30% !important;
 }

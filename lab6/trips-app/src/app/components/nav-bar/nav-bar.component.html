@@ -1,32 +1,63 @@
-<nav class="navbar">
-  <div (click)="toggleVisibility()" class="triangle"></div>
-  <a routerLink="/" class="navbar-brand">TripApp</a>
-  <ul [ngClass]="isVisible">
-    <li routerLink="/trips">
-      <a>Trips</a>
+<div class="nav-space"></div>
+
+<mat-toolbar color="primary">
+  <div (click)="toggleVisibility()" class="burger">
+    <button mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+
+  <div>
+    <a routerLink="/">TripApp</a>
+  </div>
+
+  <ul class="navigation-items">
+    <li>
+      <a routerLink="/trips">Trips</a>
     </li>
     <li
-      *ngIf="authService.userData && (authService.userData.role === 'admin' || authService.userData.role === 'manager')"
-      routerLink="/dashboard">
-      <a>Dashboard</a>
+      *ngIf="authService.userData && (authService.userData.role === 'admin' || authService.userData.role === 'manager')">
+      <a routerLink="/dashboard">Dashboard</a>
     </li>
-    <li *ngIf="authService.userData" routerLink="/purchase-history">
-      <a>Purchase History</a>
+    <li *ngIf="authService.userData && authService.userData.role === 'client'">
+      <a routerLink="/purchase-history">Purchase History</a>
     </li>
-    <li *ngIf="!authService.userData" routerLink="/login">
-      <a>Login</a>
+    <li *ngIf="!authService.userData">
+      <a routerLink="/login">Login</a>
     </li>
-    <li *ngIf="!authService.userData" routerLink="/signup">
-      <a>Signup</a>
+    <li *ngIf="!authService.userData">
+      <a routerLink="/signup">Signup</a>
     </li>
-    <li (click)="signOut()" *ngIf=" authService.userData">
-      <p>Signout</p>
+    <li *ngIf="authService.userData">
+      <p (click)="signOut()">Signout</p>
     </li>
   </ul>
-  <div class="notification">
-    <app-notification></app-notification>
-  </div>
-  <div class="cart">
-    <app-cart></app-cart>
-  </div>
-</nav>
+
+  <span class="spacer"></span>
+
+  <ul *ngIf="authService.userData" class="functional-items">
+    <li>
+      <p class="user-name">Welcome {{authService.userData.displayName}}</p>
+    </li>
+    <li>
+      <app-notification></app-notification>
+    </li>
+    <li>
+      <app-cart></app-cart>
+    </li>
+  </ul>
+</mat-toolbar>
+
+<mat-nav-list [ngClass]="isVisible">
+  <a mat-list-item routerLink="/trips"><span class="nav-caption">Trips</span></a>
+
+  <a mat-list-item *ngIf="authService.userData && (authService.userData.role === 'admin' || authService.userData.role === 'manager')" routerLink="/dashboard"><span class="nav-caption">Dashboard</span></a>
+
+  <a mat-list-item *ngIf="authService.userData" routerLink="/purchase-history"><span class="nav-caption">Purchase History</span></a>
+
+  <a mat-list-item *ngIf="!authService.userData" routerLink="/login"><span class="nav-caption">Login</span></a>
+
+  <a mat-list-item *ngIf="!authService.userData" routerLink="/signup"><span class="nav-caption">Signup</span></a>
+
+  <a mat-list-item *ngIf="authService.userData" (click)="signOut()"><span class="nav-caption">Signout</span></a>
+</mat-nav-list>

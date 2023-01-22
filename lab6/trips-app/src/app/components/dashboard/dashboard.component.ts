@@ -26,6 +26,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   users: Array<User>;
 
   displayScreen: string = 'trips';
+  displayedUserColumns: string[] = ['uid', 'display-name', 'email', 'role', 'ban-status', 'ban-user', 'change-roles']
+  displayedTripColumns: string[] = ['id', 'name', 'delete-trip', 'edit-trip'];
 
   constructor(private tripsService: TripsService, public authService: AuthService, private router: Router) { }
 
@@ -34,6 +36,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.errorMessage = '';
     this.isLoadingTrips = true;
     this.isLoadingUsers = true;
+
+    if (!this.authService.userData) {
+      this.router.navigate(['login']);
+      return;
+    }
 
     this.getTrips();
     this.getUsers();
@@ -88,12 +95,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
     })
   }
 
-  changeUserRole(userUID: string, role: any) {
+  changeUserRole(userUID: string, role: string) {
+    console.log(userUID, role)
     this.error = false;
     this.isLoading = true;
 
-    this.authService.updateUser(userUID, { role: role.value }).then(() => {
-      console.log(`User with UID: ${userUID} now has role ${role.value}`);
+    this.authService.updateUser(userUID, { role: role }).then(() => {
+      console.log(`User with UID: ${userUID} now has role ${role}`);
       this.error = false;
       this.isLoading = false;
     }).catch((error) => {
@@ -126,6 +134,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   changeVisibility(value: string) {
     this.displayScreen = value;
+  }
+
+  changePersistance(event: string) {
+    this.authService.changePersistance(event);
   }
 
   ngOnDestroy(): void {

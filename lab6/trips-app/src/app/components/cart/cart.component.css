@@ -1,9 +1,43 @@
-img {
-  display: block;
+.cart-icon {
+  margin-top: 1rem;
+  cursor: pointer;
 }
 
-.cart {
-  position: relative;
+.icon {
+  transform: scale(1.5);
+  color: #000;
+}
+
+mat-card {
+  background-color: #3f51b5;
+  color: #fff;
+  position: absolute;
+  top: 6.4rem;
+  right: 0;
+  width: 30rem;
+}
+
+.line {
+  border-top: 0.1rem solid #fff;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+button {
+  display: block;
+  margin: 0 auto !important;
+}
+
+.green-color {
+  background-color: #00b300;
+}
+
+/* img {
+  display: block;
 }
 
 .cart-image {
@@ -27,9 +61,9 @@ img {
 
 .cart-details {
   position: absolute;
-  left: -70%;
-  transform: translateX(-50%);
-  background-color: #007bff;
+  top: 6.4rem;
+  right: 0;
+  background-color: #3f51b5;
   width: 18rem;
   padding: 1rem;
   color: #fff;
@@ -50,7 +84,7 @@ img {
 }
 
 .line {
-  border-top: 0.1rem solid #0027aa;
+  border-top: 0.1rem solid red;
 }
 
 button {
@@ -66,4 +100,4 @@ button {
 
 button:hover {
   background-color: #00ff00;
-}
+} */

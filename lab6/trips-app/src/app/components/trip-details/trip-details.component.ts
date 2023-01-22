@@ -9,6 +9,7 @@ import { CommentsService } from 'src/app/services/comments.service';
 import { CartService } from 'src/app/services/cart.service';
 import { PurchaseHistoryService } from 'src/app/services/purchase-history.service';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-trip-details',
@@ -41,6 +42,7 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
   subscriptions: Array<Subscription> = [];
 
   constructor(private route: ActivatedRoute,
+    public authService: AuthService,
     private tripsService: TripsService,
     private moneyTypeService: MoneyTypeService,
     private commentsService: CommentsService,
@@ -72,7 +74,6 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
     const userUID = JSON.parse(localStorage.getItem('user')!).uid;
     const userRole = JSON.parse(localStorage.getItem('user')!).role;
     const isBanned = JSON.parse(localStorage.getItem('user')!).isBanned;
-    console.log(isBanned)
 
     if (isBanned) {
       this.ratingPermission = false;
@@ -83,7 +84,7 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
 
     if (userRole === 'manager' || userRole === 'admin') {
       this.ratingPermission = false;
-      this.commentsPermission = userRole === 'manager' ? false : true;
+      this.commentsPermission = true;
       this.isLoadingPermissions = false;
       return;
     }
