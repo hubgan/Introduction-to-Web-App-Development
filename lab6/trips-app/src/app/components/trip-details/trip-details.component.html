@@ -4,7 +4,8 @@
       <h2>{{trip.name}}</h2>
       <p class="trip-location">{{trip.country}}</p>
       <div class="trip-rating">
-        <p>Ratings {{trip.rating / trip.numberOfRatings || 0}} ({{trip.numberOfRatings}})</p>
+        <p>Ratings {{trip.numberOfRatings !== 0 ? (trip.rating / trip.numberOfRatings).toFixed(2) : 0}}
+          ({{trip.numberOfRatings}})</p>
         <app-rating class="rating-stars" [trip]="trip"></app-rating>
       </div>
       <div class="trip-description">
